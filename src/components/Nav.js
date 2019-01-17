@@ -1,9 +1,9 @@
-import React from 'react'
-import { Link } from 'react-router-dom'
+import React from 'react';
+import { Link } from 'react-router-dom';
 
 export default function Nav() {
     return (
-        <div>
+        <nav>
             <ul>
                 <li>
                     <Link to='/'>Home</Link>
@@ -13,9 +13,10 @@ export default function Nav() {
                     <Link to='/contact'>Contact</Link>
                     {'  |  '}
                     <Link to='/users/register'>Register</Link>
+                    {'  |  '}
+                    <Link to='/users/login'>Login</Link>
                 </li>
             </ul>
-
-        </div>
-    )
-}
+        </nav>
+    );
+};
