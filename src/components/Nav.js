@@ -13,6 +13,8 @@ export default function Nav() {
                     <Link to='/contact'>Contact</Link>
                     {'  |  '}
                     <Link to='/users/register'>Register</Link>
+                    {'  |  '}
+                    <Link to='/users/login'>Login</Link>
                 </li>
             </ul>
         </nav>
