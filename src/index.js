@@ -7,6 +7,7 @@ import App from './App';
 import NotFound from './components/NotFound';
 import About from './components/About';
 import Contact from './components/Contact';
+import Registration from './components/Authentication';
 
 
 const routing = (
@@ -17,9 +18,9 @@ const routing = (
                 <Route exact path='/' component={App} />
                 <Route path='/about' component={About} />
                 <Route path='/contact' component={Contact} />
+                <Route path='/users/register' component={Registration} />
                 <Route component={NotFound} />
             </Switch>
-
         </div>
     </Router>
 )
