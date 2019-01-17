@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Fragment } from 'react';
 import ReactDOM from 'react-dom';
 import { Route, Switch, BrowserRouter as Router } from 'react-router-dom';
 import './index.css';
@@ -12,7 +12,7 @@ import Registration from './components/Authentication';
 
 const routing = (
     <Router>
-        <div>
+        <Fragment>
             <Nav />
             <Switch>
                 <Route exact path='/' component={App} />
@@ -21,8 +21,8 @@ const routing = (
                 <Route path='/users/register' component={Registration} />
                 <Route component={NotFound} />
             </Switch>
-        </div>
+        </Fragment>
     </Router>
-)
+);
 
 ReactDOM.render(routing, document.getElementById('root'));
