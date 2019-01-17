@@ -1,4 +1,4 @@
-import React, { Fragment } from 'react'
+import React, { Fragment } from 'react';
 
 export default function RegistrationForm(props) {
     const { onSubmit } = props
@@ -12,4 +12,4 @@ export default function RegistrationForm(props) {
             </form>
         </Fragment>
     )
-}
+};

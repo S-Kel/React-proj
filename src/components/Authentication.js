@@ -7,16 +7,16 @@ export default class Registration extends Component {
 
     handleSubmit = async (event) => {
         event.preventDefault();
-        const UserRoute = this.props.type === 'register' ? '/users/register' : '/users/login'
+        const userRoute = this.props.type === 'register' ? '/users/register' : '/users/login';
         try {
-            const response = await api.post(UserRoute, {
+            const response = await api.post(userRoute, {
                 email: event.target.email.value,
                 password: event.target.password.value
-            })
-            console.log(response.data)
+            });
+            console.log(response.data);
         } catch (error) {
-            console.error('There was a problem registering this user', error)
-        }
+            console.error('There was a problem authenticating user', error);
+        };
     };
 
     render() {
@@ -25,6 +25,6 @@ export default class Registration extends Component {
                 {this.props.type === 'register' && <RegistrationForm onSubmit={this.handleSubmit} />}
                 {this.props.type === 'login' && <LoginForm onSubmit={this.handleSubmit} />}
             </Fragment>
-        )
+        );
     };
 };
