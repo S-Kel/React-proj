@@ -1,13 +1,15 @@
-import React, { Component } from 'react';
+import React, { Fragment, Component } from 'react';
 import RegistrationForm from './RegistrationForm'
 import { api } from '../api/init';
+import LoginForm from './LoginForm';
 
 export default class Registration extends Component {
 
     handleSubmit = async (event) => {
-        event.preventDefault()
+        event.preventDefault();
+        const UserRoute = this.props.type === 'register' ? '/users/register' : '/users/login'
         try {
-            const response = await api.post('/users/register', {
+            const response = await api.post(UserRoute, {
                 email: event.target.email.value,
                 password: event.target.password.value
             })
@@ -19,7 +21,10 @@ export default class Registration extends Component {
 
     render() {
         return (
-            <RegistrationForm onSubmit={this.handleSubmit} />
+            <Fragment>
+                {this.props.type === 'register' && <RegistrationForm onSubmit={this.handleSubmit} />}
+                {this.props.type === 'login' && <LoginForm onSubmit={this.handleSubmit} />}
+            </Fragment>
         )
     };
 };

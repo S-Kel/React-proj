@@ -7,7 +7,7 @@ import App from './App';
 import NotFound from './components/NotFound';
 import About from './components/About';
 import Contact from './components/Contact';
-import Registration from './components/Authentication';
+import Authentication from './components/Authentication';
 
 
 const routing = (
@@ -18,7 +18,8 @@ const routing = (
                 <Route exact path='/' component={App} />
                 <Route path='/about' component={About} />
                 <Route path='/contact' component={Contact} />
-                <Route path='/users/register' component={Registration} />
+                <Route path='/users/register' render={(props) => { return <Authentication {...props} type={'register'} /> }} />
+                <Route path='/users/login' render={(props) => { return <Authentication {...props} type={'login'} /> }} />
                 <Route component={NotFound} />
             </Switch>
         </div>
