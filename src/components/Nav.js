@@ -11,6 +11,8 @@ export default function Nav() {
                     <Link to='/about'>About</Link>
                     {'  |  '}
                     <Link to='/contact'>Contact</Link>
+                    {'  |  '}
+                    <Link to='/users/register'>Register</Link>
                 </li>
             </ul>
 
