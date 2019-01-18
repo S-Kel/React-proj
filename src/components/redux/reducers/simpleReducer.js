@@ -1,14 +1,17 @@
 /*
  src/reducers/simpleReducer.js
 */
-export default (state = {}, action) => {
-    switch (action.type) {
-     case 'SIMPLE_ACTION':
-      return {
-       result: action.payload
-      }
-     default:
-      return state
-    }
-   }
+import { SIMPLE_ACTION } from "../constants/types";
 
+const initialState = {
+  result: ""
+};
+
+export default (state = initialState, action) => {
+  switch (action.type) {
+    case SIMPLE_ACTION:
+      return { ...state, result: action.payload };
+    default:
+      return state;
+  }
+};
