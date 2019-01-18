@@ -4,14 +4,24 @@ import { connect } from "react-redux";
 import RegistrationForm from './RegistrationForm';
 import LoginForm from './LoginForm';
 import PropTypes from 'prop-types';
+import { withLastLocation } from 'react-router-last-location';
 
 import { authenticateUser, logoutUser } from "../../redux/actions/authenticateUserAction";
 
 class Authentication extends Component {
 
-    componentWillReceiveProps = async (nextProps) => {
-        nextProps.authType === 'logout' && this.props.logoutUser();
-    };
+    componentDidMount = () => {
+        if (this.props.authType === 'logout') {
+            this.props.logoutUser();
+            console.log('You have been logged out');
+        }
+    }
+
+    componentDidUpdate = (prevProps, prevState) => {
+        const { loggedIn, user, error } = this.props
+        loggedIn && console.log('You have been logged in as', user);
+        error && console.log(error.message);
+    }
 
     handleSubmit = (event) => {
         event.preventDefault();
@@ -22,14 +32,14 @@ class Authentication extends Component {
         };
 
         this.props.authenticateUser(userRoute, postData);
-        this.props.loggedIn && console.log('You have been logged in as ', this.props.user)
     };
 
     render() {
-        const { authType } = this.props
+        const { authType, loggedIn, lastLocation } = this.props
+        const from = lastLocation ? lastLocation.pathname : '/';
         return (
             <Fragment>
-                {authType === 'logout' && <Redirect to='/' />}
+                {authType === 'logout' && <Redirect to={from} />}
                 {authType === 'register' && <RegistrationForm submit={this.handleSubmit} />}
                 {authType === 'login' && <LoginForm submit={this.handleSubmit} />}
             </Fragment>
@@ -45,11 +55,12 @@ Authentication.propTypes = {
 
 const mapStateToProps = state => ({
     loggedIn: state.auth.loggedIn,
-    user: state.auth.authenticatedUserEmail
+    user: state.auth.authenticatedUserEmail,
+    error: state.auth.authError
 })
 
 // connect function takes two arguments; 
 // The first defines the data being pulled from store into the called component - mapStateToProps
 // The second defines the actions being sent from the called component to update the store - mapDispatchToProps
 // Both of these data are added to the component props
-export default connect(mapStateToProps, { authenticateUser, logoutUser })(Authentication);
+export default connect(mapStateToProps, { authenticateUser, logoutUser })(withLastLocation(Authentication));

@@ -3,7 +3,7 @@ import { AUTH_ACTION, LOGOUT_ACTION, AUTH_ERROR_ACTION } from "../actions/consta
 const initialState = {
   loggedIn: false,
   authenticatedUserEmail: null,
-  logInError: null
+  authError: null
 };
 
 export default (state = initialState, action) => {
@@ -12,7 +12,8 @@ export default (state = initialState, action) => {
       return {
         ...state,
         loggedIn: true,
-        authenticatedUserEmail: action.payload
+        authenticatedUserEmail: action.payload,
+        authError: null
       };
     case LOGOUT_ACTION:
       return {
@@ -23,7 +24,7 @@ export default (state = initialState, action) => {
     case AUTH_ERROR_ACTION:
       return {
         ...state,
-        loggedInError: action.payload
+        authError: action.payload
       };
     default:
       return state;
