@@ -9,9 +9,14 @@ import Contact from './components/Contact';
 import Authentication from './components/Authentication';
 
 class App extends Component {
+  
+simpleAction = (event) => {
+  this.props.simpleAction();
+ }
   render() {
     return (
       <div className="App">
+
         <Router>
           <Fragment>
             <Nav />
@@ -26,9 +31,17 @@ class App extends Component {
             </Switch>
           </Fragment>
         </Router>
+      <button onClick={this.simpleAction}> test </button>
+      <pre>
+      {
+        JSON.stringify(this.props)
+      }
+      </pre>
+      <Welcome />
+     
       </div>
-    );
-  };
-};
+    )
+  }
+}
 
-export default App;
+export default connect(mapStateToProps, mapDispatchToProps)(App);
