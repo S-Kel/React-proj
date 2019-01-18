@@ -3,13 +3,24 @@ import './App.css';
 import Welcome from './components/Welcome';
 
 class App extends Component {
+  
+simpleAction = (event) => {
+  this.props.simpleAction();
+ }
   render() {
     return (
       <div className="App">
-        <Welcome />
+      <button onClick={this.simpleAction}> test </button>
+      <pre>
+      {
+        JSON.stringify(this.props)
+      }
+      </pre>
+      <Welcome />
+     
       </div>
-    );
-  };
-};
+    )
+  }
+}
 
-export default App;
+export default connect(mapStateToProps, mapDispatchToProps)(App);

@@ -2,13 +2,26 @@ import React, { Fragment } from 'react';
 import ReactDOM from 'react-dom';
 import { Route, Switch, BrowserRouter as Router } from 'react-router-dom';
 import './index.css';
+<<<<<<< HEAD
+import { Provider } from 'react-redux'
+import configureStore from './store';
+=======
 import Nav from './components/Nav';
+>>>>>>> cdfb1f636d12a81efd4a6da77c6dbd7eb8115573
 import App from './App';
 import NotFound from './components/NotFound';
 import About from './components/About';
 import Contact from './components/Contact';
 import Authentication from './components/Authentication';
 
+<<<<<<< HEAD
+ReactDOM.render(
+    <Provider store={configureStore()}>
+        <App />
+    </Provider>,
+    document.getElementById('root'));
+=======
+>>>>>>> cdfb1f636d12a81efd4a6da77c6dbd7eb8115573
 
 const routing = (
     <Router>
