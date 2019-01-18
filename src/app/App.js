@@ -29,13 +29,13 @@ class App extends Component {
               <Route
                 path="/users/register"
                 render={props => {
-                  return <Authentication {...props} type={"register"} />;
+                  return <Authentication {...props} authType={"register"} />;
                 }}
               />
               <Route
                 path="/users/login"
                 render={props => {
-                  return <Authentication {...props} type={"login"} />;
+                  return <Authentication {...props} authTtype={"login"} />;
                 }}
               />
               <Route component={NotFound} />
