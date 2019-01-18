@@ -1,14 +1,21 @@
 import React, { Fragment, Component } from 'react';
-import RegistrationForm from './RegistrationForm'
+import { Redirect } from 'react-router-dom';
 import { api } from '../api/init';
+import RegistrationForm from './RegistrationForm';
 import LoginForm from './LoginForm';
 import PropTypes from 'prop-types';
 
 export default class Authentication extends Component {
 
+    componentWillReceiveProps = async (nextProps) => {
+        if (nextProps.authType === 'logout') {
+            await api.get('/users/logout');
+        };
+    };
+
     handleSubmit = async (event) => {
         event.preventDefault();
-        const userRoute = this.props.type === 'register' ? '/users/register' : '/users/login';
+        const userRoute = this.props.authType === 'register' ? '/users/register' : '/users/login';
         try {
             const response = await api.post(userRoute, {
                 email: event.target.email.value,
@@ -21,15 +28,17 @@ export default class Authentication extends Component {
     };
 
     render() {
+        const { authType } = this.props
         return (
             <Fragment>
-                {this.props.type === 'register' && <RegistrationForm submit={this.handleSubmit} />}
-                {this.props.type === 'login' && <LoginForm submit={this.handleSubmit} />}
+                {authType === 'logout' && <Redirect to='/' />}
+                {authType === 'register' && <RegistrationForm submit={this.handleSubmit} />}
+                {authType === 'login' && <LoginForm submit={this.handleSubmit} />}
             </Fragment>
         );
     };
 };
 
 Authentication.propTypes = {
-    type: PropTypes.oneOf(['register', 'login', 'logout']).isRequired
+    authType: PropTypes.oneOf(['register', 'login', 'logout']).isRequired
 };

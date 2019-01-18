@@ -15,6 +15,10 @@ export default function Nav() {
                     <Link to='/users/register'>Register</Link>
                     {'  |  '}
                     <Link to='/users/login'>Login</Link>
+                    {'  |  '}
+                    <Link to='/users/login'>Login</Link>
+                    {'  |  '}
+                    <Link to='/users/logout'>Logout</Link>
                 </li>
             </ul>
         </nav>

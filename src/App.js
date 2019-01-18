@@ -19,8 +19,9 @@ class App extends Component {
               <Route exact path='/' component={Welcome} />
               <Route path='/about' component={About} />
               <Route path='/contact' component={Contact} />
-              <Route path='/users/register' render={(props) => { return <Authentication {...props} type={'register'} /> }} />
-              <Route path='/users/login' render={(props) => { return <Authentication {...props} type={'login'} /> }} />
+              <Route path='/users/register' render={(props) => { return <Authentication {...props} authType={'register'} /> }} />
+              <Route path='/users/login' render={(props) => { return <Authentication {...props} authType={'login'} /> }} />
+              <Route path='/users/logout' render={(props) => { return <Authentication {...props} authType={'logout'} /> }} />
               <Route component={NotFound} />
             </Switch>
           </Fragment>
