@@ -37,8 +37,10 @@ class Authentication extends Component {
     render() {
         const { authType, loggedIn, lastLocation } = this.props
         const from = lastLocation ? lastLocation.pathname : '/';
+
         return (
             <Fragment>
+                {loggedIn && <Redirect to={from} />}
                 {authType === 'logout' && <Redirect to={from} />}
                 {authType === 'register' && <RegistrationForm submit={this.handleSubmit} />}
                 {authType === 'login' && <LoginForm submit={this.handleSubmit} />}
