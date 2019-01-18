@@ -1,6 +1,6 @@
 import React, { Fragment, Component } from 'react';
 import RegistrationForm from './RegistrationForm'
-import { api } from '../api/init';
+import { api } from '../../api/init';
 import LoginForm from './LoginForm';
 
 export default class Registration extends Component {
