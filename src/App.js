@@ -24,6 +24,8 @@ simpleAction = (event) => {
         JSON.stringify(this.props)
       }
       </pre>
+      <Welcome />
+     
       </div>
     )
   }
