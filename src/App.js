@@ -1,14 +1,6 @@
 import React, { Component } from 'react';
 import './App.css';
-import Welcome from './components/Welcome'
-import { connect } from 'react-redux';
-import { simpleAction } from './actions/simpleAction'
-
-const mapStateToProps = state =>({ ...state});
-
-const mapDispatchToProps = dispatch => ({
-  simpleAction: () => dispatch(simpleAction())
-});
+import Welcome from './components/Welcome';
 
 class App extends Component {
   
