@@ -19,7 +19,7 @@ class Authentication extends Component {
 
     componentDidUpdate = (prevProps, prevState) => {
         const { loggedIn, user, error } = this.props
-        // loggedIn && console.log('You have been logged in as', user);
+        loggedIn && console.log('You have been logged in as', user);
         error && console.log(error.message);
     }
 
