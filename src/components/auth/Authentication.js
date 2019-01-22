@@ -52,7 +52,10 @@ class Authentication extends Component {
 Authentication.propTypes = {
     authType: PropTypes.oneOf(['register', 'login', 'logout']).isRequired,
     authenticateUser: PropTypes.func.isRequired,
-    logoutUser: PropTypes.func.isRequired
+    logoutUser: PropTypes.func.isRequired,
+    loggedIn: PropTypes.boolean.isRequired,
+    user: PropTypes.object.isrequired,
+    error: PropTypes.object.isRequired
 };
 
 const mapStateToProps = state => ({
