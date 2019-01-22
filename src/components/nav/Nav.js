@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 
+import Logo from './Logo';
+
 class Nav extends Component {
 
     render() {
@@ -9,6 +11,9 @@ class Nav extends Component {
         return (
             <nav>
                 <ul>
+                    <li>
+                        <Logo />
+                    </li>
                     <li>
                         <Link to='/'>Home</Link>
                         {'  |  '}
