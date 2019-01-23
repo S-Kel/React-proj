@@ -1,6 +1,6 @@
 import React, { Fragment, Component } from 'react';
 import { api } from '../../api/init';
-
+import Footer from './Footer';
 export default class Welcome extends Component {
 
   constructor(props) {
@@ -30,6 +30,7 @@ export default class Welcome extends Component {
       <Fragment>
         <h2>Welcome</h2>
         <p>{this.state.response}</p>
+        <Footer />
       </Fragment>
     );
   };

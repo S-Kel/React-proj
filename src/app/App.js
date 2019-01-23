@@ -9,6 +9,11 @@ import NotFound from "../components/_404/NotFound";
 import About from "../components/pages/About";
 import Contact from "../components/pages/Contact";
 import Authentication from "../components/auth/Authentication";
+import { library } from '@fortawesome/fontawesome-svg-core';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+
+
+
 
 
 class App extends Component {
