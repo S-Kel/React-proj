@@ -23,14 +23,16 @@
   width: 75%;
   margin: auto;
   border-radius: 10px;
+  padding: 1em;
+ 
 }
 
 .banner-text h1 {
   font-size: 66px;
-  font-weight: bold;
   color: white;
   display: flex;
   justify-content: center;
+  font-family: 'Montserrat', sans-serif;
 }
 
 .banner-text hr{

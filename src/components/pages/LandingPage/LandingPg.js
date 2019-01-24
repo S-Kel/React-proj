@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import {Grid, Cell} from 'react-mdl'
+import GarageSaleVid from './Youtube'
 
 class LandingPg extends Component {
   render() {
@@ -10,6 +11,7 @@ class LandingPg extends Component {
             <div className="banner-text">
                 <h1>World's Biggest Garage Sale</h1>
                 <hr/>  
+                <GarageSaleVid videoId='SkiTGS_ThA0'/>
                 <div className="social-links">
                     <a href="http://google.com" rel="noopener noreferrer" target="_blank">
                         <i className="fa fa-linkedin-square" aria-hidden="true" />
