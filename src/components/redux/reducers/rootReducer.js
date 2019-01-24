@@ -1,11 +1,12 @@
 /*
  src/reducers/rootReducer.js
 */
-import { combineReducers } from "redux";
-import simpleReducer from "./simpleReducer";
-import logInReducer from "./logInReducer";
+import { combineReducers } from 'redux';
+
+import simpleReducer from './simpleReducer';
+import authReducer from "./authReducer";
 
 export default combineReducers({
   simpleReducer,
-  loggedInUser: logInReducer
+  auth: authReducer
 });
