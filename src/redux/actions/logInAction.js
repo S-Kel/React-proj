@@ -1,7 +1,7 @@
 /*
  src/actions/simpleAction.js
 */
-import { api } from "../../../api/init";
+import { api } from "../../api/init";
 import { LOGIN_ACTION, LOGIN_ERROR_ACTION } from "../constants/types";
 
 export const fetchUser = data => async dispatch => {
@@ -11,10 +11,7 @@ export const fetchUser = data => async dispatch => {
       password: data.elements.password.value
     });
 
-    // let tokenEmail = { email: response.data.email };
-    // this.setState({ token: tokenEmail });
-
-    const loggedInUser = response.data;
+    const loggedInUser = response.data.email;
     console.log("LoggedIn User", loggedInUser);
     dispatch({ type: LOGIN_ACTION, payload: loggedInUser });
   } catch (error) {

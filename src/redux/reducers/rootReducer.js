@@ -7,5 +7,5 @@ import logInReducer from "./logInReducer";
 
 export default combineReducers({
   simpleReducer,
-  loggedInUser: logInReducer
+  user: logInReducer
 });

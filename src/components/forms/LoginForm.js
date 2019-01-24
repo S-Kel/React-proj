@@ -2,14 +2,14 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import PropTypes from "prop-types";
 
-import { fetchUser } from "../redux/actions/logInAction";
+import { fetchUser } from "../../redux/actions/logInAction";
 
 class LoginForm extends Component {
   handLogInFormSubmit = async event => {
     const formUserData = event.target;
     event.preventDefault();
     await this.props.fetchUser(formUserData);
-    console.log(event.target);
+    console.log(formUserData);
   };
   render() {
     return (
@@ -32,12 +32,10 @@ class LoginForm extends Component {
 }
 
 LoginForm.propTypes = {
-  submit: PropTypes.func.isRequired
+  fetchUser: PropTypes.func.isRequired
 };
 
-// const mapStateToProps = state => ({
-//   fetchUser
-// });
+// const mapStateToProps = state => ({});
 
 export default connect(
   null,

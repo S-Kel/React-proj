@@ -1,7 +1,7 @@
 import React, { Fragment, Component } from "react";
 import { Route, Switch, BrowserRouter as Router } from "react-router-dom";
 import { connect } from "react-redux";
-import { simpleAction } from "../components/redux/actions/simpleAction";
+import { simpleAction } from "../redux/actions/simpleAction";
 
 import "./App.css";
 import Welcome from "../components/home/Welcome";
@@ -17,11 +17,21 @@ class App extends Component {
     console.log(this.props);
   };
   render() {
+    // const user = this.props.user;
+    // console.log(user);
     return (
       <div className="App">
         <Router>
           <Fragment>
             <Nav />
+            {this.props.user ? console.log(this.props.user) : ""}
+            {
+              //   user && (
+              //   <div style={{ padding: "10px", margin: "20px" }}>
+              //     <em>{"user"}</em>
+              //   </div>
+              // )
+            }
             <Switch>
               <Route exact path="/" component={Welcome} />
               <Route path="/about" component={About} />
@@ -50,7 +60,8 @@ class App extends Component {
   }
 }
 const mapPropsToTypes = state => ({
-  simpleReducer: state.simpleReducer
+  simpleReducer: state.simpleReducer,
+  user: state.user.loggedInUser
 });
 
 export default connect(
