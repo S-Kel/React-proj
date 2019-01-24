@@ -1,10 +1,11 @@
-import React from "react";
+import 'semantic-ui-css/semantic.min.css';
+import React, { Fragment } from "react";
 import ReactDOM from "react-dom";
 import "./index.css";
-
 import { Provider } from "react-redux";
-import store from "./redux/stores/store";
 
+import store from "./redux/stores/store";
+import Nav from "./components/nav/Nav";
 import App from "./app/App";
 
 ReactDOM.render(
@@ -13,3 +14,5 @@ ReactDOM.render(
   </Provider>,
   document.getElementById("root")
 );
+
+
