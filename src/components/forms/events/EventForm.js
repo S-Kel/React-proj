@@ -16,7 +16,12 @@ class CreateEventForm extends Component {
         { value: '5', text: '$500k - $600k' },
         { value: '6', text: '$600k - $700k' },
         { value: '7', text: '$800k+' },
-      ]
+      ],
+      newLink:'',
+      links:[]
+  }
+  changeNewLink = e =>{ 
+    this.setState({ newLink: e.target.value })
   }
   handleSubmit = e => { }
   handleInputChange = e => { }

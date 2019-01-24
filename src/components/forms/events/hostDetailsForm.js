@@ -54,6 +54,7 @@ function HostDetailsForm({ options, onSubmit, onChange }) {
               <Input
                 name='social'
                 iconPosition='left'
+                value={this.state.newLink}
                 onChange={onChange}
                 placeholder='Your links to social media pages'>
                 <Icon name='users' circular inverted color='teal' />
