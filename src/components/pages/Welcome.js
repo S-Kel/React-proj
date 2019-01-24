@@ -30,7 +30,7 @@ export default class Welcome extends Component {
       <Fragment>
         <h2>Welcome</h2>
         <p>{this.state.response}</p>
-        <Footer />
+        
       </Fragment>
     );
   };
