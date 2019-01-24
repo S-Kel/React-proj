@@ -9,6 +9,7 @@ import NotFound from "../components/_404/NotFound";
 import About from "../components/pages/About";
 import Contact from "../components/pages/Contact";
 import Authentication from "../components/auth/Authentication";
+import LandingPg from "../components/pages/LandingPage/LandingPg"
 
 
 class App extends Component {
@@ -32,6 +33,7 @@ class App extends Component {
             </Fragment>
           </LastLocationProvider>
         </Router>
+        <LandingPg/>
       </div >
     );
   };

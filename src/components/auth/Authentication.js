@@ -53,8 +53,8 @@ Authentication.propTypes = {
     authType: PropTypes.oneOf(['register', 'login', 'logout']).isRequired,
     authenticateUser: PropTypes.func.isRequired,
     logoutUser: PropTypes.func.isRequired,
-    loggedIn: PropTypes.boolean.isRequired,
-    user: PropTypes.object.isrequired,
+    loggedIn: PropTypes.bool.isRequired,
+    user: PropTypes.object.isRequired,
     error: PropTypes.object.isRequired
 };
 
