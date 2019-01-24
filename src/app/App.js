@@ -4,9 +4,8 @@ import { connect } from 'react-redux';
 import { Route, Switch, BrowserRouter as Router } from "react-router-dom";
 import { LastLocationProvider } from 'react-router-last-location';
 
-
 import "./App.css";
-import Welcome from "../components/home/Welcome";
+import Welcome from "../components/pages/Welcome";
 import Nav from "../components/nav/Nav";
 import NotFound from "../components/_404/NotFound";
 import About from "../components/home/About";
