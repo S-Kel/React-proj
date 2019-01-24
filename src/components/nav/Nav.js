@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import { Menu, Icon } from 'semantic-ui-react';
 
-import { logoutUser } from "../redux/actions/authActions";
+import { logoutUser } from "../../redux/actions/authenticateUserAction";
 
 import LoginMenu from './LoginMenu';
 import LogoutMenu from './LogoutMenu';
@@ -91,8 +91,8 @@ Nav.propTypes = {
 };
 
 const mapStateToProps = state => ({
-    loggedIn: state.auth.loggedIn,
-    emailToken: state.auth.authenticatedUserEmail
+    // loggedIn: state.auth.loggedIn,
+    // emailToken: state.auth.authenticatedUserEmail
 
 })
 
