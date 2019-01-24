@@ -33,58 +33,6 @@ class Nav extends Component {
         const { activeItem } = this.state;
         console.log('emailToken', emailToken)
         return (
-<<<<<<< HEAD
-            <Menu icon='labeled' size='mini' style={{ paddingLeft: 20, paddingRight: 20 }}>
-                <Menu.Item
-                    as={NavLink} to='/'
-                    name='home'
-                    active={activeItem === 'home'}
-                    onClick={this.handleItemClick}
-                    exact activeClassName="active teal" >
-                    <Icon name='home' />Home
-                </Menu.Item>
-                <Menu.Item
-                    as={NavLink} to='/about'
-                    name='about'
-                    active={activeItem === 'info'}
-                    onClick={this.handleItemClick}
-                    activeClassName="active teal" >
-                    <Icon name='info' />About
-                </Menu.Item>
-                {/* <Menu.Item
-                    as={NavLink} to='/contact'
-                    name='contact'
-                    active={activeItem === 'users'}
-                    onClick={this.handleItemClick}
-                    activeClassName="active teal" >
-                    <Icon name='users' />Contact
-                </Menu.Item> */}
-                <Menu.Item
-                    position='right'
-                    as={NavLink} to='/create'
-                    name='create'
-                    active={activeItem === 'add'}
-                    onClick={this.handleItemClick}
-                    activeClassName="active teal" >
-                    <Icon name='add circle' />Create Event
-                </Menu.Item>
-
-                {/* {
-                    loggedIn
-                        ? (<LoginMenu
-                            username={this.capitalize(emailToken.split('@')[0])}
-                            onLogout={this.handleOnSignoutClick} />)
-                        : (<LogoutMenu
-                            active={activeItem === 'sign in'}
-                            // onClick={this.handleItemClick}                            
-                            onLogin={this.handleOnLoginClick}
-                            onRegister={this.handleOnRegisterClick} />)
-                } */}
-
-            </Menu>
-        );
-
-=======
                 <nav>
                     <ul>
                         <li>
@@ -103,7 +51,6 @@ class Nav extends Component {
                 </nav >
             
             );
->>>>>>> landing
     };
 };
 
