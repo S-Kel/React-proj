@@ -54,7 +54,7 @@ Authentication.propTypes = {
     authenticateUser: PropTypes.func.isRequired,
     logoutUser: PropTypes.func.isRequired,
     loggedIn: PropTypes.bool.isRequired,
-    user: PropTypes.object.isrequired,
+    user: PropTypes.object.isRequired,
     error: PropTypes.object.isRequired
 };
 
