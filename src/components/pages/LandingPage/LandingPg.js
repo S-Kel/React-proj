@@ -1,8 +1,14 @@
 import React, { Component } from 'react'
 import {Grid, Cell} from 'react-mdl'
 import GarageSaleVid from './Youtube'
+import InfoPg from './InfoPg';
 
 class LandingPg extends Component {
+
+onClickMore() {
+    document.getElementById('info').scrollIntoView()
+}
+
   render() {
     return (
       <div style= {{width: '100%', margin: 'auto'}}>
@@ -25,8 +31,12 @@ class LandingPg extends Component {
                     </a>
                 </div>      
             </div>
+            <div className="find-out-more">
+                <button onClick={this.onClickMore}> find out more</button>
+            </div>
             </Cell>
         </Grid>
+        <InfoPg/>
     </div>
     )
   }
