@@ -2,11 +2,7 @@ import 'semantic-ui-css/semantic.min.css';
 import React, { Fragment } from "react";
 import ReactDOM from "react-dom";
 import "./index.css";
-<<<<<<< HEAD
-=======
 import 'semantic-ui-css/semantic.min.css'
-
->>>>>>> landing
 import { Provider } from "react-redux";
 
 import store from "./redux/stores/store";

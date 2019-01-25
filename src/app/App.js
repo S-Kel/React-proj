@@ -9,15 +9,15 @@ import Welcome from "../components/pages/Welcome";
 import Nav from "../components/nav/Nav";
 import NotFound from "../components/_404/NotFound";
 import About from "../components/pages/About";
-<<<<<<< HEAD
 // import Contact from "../components/pages/Contact";
 // import Authentication from "../components/forms/Authentication";
 import CreateEventForm from "../components/forms/events/EventForm";
-=======
 import Contact from "../components/pages/Contact";
 import Authentication from "../components/auth/Authentication";
-import LandingPg from "../components/pages/LandingPage/LandingPg"
->>>>>>> landing
+import { library } from '@fortawesome/fontawesome-svg-core';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import {Footer} from "../components/pages/LandingPage/Footer";
+import LandingPg from "../components/pages/LandingPage/LandingPg";
 
 
 class App extends Component {
@@ -46,6 +46,7 @@ class App extends Component {
           </LastLocationProvider>
         </Router>
         <LandingPg/>
+        <Footer/>
       </div >
     );
   };

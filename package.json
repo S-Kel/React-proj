@@ -3,7 +3,17 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@fortawesome/fontawesome-svg-core": "^1.2.12",
+    "@fortawesome/free-brands-svg-icons": "^5.6.3",
+    "@fortawesome/free-solid-svg-icons": "^5.6.3",
+    "@fortawesome/react-fontawesome": "^0.1.4",
     "axios": "^0.18.0",
+<<<<<<< HEAD
+    "i": "^0.3.6",
+    "npm": "^6.6.0",
+    "prop-types": "^15.6.2",
+=======
+>>>>>>> 3c158c79eb9415b2fcb3f455232a65508da4bc33
     "react": "^16.7.0",
     "react-dom": "^16.7.0",
 <<<<<<< HEAD
@@ -18,9 +28,12 @@
     "react-youtube": "^7.9.0",
     "redux": "^4.0.1",
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
     "redux-devtools-extension": "^2.13.7",
 =======
 >>>>>>> landing
+>>>>>>> 3c158c79eb9415b2fcb3f455232a65508da4bc33
     "redux-thunk": "^2.3.0",
     "semantic-ui-css": "^2.4.1",
     "semantic-ui-react": "^0.84.0"
