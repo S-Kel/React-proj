@@ -9,7 +9,8 @@ class LandingPg extends Component {
         <Grid className="landing-grid">
             <Cell col={12}>
             <div className="banner-text">
-                <h1>World's Biggest Garage Sale</h1>
+                <img src="/Assets/WBGS-logo.png" className="logo"/>
+                {/* <h1>The World's Biggest Garage Sale</h1> */}
                 <hr/>  
                 <GarageSaleVid videoId='SkiTGS_ThA0'/>
                 <div className="social-links">
