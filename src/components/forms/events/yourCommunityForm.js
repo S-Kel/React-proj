@@ -19,7 +19,7 @@ function YourCommunityForm({ options, onSubmit, onChange }) {
       <Grid.Column width={10}>
         <Segment raised>
           <Header
-            sub color='teal'
+            sub color='red'
             content='Your Community' />
           <Form onSubmit={onSubmit}>
             <Form.Field inline>
@@ -63,7 +63,7 @@ function YourCommunityForm({ options, onSubmit, onChange }) {
             </Form.Field>
 
             <Header
-              sub color='teal'
+              sub color='red'
               content='Your Network' />
             <Form.Field>
               <Checkbox label='Do You have a relationship with your local Council' />
@@ -88,7 +88,7 @@ function YourCommunityForm({ options, onSubmit, onChange }) {
             </Form.Field>
             <Button
               label="Continue"
-              color='teal'
+              color= 'red'
               style={{}}
               onClick={onSubmit}
             />

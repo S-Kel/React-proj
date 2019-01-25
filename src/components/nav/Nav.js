@@ -1,13 +1,14 @@
 import React, { Component } from 'react';
-import { NavLink } from 'react-router-dom';
+import { Route, Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import { Menu, Icon } from 'semantic-ui-react';
-
 import { logoutUser } from "../../redux/actions/authenticateUserAction";
-
 import LoginMenu from './LoginMenu';
 import LogoutMenu from './LogoutMenu';
+import EventForm from '../forms/events/EventForm';
+import App from '../../app/App';
+
 
 class Nav extends Component {
     state = {
@@ -36,7 +37,7 @@ class Nav extends Component {
                 <nav>
                     <ul>
                         <li>
-                            <Logo />
+                            {/* <Logo /> */}
                         </li>
                         <li>
                             <Link to='/'>Home</Link>
@@ -44,6 +45,8 @@ class Nav extends Component {
                             <Link to='/about'>About</Link>
                             {'  |  '}
                             <Link to='/contact'>Contact</Link>
+                            {'  |  '}
+                            <Link to='/create'>Host a WBGS Event</Link>
                             {loggedIn && ['  |  ', <Link to='/users/logout'>Logout</Link>]}
                             {!loggedIn && ['  |  ', <Link to='/users/register'>Register</Link>, '  |  ', <Link to='/users/login'>Login</Link>]}
                         </li>

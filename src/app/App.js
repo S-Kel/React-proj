@@ -12,6 +12,7 @@ import About from "../components/pages/About";
 import Contact from "../components/pages/Contact";
 import Authentication from "../components/auth/Authentication";
 import LandingPg from "../components/pages/LandingPage/LandingPg"
+import CreateEventForm from "../components/forms/events/EventForm"
 
 
 class App extends Component {
@@ -28,7 +29,7 @@ class App extends Component {
             <Fragment>
               <Nav />
               <Switch>
-                <Route exact path="/" component={Welcome} />
+                <Route exact path="/" component={LandingPg} />
                 <Route path="/about" component={About} />
                 <Route path="/create" component={CreateEventForm} />
                 {/* <Route path="/users/register" component={Authentication} />
@@ -39,7 +40,7 @@ class App extends Component {
             </Fragment>
           </LastLocationProvider>
         </Router>
-        <LandingPg/>
+        {/* <LandingPg/> */}
       </div >
     );
   };
