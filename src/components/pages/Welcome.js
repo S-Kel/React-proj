@@ -28,9 +28,7 @@ export default class Welcome extends Component {
   render() {
     return (
       <Fragment>
-        <h2>Welcome</h2>
-        <p>{this.state.response}</p>
-        
+        <p>{this.state.response}</p>        
       </Fragment>
     );
   };
