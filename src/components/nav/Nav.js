@@ -33,7 +33,6 @@ class Nav extends Component {
         const { activeItem } = this.state;
         console.log('emailToken', emailToken)
         return (
-<<<<<<< HEAD
             <Menu icon='labeled' size='mini' style={{ paddingLeft: 20, paddingRight: 20 }}>
                 <Menu.Item
                     as={NavLink} to='/'
@@ -84,26 +83,6 @@ class Nav extends Component {
             </Menu>
         );
 
-=======
-                <nav>
-                    <ul>
-                        <li>
-                            <Logo />
-                        </li>
-                        <li>
-                            <Link to='/'>Home</Link>
-                            {'  |  '}
-                            <Link to='/about'>About</Link>
-                            {'  |  '}
-                            <Link to='/contact'>Contact</Link>
-                            {loggedIn && ['  |  ', <Link to='/users/logout'>Logout</Link>]}
-                            {!loggedIn && ['  |  ', <Link to='/users/register'>Register</Link>, '  |  ', <Link to='/users/login'>Login</Link>]}
-                        </li>
-                    </ul>
-                </nav >
-            
-            );
->>>>>>> landing
     };
 };
 

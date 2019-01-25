@@ -1,14 +1,14 @@
 .header-color {
-  background: #EF3B36;  /* fallback for old browsers */
-  background: -webkit-linear-gradient(to right, #FFFFFF, #EF3B36);  /* Chrome 10-25, Safari 5.1-6 */
-  background: linear-gradient(to right, #FFFFFF, #EF3B36); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+  background: #cb3538;  /* fallback for old browsers */
+  /* background: -webkit-linear-gradient(to right, #FFFFFF, #EF3B36);  Chrome 10-25, Safari 5.1-6 */
+  /* background: linear-gradient(to right, #FFFFFF, #EF3B36); W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
 
 }
 
 .landing-grid {
-  background: #EF3B36;  /* fallback for old browsers */
-  background: -webkit-linear-gradient(to right, black, #EF3B36);  /* Chrome 10-25, Safari 5.1-6 */
-  background: linear-gradient(to right, black, #EF3B36); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+  background: #cb3538;  /* fallback for old browsers */
+  /* background: -webkit-linear-gradient(to right, black, #EF3B36);  Chrome 10-25, Safari 5.1-6 */
+  /* background: linear-gradient(to right, black, #EF3B36); W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
   position: relative;
   text-align: center;
   top: 0;
@@ -52,4 +52,16 @@
   color: white;
   font-size: 5em;
   padding: 8px;
+}
+
+.logo {
+max-width: 200px;
+width: 15vh;
+max-height: 200px;
+max-width: 15vh;
+}
+
+#player {
+width: 100vh !important ;
+height: 100vh !important ;
 }
