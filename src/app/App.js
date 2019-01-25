@@ -48,7 +48,6 @@ class App extends Component {
           </LastLocationProvider>
         </div>
         </Router>
-        
         <Footer/>
       </div >
     );

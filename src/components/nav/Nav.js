@@ -1,13 +1,14 @@
 import React, { Component } from 'react';
-import { NavLink } from 'react-router-dom';
+import { Route, NavLink } from 'react-router-dom';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import { Menu, Icon } from 'semantic-ui-react';
-
 import { logoutUser } from "../../redux/actions/authenticateUserAction";
-
 import LoginMenu from './LoginMenu';
 import LogoutMenu from './LogoutMenu';
+import EventForm from '../forms/events/EventForm';
+import App from '../../app/App';
+
 
 class Nav extends Component {
     state = {

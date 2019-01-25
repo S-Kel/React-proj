@@ -9,12 +9,12 @@ import {
   Icon
 } from 'semantic-ui-react';
 
-function HostDetailsForm({ options, onSubmit, onChange }) {
+function HostDetailsForm({ options, onSubmit, onChange, onClick, createLink, newSocial, social}) {
   return (
     <Grid textAlign='center' >
       <Grid.Column width={10}>
         <Segment raised>
-          <Header sub color='teal' content='Your Details' />
+          <Header sub color='red' content='Your Details' />
           <Form onSubmit={onSubmit}>
             <Form.Field>
               <input
@@ -50,18 +50,31 @@ function HostDetailsForm({ options, onSubmit, onChange }) {
                 placeholder='Your Organization' />
             </Form.Field>
 
+            <h5>links</h5>
+            {/* <Form.Field>
+              <input
+              name='social-links'
+              value={social}
+              placeholder="Your links"/>
+            </Form.Field> */}
+            {social.map((link) => <p>{ link }</p>) }
+
             <Form.Field inline>
               <Input
                 name='social'
+                type="url"
+                pattern="https?://.+" 
                 iconPosition='left'
-                onChange={onChange}
-                placeholder='Your links to social media pages'>
-                <Icon name='users' circular inverted color='teal' />
-                <Button color='teal' type="button"> Add links</Button>
+                value={newSocial}
+                onChange={createLink}
+                placeholder= "https://example.com"
+                required>
+                <Icon name='users' circular inverted color='red' />
+                <Button color='red' type="button" onClick={onClick}> Add links</Button>
                 <input />
               </Input>
             </Form.Field>
-
+            
           </Form>
         </Segment>
       </Grid.Column>
