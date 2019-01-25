@@ -20,10 +20,7 @@
     "react-scripts": "2.1.3",
     "react-youtube": "^7.9.0",
     "redux": "^4.0.1",
-<<<<<<< HEAD
-=======
     "redux-devtools-extension": "^2.13.7",
->>>>>>> eb1ea68b25054da1db75d7809e0548a9a5f3a732
     "redux-thunk": "^2.3.0",
     "semantic-ui-css": "^2.4.1",
     "semantic-ui-react": "^0.84.0",

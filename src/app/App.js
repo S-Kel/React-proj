@@ -16,7 +16,7 @@ import Contact from "../components/pages/Contact";
 import Authentication from "../components/auth/Authentication";
 import { library } from '@fortawesome/fontawesome-svg-core';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import {Footer} from "../components/pages/LandingPage/Footer";
+import Footer from "../components/pages/Footer";
 import LandingPg from "../components/pages/LandingPage/LandingPg";
 
 
@@ -45,7 +45,6 @@ class App extends Component {
             </Fragment>
           </LastLocationProvider>
         </Router>
-        <LandingPg/>
         <Footer/>
       </div >
     );
