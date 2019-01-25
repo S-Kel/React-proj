@@ -18,7 +18,7 @@ function YourCauseForm({ options, onSubmit, onChange }) {
         <Segment raised>
           <Header
             style={{ marginBottom: 10 }}
-            sub color='teal'
+            sub color='red'
             content='Your Cause' />
           <Form onSubmit={onSubmit}>
             <Form.Field>
@@ -47,7 +47,7 @@ function YourCauseForm({ options, onSubmit, onChange }) {
             </Form.Field>
             <Button
               label="Continue"
-              color='teal'
+              color='red'
               style={{}}
               onClick={onSubmit}
             />
