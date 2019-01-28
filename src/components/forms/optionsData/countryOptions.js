@@ -8,7 +8,6 @@ const options =
     { text: 'AndorrA', value: 'AD' },
     { text: 'Angola', value: 'AO' },
     { text: 'Anguilla', value: 'AI' },
-    { text: 'Antarctica', value: 'AQ' },
     { text: 'Antigua and Barbuda', value: 'AG' },
     { text: 'Argentina', value: 'AR' },
     { text: 'Armenia', value: 'AM' },
@@ -89,7 +88,6 @@ const options =
     { text: 'Guadeloupe', value: 'GP' },
     { text: 'Guam', value: 'GU' },
     { text: 'Guatemala', value: 'GT' },
-    { text: 'Guernsey', value: 'GG' },
     { text: 'Guinea', value: 'GN' },
     { text: 'Guinea-Bissau', value: 'GW' },
     { text: 'Guyana', value: 'GY' },
@@ -105,12 +103,10 @@ const options =
     { text: 'Iran, Islamic Republic Of', value: 'IR' },
     { text: 'Iraq', value: 'IQ' },
     { text: 'Ireland', value: 'IE' },
-    { text: 'Isle of Man', value: 'IM' },
     { text: 'Israel', value: 'IL' },
     { text: 'Italy', value: 'IT' },
     { text: 'Jamaica', value: 'JM' },
     { text: 'Japan', value: 'JP' },
-    { text: 'Jersey', value: 'JE' },
     { text: 'Jordan', value: 'JO' },
     { text: 'Kazakhstan', value: 'KZ' },
     { text: 'Kenya', value: 'KE' },
@@ -247,6 +243,7 @@ const options =
 
 export const countryOptions = options.map(country => ({
          key:   country.value,
+         flag:  country.value.toLowerCase(),
          text:  country.text,
          value: country.text
        })

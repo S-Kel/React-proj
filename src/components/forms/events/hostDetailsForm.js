@@ -13,7 +13,8 @@ import { Field} from "react-final-form";
 import FormStateToRedux from "../FormStateToRedux";
 import { InputText, EmailInputText} from '../eventFormfields/EventFormfields'
 
-function HostDetailsForm({ handleSubmit, pristine, submitting, invalid, nextStep, prevStep, page }) {
+function HostDetailsForm(props) {
+  const { handleSubmit, pristine, submitting, invalid, nextStep, page } = props;
   return (
     <Grid textAlign='center' >
       <Grid.Column width={10}>
@@ -59,7 +60,7 @@ function HostDetailsForm({ handleSubmit, pristine, submitting, invalid, nextStep
               />
             </Form.Field>
             <Form.Group >
-              <Form.Field width={13} >
+              <Form.Field width={12} >
                 <Field
                   name='social'
                   type='text'
@@ -68,7 +69,9 @@ function HostDetailsForm({ handleSubmit, pristine, submitting, invalid, nextStep
                   subscription={{ value: true, active: true, error: true, touched: true }}
                 />
               </Form.Field>
-              <Form.Button width={3} color='teal' type="button" content='Add links'/>
+              <Form.Field width={4}>
+                <Form.Button floated='center' color='teal' type="button" content='Add links'/>
+              </Form.Field>
             </Form.Group>
              {!page && <Button type='button'label="Continue" primary disabled={invalid || submitting || pristine} onClick={nextStep} />}
           </Form>

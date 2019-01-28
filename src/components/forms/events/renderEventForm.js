@@ -15,6 +15,9 @@ import {
 } from 'semantic-ui-react';
 
 import HostDetailsForm from "./hostDetailsForm";
+import CreateCauseForm from "./yourCauseForm";
+import CommunityDetailsForm from "./yourCommunityForm";
+import ConfirmDetailsForm from "./Confirm";
 
 // import '../../../App.css';
 // import FormStateToRedux from "../FormStateToRedux";
@@ -30,7 +33,8 @@ import HostDetailsForm from "./hostDetailsForm";
 const CollectUserDetailsForm = (props) => {
  const { handleSubmit, values, pristine, submitting, invalid, nextStep, prevStep, page } = props;
  console.log("hasValidationErrors", invalid, pristine, submitting);
- return <div>
+ return (
+   <div>
      {/* <CSSTransition key={`ABXC-AX0`} in={true} appear timeout={4500} classNames="fade"> */}
      <HostDetailsForm values={values} pristine={pristine} submitting={submitting} invalid={invalid} nextStep={nextStep} prevStep={prevStep} page={page} />
      {/* </CSSTransition> */}
@@ -39,6 +43,11 @@ const CollectUserDetailsForm = (props) => {
      {console.log("page===1: ", page === 1)}
      {console.log("page===2: ", page === 2)}
      {console.log("page===3: ", page === 3)}
+     {
+         (page === 1 && <CreateCauseForm values={values} pristine={pristine} submitting={submitting} invalid={invalid} nextStep={nextStep} prevStep={prevStep} page={page} />)
+      || (page === 2 && <CommunityDetailsForm values={values} pristine={pristine} submitting={submitting} invalid={invalid} nextStep={nextStep} prevStep={prevStep} page={page} />)
+       || (page === 3 && <ConfirmDetailsForm form='userForm' handleSubmit={handleSubmit} values={values} pristine={pristine} submitting={submitting} invalid={invalid} nextStep={nextStep} prevStep={prevStep} page={page} />)
+    }
      {/* <TransitionGroup className='card-container'> */}
      {/* {
      (step === 1 &&
@@ -82,10 +91,13 @@ const CollectUserDetailsForm = (props) => {
      {/* </TransitionGroup> */}
      <FormSpy subscription={{ values: true }}>
        {({ values }) => <pre>
-           {JSON.stringify(values, undefined, 2)}
+         <h3 style={{ color: 'red', margin: 20, textAlign: 'center'}}>For Debugging Purposes Only</h3>
+            <hr />
+            <p style={{color: 'teal',padding: '15px 20px 20px 200px'}}>{JSON.stringify(values, undefined, 2)}</p>
          </pre>}
      </FormSpy>
-   </div>;
+   </div>
+   );
 }
 
 export default CollectUserDetailsForm;
