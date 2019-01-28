@@ -11,7 +11,9 @@ import {
   Checkbox
 } from 'semantic-ui-react';
 
-function YourCauseForm({ options, onSubmit, onChange }) {
+import {targetOptions} from './targetOptions'
+
+function YourCauseForm({ onSubmit, onChange }) {
   return (
     <Grid textAlign='center' >
       <Grid.Column width={10}>
@@ -43,7 +45,7 @@ function YourCauseForm({ options, onSubmit, onChange }) {
               <Select
                 style={{ textAlign: 'center' }}
                 placeholder='Select your Target'
-                options={options} />
+                options={targetOptions} />
             </Form.Field>
             <Button
               label="Continue"

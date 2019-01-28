@@ -10,9 +10,11 @@ import {
   Label, 
   Input
 } from 'semantic-ui-react';
+import {countryOptions} from './countryOptions';
+
 // import DatePicker from 'react-multiple-datepicker';
-const countryOptions = [{ key: 'af', value: 'af', flag: 'af', text: 'Afghanistan' },
-]
+// const countryOptions = [{ key: 'af', value: 'af', flag: 'af', text: 'Afghanistan' }]
+
 function YourCommunityForm({ options, onSubmit, onChange }) {
   return (
     <Grid textAlign='center' >
