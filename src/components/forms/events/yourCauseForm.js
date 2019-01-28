@@ -11,7 +11,7 @@ import {
   Checkbox
 } from 'semantic-ui-react';
 
-import {targetOptions} from './targetOptions'
+import {targetOptions} from '../optionsData/targetOptions'
 
 function YourCauseForm({ onSubmit, onChange }) {
   return (

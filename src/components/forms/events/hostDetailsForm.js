@@ -8,60 +8,69 @@ import {
   Button,
   Icon
 } from 'semantic-ui-react';
+import { Field} from "react-final-form";
 
-function HostDetailsForm({ options, onSubmit, onChange }) {
+import FormStateToRedux from "../FormStateToRedux";
+import { InputText, EmailInputText} from '../eventFormfields/EventFormfields'
+
+function HostDetailsForm({ handleSubmit, pristine, submitting, invalid, nextStep, prevStep, page }) {
   return (
     <Grid textAlign='center' >
       <Grid.Column width={10}>
         <Segment raised>
-          <Header sub color='teal' content='Your Details' />
-          <Form onSubmit={onSubmit}>
+          <FormStateToRedux form="userForm" />
+          <Header sub color='teal' content='Your Details' style={{ margin: 10 }} />
+          <Form onSubmit={handleSubmit}>
             <Form.Field>
-              <input
-                style={{ marginTop: 10 }}
+              <Field                
                 name='firstName'
-                onChange={onChange}
-                value={''}
-                placeholder='First Name' />
+                placeholder='First Name' 
+                component={InputText} 
+                subscription={{ value: true, active: true, error: true, touched: true }}
+              />
             </Form.Field>
             <Form.Field>
-              <input
+              <Field
                 name='lastName'
-                onChange={onChange}
-                value={''}
-                placeholder='Last Name' />
+                type='text'
+                placeholder='Last Name'
+                component={InputText} 
+                subscription={{ value: true, active: true, error: true, touched: true }}
+              />
             </Form.Field>
             <Form.Field>
-              <Input
+              <Field
                 name='email'
                 type='email'
                 iconPosition='left'
-                onChange={onChange}
-                placeholder='Email'>
-                <Icon name='at' />
-                <input />
-              </Input>
+                component={EmailInputText} 
+                placeholder='Email'
+                subscription={{ value: true, active: true, error: true, touched: true }}
+                >
+              </Field>
             </Form.Field>
             <Form.Field>
-              <input
+              <Field
                 name='organization'
-                onChange={onChange}
-                value={''}
-                placeholder='Your Organization' />
+                type='text'
+                placeholder='Your Organization'
+                component={InputText}
+                subscription={{ value: true, active: true, error: true, touched: true }}
+              />
             </Form.Field>
-
-            <Form.Field inline>
-              <Input
-                name='social'
-                iconPosition='left'
-                onChange={onChange}
-                placeholder='Your links to social media pages'>
-                <Icon name='users' circular inverted color='teal' />
-                <Button color='teal' type="button"> Add links</Button>
-                <input />
-              </Input>
-            </Form.Field>
-
+            <Form.Group >
+              <Form.Field width={13} >
+                <Field
+                  name='social'
+                  type='text'
+                  placeholder='Your links to social media pages'
+                  component={InputText}
+                  subscription={{ value: true, active: true, error: true, touched: true }}
+                />
+              </Form.Field>
+              <Form.Button width={3} color='teal' type="button" content='Add links'/>
+            </Form.Group>
+             {!page && <Button type='button'label="Continue" primary disabled={invalid || submitting || pristine} onClick={nextStep} />}
           </Form>
         </Segment>
       </Grid.Column>

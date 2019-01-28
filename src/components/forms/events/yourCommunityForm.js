@@ -10,7 +10,7 @@ import {
   Label, 
   Input
 } from 'semantic-ui-react';
-import {countryOptions} from './countryOptions';
+import {countryOptions} from '../optionsData/countryOptions';
 
 // import DatePicker from 'react-multiple-datepicker';
 // const countryOptions = [{ key: 'af', value: 'af', flag: 'af', text: 'Afghanistan' }]
