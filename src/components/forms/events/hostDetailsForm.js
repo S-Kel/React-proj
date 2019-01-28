@@ -4,9 +4,7 @@ import {
   Segment,
   Header,
   Form,
-  Input,
   Button,
-  Icon
 } from 'semantic-ui-react';
 import { Field} from "react-final-form";
 

@@ -1,34 +1,11 @@
-import React, { Component } from 'react';
-import { Field, FormSpy } from "react-final-form";
+import React from 'react';
+import { FormSpy } from "react-final-form";
 import { CSSTransition, TransitionGroup } from "react-transition-group";
-
-import {
- Grid,
- Segment,
- Header,
- Form,
- Checkbox,
- Button,
- Dropdown,
- Label,
- Input
-} from 'semantic-ui-react';
 
 import HostDetailsForm from "./hostDetailsForm";
 import CreateCauseForm from "./yourCauseForm";
 import CommunityDetailsForm from "./yourCommunityForm";
 import ConfirmDetailsForm from "./Confirm";
-
-// import '../../../App.css';
-// import FormStateToRedux from "../FormStateToRedux";
-// import RenderCount from "../common";
-// import InputText from "../forms/InputText";
-// import CreateCauseForm from "./UserCauseForm";
-// import CommunityDetailsForm from "./communityDetailsForm";
-// import ConfirmDetailsForm from "./Confirm";
-
-// import FadeTransition from "../CSSTransitions/fadeTransition";
-// import SlideTransition from "../CSSTransitions/slideTransition";
 
 const CollectUserDetailsForm = (props) => {
  const { handleSubmit, values, pristine, submitting, invalid, nextStep, prevStep, page } = props;

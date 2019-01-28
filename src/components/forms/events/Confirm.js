@@ -47,18 +47,9 @@ class Confirm extends Component {
 
  render() {
   console.log('Hellow from Confirm Form', this.props);
-  // console.log(JSON.stringify(this.props.state, 0, 2));
-  // const { values } = this.props;
+
   const { handleSubmit, prevStep} = this.props;
-  const {
-   values,
-   pristine,
-   submitting
-  } = this.props.state;
-  const { page } = this.props;
-  console.log('From User Details form STEP:/......', page)
-  console.log('From User Details form Values:/......', values)
-  console.log("From User Details form PrevStep:/......", prevStep);
+  const { values } = this.props.state;
 
   if (!values) return null;
   const { firstName,
@@ -84,7 +75,7 @@ class Confirm extends Component {
          <List.Content>
           <List.Header style={{ color: "teal" }}>
            First Name
-                      </List.Header>
+          </List.Header>
           {firstName}
          </List.Content>
         </List.Item>
@@ -194,15 +185,11 @@ class Confirm extends Component {
    </Grid>
   )
  }
- // key={`ABXC-AX${step}`}
 }
-
-// 
 
 const styles = {
  button: { margin: 15 }
 }
-// export default Confirm;
 
 const mapPropsToTypes = (state, ownProps) => ({
  state: getFormState(state, ownProps.form)

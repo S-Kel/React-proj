@@ -5,11 +5,8 @@ import {
   Segment,
   Header,
   Form,
-  Select,
   Button,
-  Label,
-  TextArea,
-  Checkbox
+  Label
 } from 'semantic-ui-react';
 
 import {targetOptions} from '../optionsData/targetOptions';

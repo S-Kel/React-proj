@@ -5,17 +5,12 @@ import {
   Segment,
   Header,
   Form,
-  Checkbox,
   Button,
-  Dropdown,
-  Label, 
-  Input
+  Label
 } from 'semantic-ui-react';
 import {countryOptions} from '../optionsData/countryOptions';
 import { DatePicker, InputCheckBox, InputText, DropdownMenu } from '../eventFormfields/EventFormfields';
 
-// import DatePicker from 'react-multiple-datepicker';
-// const countryOptions = [{ key: 'af', value: 'af', flag: 'af', text: 'Afghanistan' }]
 
 function YourCommunityForm(props) {
   const { handleSubmit, pristine, submitting, invalid, prevStep, nextStep, page } = props;
@@ -73,10 +68,7 @@ function YourCommunityForm(props) {
                 />
               </Form.Field>
             </Form.Group>
-
-            <Header
-              sub color='teal'
-              content='Your Network' style={{margin:15}} />
+            <Header sub color='teal' content='Your Network' style={{margin:15}} />
             <Form.Field >              
               <Field
                 name="localCouncil"
@@ -84,8 +76,7 @@ function YourCommunityForm(props) {
                 type="checkbox"
                 component={InputCheckBox}
                 subscription={{ value: true, active: true, error: true, touched: true }} />
-            </Form.Field>
-            
+            </Form.Field>            
             <Form.Field >
               <Field
                 name='councilDetails'
@@ -95,7 +86,6 @@ function YourCommunityForm(props) {
                 subscription={{ value: true, active: true, error: true, touched: true }}
               />
             </Form.Field>
-
             <Form.Field >
               <Label style={{ background: '#fefafa', padding: 10 }}>
                 Lorem ipsum dolor sit amet consectetur adipisicing elit. Eos rerum non,
@@ -109,7 +99,6 @@ function YourCommunityForm(props) {
                 subscription={{ value: true, active: true, error: true, touched: true }}
               />
             </Form.Field>
-
             <Button label="Continue" color='teal' disabled={invalid ||submitting || pristine} onClick={nextStep} />
             <Button label="Back" primary={false} disabled={invalid || submitting || pristine} onClick={prevStep} />
           </Form>
