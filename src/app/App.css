@@ -129,7 +129,7 @@
 .slideIn-enter {
     /* position: absolute; */
     opacity: 0.0;
-    transform: scale(.17) translate3d(0, -100%, 0);
+    transform: scale(.17) translate3d(0, 100%, 0);
     z-index: -11;
 }
 
