@@ -1,7 +1,9 @@
 import React, { Component } from 'react'
 
 export default class EOIDetail extends Component {
-  render() {
+  
+  
+    render() {
     return (
       <div>
         
