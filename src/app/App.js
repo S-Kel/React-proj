@@ -12,7 +12,13 @@ import About from "../components/pages/About";
 // import Contact from "../components/pages/Contact";
 // import Authentication from "../components/forms/Authentication";
 import CreateEventForm from "../components/forms/events/EventForm";
-
+import Contact from "../components/pages/Contact";
+import Authentication from "../components/auth/Authentication";
+import { library } from '@fortawesome/fontawesome-svg-core';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+// import Footer from "../components/pages/Footer";
+import LandingPg from "../components/pages/LandingPage/LandingPg";
+import InfoPg from "../components/pages/LandingPage/InfoPg"
 
 class App extends Component {
   // simpleAction = event => {
@@ -24,11 +30,13 @@ class App extends Component {
     return (
       <div className="App">
         <Router>
+          <div>
           <LastLocationProvider>
             <Fragment>
-              <Nav />
+              <Nav/>
               <Switch>
-                <Route exact path="/" component={Welcome} />
+                <Route exact path="/"component={LandingPg}/>
+                
                 <Route path="/about" component={About} />
                 <Route path="/create" component={CreateEventForm} />
                 {/* <Route path="/users/register" component={Authentication} />
@@ -38,8 +46,10 @@ class App extends Component {
               </Switch>
             </Fragment>
           </LastLocationProvider>
+        </div>
         </Router>
       </div >
+      
     );
   };
 }
