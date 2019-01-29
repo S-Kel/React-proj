@@ -12,24 +12,21 @@ import {
  Label,
  Input
 } from 'semantic-ui-react';
-import { Field, FormSpy } from "react-final-form";
-// import { CSSTransition, TransitionGroup } from "react-transition-group";
 
-// import "../../../App.css";
-// import FormStateFromRedux from "../FormStateFromRedux";
+import {showResults } from './EventForm';
+
+// import { Field, FormSpy } from "react-final-form";
 
 import { getFormState } from "../../../redux/reducers/reduxFormReducer";
-import { InputTextArea, InputCheckBox, DropdownMenu } from '../eventFormfields/EventFormfields';
-// import FormStateToRedux from "../FormStateToRedux";
-
-// import { showResults } from "../../../App";
+import FormStateToRedux from "../FormStateToRedux";
+// import { InputTextArea, InputCheckBox, DropdownMenu } from '../eventFormfields/EventFormfields';
 
 
-const sleep = ms => new Promise(resolve => setTimeout(resolve, ms));
-export const showResults = async values => {
- await sleep(500);
- window.alert(JSON.stringify(values, undefined, 2));
-}
+// const sleep = ms => new Promise(resolve => setTimeout(resolve, ms));
+// export const showResults = async values => {
+//  await sleep(500);
+//  window.alert(JSON.stringify(values, undefined, 2));
+// }
 
 
 class Confirm extends Component {
@@ -43,12 +40,10 @@ class Confirm extends Component {
  // back = e => {
  //  e.preventDefault();
  //  this.props.prevStep();
- // }
+ // }onClick={this.confirmSubmit}
 
  render() {
-  console.log('Hellow from Confirm Form', this.props);
-
-  const { handleSubmit, prevStep} = this.props;
+  const {handleSubmit, prevStep} = this.props;
   const { values } = this.props.state;
 
   if (!values) return null;
@@ -62,13 +57,14 @@ class Confirm extends Component {
    suburb,
    zipCode,
    country,
-   council,
+   councilDetails,
    localCouncil,
    keyPeople } = values;
   return (
    <Grid textAlign='center' >
     <Grid.Column width={10}>
-      <Segment inverted style={{ textAlign: "justify" }}>
+      <Segment inverted style={{ textAlign: "justify", padding: 20 }}>
+      {/* <FormStateToRedux form="confirmForm" /> */}
        <Form onSubmit={handleSubmit}>
        <List divided inverted relaxed>
         <List.Item>
@@ -91,7 +87,7 @@ class Confirm extends Component {
          <List.Content>
           <List.Header style={{ color: "teal" }}>
            Your Email Address
-                      </List.Header>
+          </List.Header>
           {email}
          </List.Content>
         </List.Item>
@@ -99,7 +95,7 @@ class Confirm extends Component {
          <List.Content>
           <List.Header style={{ color: "teal" }}>
            Your Organization Name
-                      </List.Header>
+          </List.Header>
           {organization}
          </List.Content>
         </List.Item>
@@ -107,7 +103,7 @@ class Confirm extends Component {
          <List.Content>
           <List.Header style={{ color: "teal" }}>
            Description of Event
-                      </List.Header>
+         </List.Header>
           {description}
          </List.Content>
         </List.Item>
@@ -115,15 +111,15 @@ class Confirm extends Component {
          <List.Content>
           <List.Header style={{ color: "teal" }}>
            Do you have 6-10 Volunteers?
-                      </List.Header>
+          </List.Header>
           {volunteers && <div>Yes</div>}
          </List.Content>
         </List.Item>
         <List.Item>
          <List.Content>
           <List.Header style={{ color: "teal" }}>
-           When Would You like to hold Your Event?
-                      </List.Header>
+            When Would You like to hold Your Event?
+          </List.Header>
           {datePicker}
          </List.Content>
         </List.Item>
@@ -131,7 +127,7 @@ class Confirm extends Component {
          <List.Content>
           <List.Header style={{ color: "teal" }}>
            Suburb
-                      </List.Header>
+         </List.Header>
           {suburb}
          </List.Content>
         </List.Item>
@@ -139,15 +135,15 @@ class Confirm extends Component {
          <List.Content>
           <List.Header style={{ color: "teal" }}>
            Postal/Zip Code
-                      </List.Header>
+         </List.Header>
           {zipCode}
          </List.Content>
         </List.Item>
         <List.Item>
          <List.Content>
           <List.Header style={{ color: "teal" }}>
-           Country
-                      </List.Header>
+            Country
+          </List.Header>
           {country}
          </List.Content>
         </List.Item>
@@ -155,7 +151,7 @@ class Confirm extends Component {
          <List.Content>
           <List.Header style={{ color: "teal" }}>
            Do You have a relationship with your local Counci?
-                      </List.Header>
+          </List.Header>
           {localCouncil && <div>Yes</div>}
          </List.Content>
         </List.Item>
@@ -163,8 +159,8 @@ class Confirm extends Component {
          <List.Content>
           <List.Header style={{ color: "teal" }}>
            Details of Your Local Council
-                      </List.Header>
-          {council}
+          </List.Header>
+          {councilDetails}
          </List.Content>
         </List.Item>
         <List.Item>
@@ -177,7 +173,8 @@ class Confirm extends Component {
         </List.Item>
        </List>
        <br />
-       <Button label="Confirm" primary style={styles.button} onClick={this.confirmSubmit} />
+       {/* <button type="submit" > Submit </button> */}
+       <Button type='submit' label="Confirm" color='red' style={styles.button}  />
        <Button label="Back" primary={false} style={styles.button} onClick={prevStep} />
        </Form>
       </Segment>
@@ -195,4 +192,5 @@ const mapPropsToTypes = (state, ownProps) => ({
  state: getFormState(state, ownProps.form)
 });
 export default connect(mapPropsToTypes)(Confirm);
+// export default Confirm;
 

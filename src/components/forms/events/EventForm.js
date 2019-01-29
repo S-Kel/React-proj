@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 
-import { Form } from "react-final-form";
+import { Form as FinalForm } from "react-final-form";
 
 // import HostDetailsForm from './hostDetailsForm';
 import RenderEventForm from '././renderEventForm';
@@ -8,6 +8,23 @@ import YourCauseForm from './yourCauseForm';
 import YourCommunityForm from './yourCommunityForm';
 import isUri from 'valid-url';
 import validate from '../validates';
+
+import { InputText, EmailInputText } from '../eventFormfields/EventFormfields';
+import {
+  Grid,
+  Segment,
+  Header,
+  Form,
+  Button,
+} from 'semantic-ui-react';
+import { Field } from "react-final-form";
+
+// import {showResults } from './EventForm';
+
+import FormStateToRedux from "../FormStateToRedux";
+import FormStateFromRedux from "../FormStateFromRedux";
+
+
 var validUrl = require('valid-url');
 
 
@@ -72,7 +89,7 @@ class CreateEventForm extends Component {
 
     return (
       <div>
-        <Form
+        <FinalForm
           onSubmit={showResults}
           // decorators={[focusOnError]}
           validate={validate}
@@ -82,8 +99,9 @@ class CreateEventForm extends Component {
           nextStep={this.nextStep}
           prevStep={this.prevStep}
           render={RenderEventForm}
+          />
 
-        // ({ handleSubmit, values, pristine, submitting, invalid, nextStep, prevStep, page }) => (
+        {/* // ({ handleSubmit, values, pristine, submitting, invalid, nextStep, prevStep, page }) => (
         //     <form onSubmit={handleSubmit}>              
         //     <HostDetailsForm nextStep={nextStep} prevStep={prevStep} page={page} />
         //     {console.log('Page inside forms:', page)}
@@ -105,7 +123,7 @@ class CreateEventForm extends Component {
         //     <pre>{JSON.stringify(values, 0, 2)}</pre>
         //     </form>
         // )}
-        />
+        */}
 
         {/* <HostDetailsForm
           onSubmit={this.handleSubmit}

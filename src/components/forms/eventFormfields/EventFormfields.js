@@ -1,38 +1,38 @@
 import React from 'react'
-import { Form, Label, TextArea, Input, Checkbox, Icon } from "semantic-ui-react";
+import { Form, Label, TextArea, Input, Checkbox, Popup } from "semantic-ui-react";
 
 export const InputText = (props) => {
- const { placeholder, type, input, meta: { active, error, touched } } = props;
+ const { name,placeholder, type, input, meta: { active, error, touched } } = props;
  return (
    <div className={active ? "active" : ""}>
     <Form.Input
-    //  label={placeholder}
+     name={name}
      type={type}
      placeholder={placeholder}
      {...input}
     />
-    {error && touched && <span>{error}</span>}
+    {error && touched && <Label basic color='red' pointing>{error}</Label>}
+    
+    {/* {error && touched && <Label basic color='red' pointing>{error}</Label>}  */}
+    {/* {error && touched && <span>{error}</span>} */}
    </div>
  );
 }
 
 export const EmailInputText = (props) => {
- const { placeholder, iconPosition, type, input, meta: { active, error, touched } } = props;
+ const { style, placeholder, iconPosition, type, input, meta: { active, error, touched } } = props;
  return (
   <div className={active ? "active" : ""}>
    <Input
-    // label={placeholder}
+    icon='at'
+    style={style}
     type={type}
     placeholder={placeholder}
     iconPosition={iconPosition}
     {...input}
-    >
-      <Label>
-         <Icon name='at' />
-      </Label>
-      <input />
-   </Input>
-   {error && touched && <span>{error}</span>}
+    />    
+   {error && touched && <Label basic color='red' pointing>{error}</Label>} 
+   {/* {error && touched && <span>{error}</span>}  */}
   </div>
  );
 }

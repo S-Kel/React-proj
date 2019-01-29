@@ -21,8 +21,8 @@ export default values => {
  if (!values.zipCode) {
   errors.zipCode = "Required";
  }
- if (!values.council) {
-  errors.council = "Required";
+ if (!values.councilDetails) {
+  errors.councilDetails = "Required";
  }
  // if (!values.age) {
  //  errors.age = 'Required'

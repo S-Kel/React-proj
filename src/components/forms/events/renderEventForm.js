@@ -8,13 +8,15 @@ import CommunityDetailsForm from "./yourCommunityForm";
 import ConfirmDetailsForm from "./Confirm";
 
 const CollectUserDetailsForm = (props) => {
-  const { handleSubmit, values, pristine, submitting, invalid, nextStep, prevStep, page } = props;
+  const { onSubmit, handleSubmit, values, pristine, submitting, invalid,form, hasSubmitErrors, submitErrors, nextStep, prevStep, page, ...rest } = props;
   console.log("hasValidationErrors", props);
   //  console.log("hasValidationErrors", invalid, pristine, submitting);
   return (
+    // <form onSubmit={handleSubmit}>
     <div>
       <CSSTransition key={'page=0'} in={true} appear timeout={4500} classNames="fade">
-        <HostDetailsForm values={values} pristine={pristine} submitting={submitting} invalid={invalid} nextStep={nextStep} prevStep={prevStep} page={page} />
+        <HostDetailsForm form={form} onSubmit={onSubmit} handleSubmit={handleSubmit} values={values} pristine={pristine} submitting={submitting} invalid={invalid} nextStep={nextStep} prevStep={prevStep} page={page} {...rest} />
+
       </CSSTransition>
 
       <TransitionGroup className='form-container'>
@@ -43,6 +45,7 @@ const CollectUserDetailsForm = (props) => {
         </pre>}
       </FormSpy>
     </div>
+    // </form>
   );
 }
 

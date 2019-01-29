@@ -99,8 +99,8 @@ function YourCommunityForm(props) {
                 subscription={{ value: true, active: true, error: true, touched: true }}
               />
             </Form.Field>
-            <Button label="Continue" color='teal' disabled={invalid || submitting || pristine} onClick={nextStep} />
-            <Button label="Back" primary={false} disabled={invalid || submitting || pristine} onClick={prevStep} />
+            <Button label="Continue" color='red' disabled={submitting || pristine} onClick={nextStep} />
+            <Button label="Back" primary={false} disabled={!invalid || submitting || pristine} onClick={prevStep} />
           </Form>
         </Segment>
       </Grid.Column>

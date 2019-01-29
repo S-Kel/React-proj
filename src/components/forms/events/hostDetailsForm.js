@@ -8,18 +8,27 @@ import {
 } from 'semantic-ui-react';
 import { Field } from "react-final-form";
 
+// import {showResults } from './EventForm';
+
 import FormStateToRedux from "../FormStateToRedux";
-import { InputText, EmailInputText } from '../eventFormfields/EventFormfields'
+import { InputText, EmailInputText } from '../eventFormfields/EventFormfields';
+
+const sleep = ms => new Promise(resolve => setTimeout(resolve, ms));
+export const showResults = async values => {
+  await sleep(500);
+  window.alert(JSON.stringify(values, undefined, 2));
+}
 
 function HostDetailsForm(props) {
-  const { handleSubmit, pristine, submitting, invalid, nextStep, page } = props;
+  const {values, form, handleSubmit, pristine, submitting, invalid, nextStep, page } = props;
+  console.log('HandleSubmit...', values)
   return (
     <Grid textAlign='center' >
       <Grid.Column width={10}>
         <Segment raised>
           <FormStateToRedux form="userForm" />
           <Header sub style={styles.DodgerRed} content='Your Details' />
-          <Form onSubmit={handleSubmit}>
+          <Form onSubmit={handleSubmit} >
             <Form.Field>
               <Field
                 name='firstName'
@@ -41,6 +50,8 @@ function HostDetailsForm(props) {
               <Field
                 name='email'
                 type='email'
+                label='Email'
+                // style={{color: '#cb3538'}}
                 iconPosition='left'
                 component={EmailInputText}
                 placeholder='Email'
@@ -71,7 +82,8 @@ function HostDetailsForm(props) {
                 <Form.Button style={{ background: '#cb3538', color: '#fefefe' }} type="button" content='Add links' />
               </Form.Field>
             </Form.Group>
-            {!page && <Button type='button' label="Continue" primary disabled={!invalid || submitting || pristine} onClick={nextStep} />}
+            {/* <button type="submit" > Submit </button> */}
+            {!page && <Button type='button' label="Continue" color='red' disabled={submitting || pristine} onClick={nextStep} />}
           </Form>
         </Segment>
       </Grid.Column>
@@ -81,8 +93,9 @@ function HostDetailsForm(props) {
 
 const styles = {
   DodgerRed: {
-    color: '#cb3538',
-    fontWeight: 'bold'
+    color: '#9d9d9d',
+    fontWeight: 'bold',
+    marginBottom: 10
   }
 }
 export default HostDetailsForm;
