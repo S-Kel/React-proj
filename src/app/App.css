@@ -225,7 +225,7 @@ iframe{
 }
 
 .fade-enter.fade-enter-active {
-    opacity: .97;
+    opacity: 1;
     transition: opacity 5000ms ease-in-out 5000ms;
 }
 
@@ -332,4 +332,13 @@ iframe{
 .slideIn-exit-done {
     transform: translate3d(200%, 0, 0);
     color: red;
+}
+
+/* COLOR  */
+.dodger-red{
+  font-family: Raley, sans-serif;
+  font-size: 12px;
+  font-weight: 700;
+  color: #9d9d9d;
+  /* color: #cb3538 */
 }

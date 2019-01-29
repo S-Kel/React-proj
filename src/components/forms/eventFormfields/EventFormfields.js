@@ -21,7 +21,7 @@ export const EmailInputText = (props) => {
  return (
   <div className={active ? "active" : ""}>
    <Input
-    label={placeholder}
+    // label={placeholder}
     type={type}
     placeholder={placeholder}
     iconPosition={iconPosition}
