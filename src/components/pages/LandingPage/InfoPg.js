@@ -21,6 +21,7 @@ export default class InfoPg extends Component {
             </div>
         </Cell>
     </Grid>
+    
     )
   }
 }
