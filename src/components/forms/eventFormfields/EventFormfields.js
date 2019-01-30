@@ -1,20 +1,27 @@
 import React from 'react'
 import { Form, Label, TextArea, Input, Checkbox, Popup } from "semantic-ui-react";
+import "../../../app/App.css";
+
+const style = {
+  opacity: 0.87,
+  color: 'red'
+};
 
 export const InputText = (props) => {
- const { name,placeholder, type, input, meta: { active, error, touched } } = props;
+  const { placeholder, position, icon, iconPosition, type, input, meta: {name, active, error, touched } } = props;
  return (
-   <div className={active ? "active" : ""}>
-    <Form.Input
-     name={name}
-     type={type}
-     placeholder={placeholder}
-     {...input}
-    />
-    {error && touched && <Label basic color='red' pointing>{error}</Label>}
-    
-    {/* {error && touched && <Label basic color='red' pointing>{error}</Label>}  */}
-    {/* {error && touched && <span>{error}</span>} */}
+   <div className={active ? 'active' : ''}>
+    <Popup 
+      color='red'
+      key={placeholder} 
+      trigger={< Form.Input name={name} type={type} icon={icon} iconPosition={iconPosition} placeholder={placeholder} {...input} />}
+      header={placeholder}
+      content={error}
+      position={position ? position : 'right center'}
+      style={style}
+      // on='focus'
+      //  open={!error ? false : null}      
+      />
    </div>
  );
 }

@@ -10,6 +10,7 @@ import {
  Button,
  Dropdown,
  Label,
+ Icon,
  Input
 } from 'semantic-ui-react';
 
@@ -30,9 +31,10 @@ import FormStateToRedux from "../FormStateToRedux";
 
 
 class Confirm extends Component {
- confirmSubmit = e => {
-  e.preventDefault();
-  showResults(this.props.state.values);
+
+ confirmSubmit = values => {
+  // e.preventDefault();
+  // showResults(values);
   // Process your form i.e. send data to API
  }
 
@@ -43,23 +45,26 @@ class Confirm extends Component {
  // }onClick={this.confirmSubmit}
 
  render() {
-  const {handleSubmit, prevStep} = this.props;
-  const { values } = this.props.state;
+   const { handleSubmit, submitting, prevStep} = this.props;
+   const { values, invalid, hasValidationErrors } = this.props.state;
 
+   console.log('invalide, submitting, hasValidationErrors', invalid, submitting, hasValidationErrors)
   if (!values) return null;
-  const { firstName,
-   lastName,
-   email,
-   organization,
-   description,
-   volunteers,
-   datePicker,
-   suburb,
-   zipCode,
-   country,
-   councilDetails,
-   localCouncil,
-   keyPeople } = values;
+  const { first_name,
+          last_name,
+          email,
+          organisation,
+          socials,
+          description,
+          target_value,
+          volunteers,
+          best_time,
+          suburb,
+          zipCode,
+          country,
+          local_council_relationship,
+          local_council_details,
+          key_influencers } = values;
   return (
    <Grid textAlign='center' >
     <Grid.Column width={10}>
@@ -67,12 +72,14 @@ class Confirm extends Component {
       {/* <FormStateToRedux form="confirmForm" /> */}
        <Form onSubmit={handleSubmit}>
        <List divided inverted relaxed>
+        
+        {/* HOST DETAILS  */}
         <List.Item>
          <List.Content>
           <List.Header style={{ color: "teal" }}>
            First Name
           </List.Header>
-          {firstName}
+          {first_name}
          </List.Content>
         </List.Item>
         <List.Item>
@@ -80,7 +87,7 @@ class Confirm extends Component {
           <List.Header style={{ color: "teal" }}>
            Last Name
                       </List.Header>
-          {lastName}
+          {last_name}
          </List.Content>
         </List.Item>
         <List.Item>
@@ -96,9 +103,11 @@ class Confirm extends Component {
           <List.Header style={{ color: "teal" }}>
            Your Organization Name
           </List.Header>
-          {organization}
+          {organisation}
          </List.Content>
         </List.Item>
+
+        {/* CAUSE  */}
         <List.Item>
          <List.Content>
           <List.Header style={{ color: "teal" }}>
@@ -116,13 +125,15 @@ class Confirm extends Component {
          </List.Content>
         </List.Item>
         <List.Item>
-         <List.Content>
-          <List.Header style={{ color: "teal" }}>
-            When Would You like to hold Your Event?
-          </List.Header>
-          {datePicker}
-         </List.Content>
-        </List.Item>
+          <List.Content>
+            <List.Header style={{ color: "teal" }}>
+              Your Expected Target
+         </List.Header>
+            {target_value}
+          </List.Content>
+        </List.Item>        
+
+        {/* COMMUNITY  */}        
         <List.Item>
          <List.Content>
           <List.Header style={{ color: "teal" }}>
@@ -130,7 +141,7 @@ class Confirm extends Component {
          </List.Header>
           {suburb}
          </List.Content>
-        </List.Item>
+        </List.Item>        
         <List.Item>
          <List.Content>
           <List.Header style={{ color: "teal" }}>
@@ -150,9 +161,17 @@ class Confirm extends Component {
         <List.Item>
          <List.Content>
           <List.Header style={{ color: "teal" }}>
+            When Would You like to hold Your Event?
+          </List.Header>
+            {best_time}
+         </List.Content>
+        </List.Item>
+        <List.Item>
+         <List.Content>
+          <List.Header style={{ color: "teal" }}>
            Do You have a relationship with your local Counci?
           </List.Header>
-          {localCouncil && <div>Yes</div>}
+          {local_council_relationship && <div>Yes</div>}
          </List.Content>
         </List.Item>
         <List.Item>
@@ -160,22 +179,33 @@ class Confirm extends Component {
           <List.Header style={{ color: "teal" }}>
            Details of Your Local Council
           </List.Header>
-          {councilDetails}
+          {local_council_details}
          </List.Content>
         </List.Item>
         <List.Item>
          <List.Content>
           <List.Header style={{ color: "teal" }}>
-           Key People Within Your Organization
-                      </List.Header>
-          {keyPeople}
+            Key People Within Your Organization
+          </List.Header>
+          {key_influencers}
          </List.Content>
         </List.Item>
        </List>
+
        <br />
        {/* <button type="submit" > Submit </button> */}
-       <Button type='submit' label="Confirm" color='red' style={styles.button}  />
-       <Button label="Back" primary={false} style={styles.button} onClick={prevStep} />
+        <Button animated='fade' color='red'  disabled={invalid || submitting || hasValidationErrors}>
+          <Button.Content visible>Confirm</Button.Content>
+          <Button.Content hidden>Submit</Button.Content>
+        </Button>
+        <Button animated  onClick={prevStep}>
+          <Button.Content visible>Back</Button.Content>
+          <Button.Content hidden>
+            <Icon name='arrow left' />
+          </Button.Content>
+        </Button>
+       {/* <Button type='submit' content="Confirm" color='red'  disabled={invalid || submitting || hasValidationErrors}  /> */}
+       {/* <Button label="Back" primary={false} style={styles.button} onClick={prevStep} /> */}
        </Form>
       </Segment>
     </Grid.Column>

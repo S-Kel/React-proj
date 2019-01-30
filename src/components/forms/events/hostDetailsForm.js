@@ -6,7 +6,7 @@ import {
   Form,
   Button,
 } from 'semantic-ui-react';
-import { Field } from "react-final-form";
+import { FormSpy, Field } from "react-final-form";
 
 // import {showResults } from './EventForm';
 
@@ -20,7 +20,7 @@ export const showResults = async values => {
 }
 
 function HostDetailsForm(props) {
-  const {values, form, handleSubmit, pristine, submitting, invalid, nextStep, page } = props;
+  const { values, form, handleSubmit, hasValidationErrors, pristine, submitting, invalid, nextStep, page } = props;
   console.log('HandleSubmit...', values)
   return (
     <Grid textAlign='center' >
@@ -31,7 +31,7 @@ function HostDetailsForm(props) {
           <Form onSubmit={handleSubmit} >
             <Form.Field>
               <Field
-                name='firstName'
+                name='first_name'
                 placeholder='First Name'
                 component={InputText}
                 subscription={{ value: true, active: true, error: true, touched: true }}
@@ -39,7 +39,7 @@ function HostDetailsForm(props) {
             </Form.Field>
             <Form.Field>
               <Field
-                name='lastName'
+                name='last_name'
                 type='text'
                 placeholder='Last Name'
                 component={InputText}
@@ -50,18 +50,19 @@ function HostDetailsForm(props) {
               <Field
                 name='email'
                 type='email'
-                label='Email'
+                label='Email address'
                 // style={{color: '#cb3538'}}
+                icon='at'
                 iconPosition='left'
-                component={EmailInputText}
-                placeholder='Email'
+                component={InputText}
+                placeholder='Email Address'
                 subscription={{ value: true, active: true, error: true, touched: true }}
               >
               </Field>
             </Form.Field>
             <Form.Field>
               <Field
-                name='organization'
+                name='organisation'
                 type='text'
                 placeholder='Your Organization'
                 component={InputText}
@@ -71,7 +72,7 @@ function HostDetailsForm(props) {
             <Form.Group >
               <Form.Field width={12} >
                 <Field
-                  name='social'
+                  name='socials'
                   type='text'
                   placeholder='Your links to social media pages'
                   component={InputText}
@@ -82,8 +83,11 @@ function HostDetailsForm(props) {
                 <Form.Button style={{ background: '#cb3538', color: '#fefefe' }} type="button" content='Add links' />
               </Form.Field>
             </Form.Group>
-            {/* <button type="submit" > Submit </button> */}
-            {!page && <Button type='button' label="Continue" color='red' disabled={submitting || pristine} onClick={nextStep} />}
+            <FormSpy subscription={{ values: true }}>
+              {({ values }) => (
+                !page && <Button type='button' label="Continue" color='red' disabled={(Object.keys(values).length < 4) ? true : false} onClick={nextStep} />
+              )}
+            </FormSpy>          
           </Form>
         </Segment>
       </Grid.Column>

@@ -18,7 +18,9 @@ import {
   Button,
 } from 'semantic-ui-react';
 import { Field } from "react-final-form";
+import createDecorator from "final-form-focus";
 
+import { api } from "../../../api/init";
 // import {showResults } from './EventForm';
 
 import FormStateToRedux from "../FormStateToRedux";
@@ -34,6 +36,7 @@ export const showResults = async values => {
   window.alert(JSON.stringify(values, undefined, 2));
 }
 
+const focusOnError = createDecorator();
 class CreateEventForm extends Component {
   state = { page: 0 }
   nextStep = () => {
@@ -81,71 +84,68 @@ class CreateEventForm extends Component {
   //       return true;
   //   }
   // }
+// try {
+//   await api.get('/users/logout');
 
-  handleSubmit = e => { }
+//   dispatch({
+//     type: LOGOUT_ACTION,
+//   });
+// } catch (error) {
+//   dispatch({
+//     type: AUTH_ERROR_ACTION,
+//     payload: error
+//   });
+// }
+
+
+  handleFormSubmit = async values => { 
+    // const location = [values.suburb, values.zipCode, values.country];
+    const eventData = {
+      first_name: values.first_name,
+      last_name: values.last_name,
+      email: values.email,
+      socials: [...values.socials.split(',').map(s => s.trim())],
+      organisation: values.organisation,
+      description: values.description,
+      volunteers: values.volunteers,
+      target_value: values.target_value,
+      best_time: values.best_time,
+      local_council_relationship: values.local_council_relationship,
+      local_council_details: values.local_council_details,
+      key_influencers: [...values.key_influencers.split(',').map(s => s.trim())],
+      location: [values.suburb, values.zipCode, values.country]
+    };
+
+    try{
+         console.log(JSON.stringify(eventData));
+         const response = await api.post("/expression-of-interest", eventData);
+
+         const eventConfirmation = response.data;
+
+         showResults(eventConfirmation);
+       }catch(error){
+      console.log('error submitting form', error)
+    }
+    
+  }
   handleInputChange = e => { }
+  
   render() {
-    // console.log("Checking Props inside Form", this.props);
-
     return (
       <div>
         <FinalForm
-          onSubmit={showResults}
-          // decorators={[focusOnError]}
+          onSubmit={this.handleFormSubmit}
+          decorators={[focusOnError]}
           validate={validate}
           initialValues={{}}
-          subscription={{ invalid: true, submitting: true, pristine: true }}
+          subscription={{ invalid: true, submitting: true, pristine: true, hasValidationErrors: true }}
           page={this.state.page}
           nextStep={this.nextStep}
           prevStep={this.prevStep}
           render={RenderEventForm}
           />
-
-        {/* // ({ handleSubmit, values, pristine, submitting, invalid, nextStep, prevStep, page }) => (
-        //     <form onSubmit={handleSubmit}>              
-        //     <HostDetailsForm nextStep={nextStep} prevStep={prevStep} page={page} />
-        //     {console.log('Page inside forms:', page)}
-        //     {                
-        //       (page === 1 &&
-        //         <YourCauseForm
-        //           onSubmit={this.handleSubmit}
-        //           onChange={this.handleInputChange}
-        //         />
-        //       )
-        //       || (page === 2 &&
-        //         <YourCommunityForm
-        //           onSubmit={this.handleSubmit}
-        //           onChange={this.handleInputChange}
-        //         />
-        //       )
-        //     }              
-
-        //     <pre>{JSON.stringify(values, 0, 2)}</pre>
-        //     </form>
-        // )}
-        */}
-
-        {/* <HostDetailsForm
-          onSubmit={this.handleSubmit}
-          onChange={this.handleInputChange}
-        />
-    
-        <YourCauseForm
-          onSubmit={this.handleSubmit}
-          onChange={this.handleInputChange}
-        />
-        <YourCommunityForm
-          onSubmit={this.handleSubmit}
-          onChange={this.handleInputChange}
-        /> */}
-        {/* <YourNetworkForm
-          onSubmit={this.handleSubmit}
-          onChange={this.handleInputChange}
-          options={this.state.options}
-        /> */}
+        <FormStateFromRedux form="userForm" />
       </div>
-
-
     )
   }
 }
