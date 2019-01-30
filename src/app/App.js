@@ -1,9 +1,7 @@
 import React, { Fragment, Component } from "react";
 import { connect } from 'react-redux';
-
 import { Route, Switch, BrowserRouter as Router } from "react-router-dom";
 import { LastLocationProvider } from 'react-router-last-location';
-
 import "./App.css";
 import Welcome from "../components/pages/Welcome";
 import Nav from "../components/nav/Nav";
@@ -19,6 +17,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 // import Footer from "../components/pages/Footer";
 import LandingPg from "../components/pages/LandingPage/LandingPg";
 import InfoPg from "../components/pages/LandingPage/InfoPg"
+import EOIDetails from "../components/dashboard/EOIDetail"
 
 class App extends Component {
   // simpleAction = event => {
@@ -36,7 +35,7 @@ class App extends Component {
               <Nav/>
               <Switch>
                 <Route exact path="/"component={LandingPg}/>
-                
+                <Route path="/details" component={EOIDetails}/>
                 <Route path="/about" component={About} />
                 <Route path="/create" component={CreateEventForm} />
                 {/* <Route path="/users/register" component={Authentication} />
@@ -45,10 +44,12 @@ class App extends Component {
                 <Route component={NotFound} />
               </Switch>
             </Fragment>
+            
           </LastLocationProvider>
         </div>
         </Router>
       </div >
+      
       
     );
   };
