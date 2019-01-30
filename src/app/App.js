@@ -16,7 +16,6 @@ import Contact from "../components/pages/Contact";
 import Authentication from "../components/auth/Authentication";
 import { library } from '@fortawesome/fontawesome-svg-core';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-// import Footer from "../components/pages/Footer";
 import LandingPg from "../components/pages/LandingPage/LandingPg";
 import InfoPg from "../components/pages/LandingPage/InfoPg"
 
@@ -46,8 +45,9 @@ class App extends Component {
               </Switch>
             </Fragment>
           </LastLocationProvider>
+         
         </div>
-        </Router>
+        </Router> 
       </div >
       
     );

@@ -333,3 +333,22 @@ iframe{
     transform: translate3d(200%, 0, 0);
     color: red;
 }
+
+
+/* Footer styling*/
+
+.Icon{
+  font-size: 4rem;
+  text-decoration: none;
+  color: black;
+
+}
+
+.Icon:hover {
+  color: #cb3538
+}
+
+.FooterLogo{
+  height: 80px;
+  width: 80px;
+}

@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import {Grid, Cell} from 'react-mdl'
 import GarageSaleVid from './Youtube'
 import InfoPg from './InfoPg';
+import Footer from "../Footer";
 
 class LandingPg extends Component {
 
@@ -37,6 +38,7 @@ onClickMore() {
             </Cell>
         </Grid>
         <InfoPg/>
+        <Footer/>
     </div>
     )
   }

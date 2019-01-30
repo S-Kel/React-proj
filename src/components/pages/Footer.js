@@ -7,7 +7,7 @@ import { library } from '@fortawesome/fontawesome-svg-core';
 library.add(fab)
 
 const footer = () => (
-  <Grid columns='three' divided>
+  <Grid columns='three'>
     <Grid.Row>
       <Grid.Column>
       <h2>contact</h2>
@@ -24,11 +24,9 @@ const footer = () => (
         Chermside South QLD 4031</p>
       </Grid.Column>
       <Grid.Column>
-      <a href="https://www.facebook.com/worldsbiggestgaragesale"><FontAwesomeIcon icon={['fab', 'facebook']} /></a>
+      <a  target="_blank" className="Icon" href="https://www.facebook.com/worldsbiggestgaragesale"><FontAwesomeIcon icon={['fab', 'facebook']} /></a>
       </Grid.Column>
-      <Grid.Column>
-        <h1>Logo</h1>
-      </Grid.Column>
+      
     </Grid.Row>
 
     <Grid.Row>
@@ -37,17 +35,20 @@ const footer = () => (
         <p>1300 12 12 97</p>
       </Grid.Column>
       <Grid.Column>
-        <a href="https://twitter.com/WBGS_Global"><FontAwesomeIcon icon={['fab', 'twitter']} /></a>
+        <a target="_blank" className="Icon" href="https://twitter.com/WBGS_Global"><FontAwesomeIcon icon={['fab', 'twitter']} /></a>
+      </Grid.Column>
+      <Grid.Column>
+      <a target="_blank" href="https://worldsbiggestgaragesale.com.au"><img src="/Assets/WBGS-logo.png" className="FooterLogo" /></a>
       </Grid.Column>
     </Grid.Row>
 
     <Grid.Row>
       <Grid.Column>
       <h4>Newsletter:</h4>
-        <a href="https://worldsbiggestgaragesale.com.au/contact-us/newsletter/">Sign up</a>
+        <a target="_blank" href="https://worldsbiggestgaragesale.com.au/contact-us/newsletter/">Sign up</a>
       </Grid.Column>
       <Grid.Column>
-        <a href="https://www.instagram.com/wbgs_global/"><FontAwesomeIcon icon={['fab', 'instagram']} /></a>
+        <a  target="_blank" className="Icon" href="https://www.instagram.com/wbgs_global/"><FontAwesomeIcon icon={['fab', 'instagram']} /></a>
       </Grid.Column>
     </Grid.Row>
   </Grid>
