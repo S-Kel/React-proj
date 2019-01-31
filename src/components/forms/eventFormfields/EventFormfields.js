@@ -1,7 +1,7 @@
 import React from 'react'
 import { Form, Label, TextArea, Input, Checkbox, Popup } from "semantic-ui-react";
 import "../../../app/App.css";
-import { Segment, List, Button } from 'semantic-ui-react';
+import { Message, List, Button } from "semantic-ui-react";
 import { Field } from "react-final-form";
 
 const style = {
@@ -111,7 +111,7 @@ export const DatePicker = (props) => {
   );
 }
 
-export const RenderSocials = ({fields}) => {
+export const RenderSocials = ({fields, meta:{touched, error}}) => {
   return (
     <div>         
     {/* <List> */}
@@ -120,35 +120,55 @@ export const RenderSocials = ({fields}) => {
           <List>{fields.map((field, index)=>
             <List.Item key={index}>
               <Form.Group> 
-                <Form.Field width={13}>
+                <Form.Field width={15}>
                   <Field 
-                    name={field} 
+                    name={`${field}.name`} 
                     type= 'text'
                     component={InputText}
                     placeholder='Add Your Social Media link'
                   />
                 </Form.Field>
-                <Form.Field width={3}>
+                <Form.Field width={1}>
                   <Form.Button
+                    icon='trash' circular
                     type='button'
-                    content='Remove'
                     onClick={() => fields.remove(index)}
                   />
                 </Form.Field>                
               </Form.Group>
-              {fields.error && <List.Item className='error' >{fields.error}</List.Item>}
+              
+              {/* {console.log('Fields Errors', field)}
+              {console.log('Fields Errors', !field.social) } */}
             </List.Item>
             )}
           </List>
+          {console.log('Fields Errors', fields)}
+          {console.log('Fields Errors', !fields.socials)}
+          {fields.error.length>0 && error && 
+            // <Message warning>
+            //   <p>{fields.error.map(e => e.name)}</p>
+            // </Message>
+          <span>
+            <Message warning>
+              <Message.Header>You must register before you can do that!</Message.Header>
+              <p>Visit our registration page, then try again.</p>
+            </Message>
+            {/* {fields.error.map(e=> e.name)} */}
+            {/* {fields.error} */}
+            {console.log('Fields Error', fields.error.map(e=> e.name))}
+          </span>
+        }
         </Form.Field>
       </Form.Group>
     {/* </List> */}
-      <Form.Group>
+      <Form.Group>        
         <Form.Field style={{ textAlign: 'right' }} width={13} >
-          <label>Your links to your social media pages.</label>
+          <label>Your links to your social media pages.</label>         
         </Form.Field>
         <Form.Field width={3}>
-          <Form.Button type="button"  negative content='Add Link' onClick={() => fields.push()} />
+          <Form.Button type="button" icon='plus'  negative content='Add Link' onClick={() => fields.push()} />
+          {touched && error && <span>{fields.error.name}</span>}
+
         </Form.Field>
       </Form.Group>   
     </div>
