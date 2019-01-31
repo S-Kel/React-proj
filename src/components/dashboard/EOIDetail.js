@@ -41,7 +41,21 @@ export default class EOIDetails extends Component {
             val_scope: false,
             val_vols: false,
             val_people:false,
+            shortlist: false
         }
+    }
+    handleAcptShort = () => {
+        if( this.state.val_council &&
+            this.state.val_bel &&
+            this.state.val_org &&
+            this.state.val_place &&
+            this.state.val_date &&
+            this.state.val_social &&
+            this.state.val_scope &&
+            this.state.val_vols &&
+            this.state.val_people == true) {
+        this.setState({shortlist: !this.state.shortlist})
+            }
     }
 
     handleToggle = (evt) => {
@@ -301,7 +315,18 @@ export default class EOIDetails extends Component {
                 </Grid>
                 <Grid className="form-grid3">
                     <Grid.Column>
-                        <Segment inverted style={{ textAlign: "justify", background:"#cb3538"}}>
+                        <Segment inverted style={{ textAlign: "justify", background:"#FFFFFF"}}>
+                            <img src={ this.state.shortlist ? "./Assets/WBGS-logo.png":"./Assets/WBGS-logo dulled.png" } className= "wbgs-logo"/>
+                        </Segment>
+                    </Grid.Column>
+                </Grid>
+                <Grid className="form-grid4">
+                    <Grid.Column>
+                        <Segment floated='right' inverted style={{ textAlign: "justify", background:"#cb3538"}}>
+                            <Button.Group>
+                                <Button onClick={ this.handleAcptShort } color={"black"} size={"massive"} >Shortlist Candidate</Button>
+                                <Button inverted color="white" size={"massive"}>Reject Candidate</Button>
+                            </Button.Group>
                         </Segment>
                     </Grid.Column>
                 </Grid>
