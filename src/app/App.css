@@ -117,6 +117,59 @@ iframe{
   }
 }
 
+.form-grid{
+  display: grid;
+  grid-template-columns: 10% 40% 40% 10%;
+  grid-template-rows:  500px 200px;
+  overflow: hidden;  
+}
+
+.form-grid1{
+  grid-column-start: 2;
+  grid-column-end: 2;
+  grid-row-start: 1;
+  grid-row-end: 1;
+  justify-self: stretch;
+  align-self: stretch;
+  word-wrap: break-word;
+  margin-top: 0 !important;
+  overflow-y: scroll;
+}
+
+.form-grid2{
+  grid-column-start: 3;
+  grid-column-end: 3; 
+  grid-row-start: 1;
+  grid-row-end: 1;
+  justify-self: stretch;
+  align-self: stretch;
+  word-wrap: break-word;
+  margin-top: 0 !important;
+  overflow-y: scroll;
+}
+
+.form-grid3{
+  grid-column-start: 2;
+  grid-column-end: 4; 
+  grid-row-start: 2;
+  grid-row-end: 2;
+  justify-self: stretch;
+  align-self: stretch;
+  word-wrap: break-word;
+}
+
+
+
+.form-grid1::-webkit-scrollbar {
+  width: 0px;  /* remove scrollbar space */
+  background: transparent;  /* optional: just make scrollbar invisible */
+}
+
+.form-grid2::-webkit-scrollbar {
+  width: 0px;  /* remove scrollbar space */
+  background: transparent;  /* optional: just make scrollbar invisible */
+}
+
 .get-grid{
   display: grid;
   grid-template-columns: 10% 40% 40% 10%;
@@ -166,6 +219,8 @@ iframe{
   max-height: 40wh;
   padding:3px;
 }
+
+
 
 @media only screen and (max-width: 600px) {
   iframe{

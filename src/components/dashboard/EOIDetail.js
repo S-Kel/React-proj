@@ -25,24 +25,60 @@ export default class EOIDetails extends Component {
             organization: "organizee",
             description: "iuhefuhwohgfowjroisiogjoijgvoiaj0jjer0gjapijgpiajivjgapivjpjvisdjvlhjslbdgj;sdjbpjapijb;pdsmpobjaepoi",
             volunteers: 6,
-            checked: false,
             datePicker: "around spring",
-            val_date: false,
             suburb: "yo town",
             zipCode: 9000,
             country: "straya",
-            val_place: false,
             council: "council",
             localCouncil: "concil tie",
+            keyPeople: "my mum",
             val_council: false,
-            keyPeople: "my mum"
+            val_bel:false,
+            val_org: false,
+            val_place: false,
+            val_date: false,
+            val_social: false,
+            val_scope: false,
+            val_vols: false,
+            val_people:false,
         }
     }
 
-    handleToggle = () => {
-        this.setState({
-            checked: !this.state.checked
-        })
+    handleToggle = (evt) => {
+        let newState = {}
+        switch (evt.target.id) {
+            case 'chk_council':
+                newState = { val_council: !this.state.val_council }
+                break;
+            case 'chk_social':
+                newState = { val_social: !this.state.val_social }
+                break;
+            case 'chk_bel':
+                newState = { val_bel: !this.state.val_bel }
+                break;
+            case 'chk_org':
+                newState = { val_org: !this.state.val_org }
+                break;
+            case 'chk_scope':
+                newState = { val_scope: !this.state.val_scope }
+                break;
+            case 'chk_vols':
+                newState = { val_vols: !this.state.val_vols }
+                break;
+            case 'chk_date':
+                newState = { val_date: !this.state.val_date }
+                break;
+            case 'chk_place':
+                newState = { val_place: !this.state.val_place }
+                break;
+            case 'chk_council':
+                newState = { val_council: !this.state.val_council }
+                break;
+            case 'chk_people':
+                newState = { val_people: !this.state.val_people }
+                break;
+        }
+        this.setState(newState)
     }
 
         render() {
@@ -65,8 +101,9 @@ export default class EOIDetails extends Component {
                 localCouncil,
                 keyPeople } = this.state;
             return (
-                <Grid textAlign='center' >
-                    <Grid.Column width={10}>
+                <div className="form-grid">
+                    <Grid textAlign='center' className="form-grid1">
+                    <Grid.Column>
                         <Segment inverted style={{ textAlign: "justify" }}>
                             <Form>
                                 <List divided inverted relaxed>
@@ -117,7 +154,6 @@ export default class EOIDetails extends Component {
                                                 Do you have 6-10 Volunteers?
                                             </List.Header>
                                             {volunteers && <div>Yes</div>}
-                                            <Checkbox checked={this.state.checked} onChange={this.handleToggle} />
                                         </List.Content>
                                     </List.Item>
                                     <List.Item>
@@ -177,18 +213,100 @@ export default class EOIDetails extends Component {
                                         </List.Content>
                                     </List.Item>
                                 </List>
-                               
                             </Form>
                         </Segment>
                     </Grid.Column>
                 </Grid>
+                <Grid textAlign='center' className="form-grid2">
+                    <Grid.Column>
+                        <Segment inverted style={{ textAlign: "justify", background:"grey"}}>
+                            <Form>
+                                <List divided inverted relaxed>
+                                    <List.Item>
+                                        <List.Content>
+                                            <List.Header style={{ color: "#cb3538" }}>
+                                                Does the individual meet and match the key WBGS values and believes.
+                                                </List.Header>
+                                            Check if yes - <Checkbox onChange={this.handleToggle} id="chk_social"/>
+                                        </List.Content>
+                                    </List.Item>
+                                    <List.Item>
+                                        <List.Content>
+                                            <List.Header style={{ color: "#cb3538" }}>
+                                                Does the organization meet and match the key WBGS values and believes.
+                                            </List.Header>
+                                            Check if yes - <Checkbox onChange={this.handleToggle} id="chk_bel"/>
+                                        </List.Content>
+                                    </List.Item>
+                                    <List.Item>
+                                        <List.Content>
+                                            <List.Header style={{ color: "#cb3538" }}>
+                                                Has the organization been reviewed?
+                                            </List.Header>
+                                            Check if yes - <Checkbox onChange={this.handleToggle} id="chk_org"/>
+                                        </List.Content>
+                                    </List.Item>
+                                    <List.Item>
+                                        <List.Content>
+                                            <List.Header style={{ color: "#cb3538" }}>
+                                                Is the scope and aim of the described event achievable?
+                                            </List.Header>
+                                            Check if yes - <Checkbox onChange={this.handleToggle} id="chk_scope"/>
+                                        </List.Content>
+                                    </List.Item>
+                                    <List.Item>
+                                        <List.Content>
+                                            <List.Header style={{ color: "#cb3538" }}>
+                                                Does the organization have 6-10 volunteers to chair a committee?
+                                            </List.Header>
+                                            Check if yes - <Checkbox onChange={this.handleToggle} id="chk_vols"/>
+                                        </List.Content>
+                                    </List.Item>
+                                    <List.Item>
+                                        <List.Content>
+                                            <List.Header style={{ color: "#cb3538" }}>
+                                                Is the requested date a reasonable to hold a WBGS?
+                                            </List.Header>
+                                            Check if yes - <Checkbox onChange={this.handleToggle} id="chk_date"/>
+                                        </List.Content>
+                                    </List.Item>
+                                    <List.Item>
+                                        <List.Content>
+                                            <List.Header style={{ color: "#cb3538" }}>
+                                            Is the loaction is feasable to hold a WBGS?
+                                            </List.Header>
+                                            Check if yes - <Checkbox onChange={this.handleToggle} id="chk_place"/>
+                                        </List.Content>
+                                    </List.Item>
+                                    <List.Item>
+                                        <List.Content>
+                                            <List.Header style={{ color: "#cb3538" }}>
+                                                The potential hosts relationship with local Council will allow them to arrange an event?
+                                            </List.Header>
+                                            Check if yes - <Checkbox onChange={this.handleToggle} id="chk_council"/>
+                                        </List.Content>
+                                    </List.Item>
+                                    <List.Item>
+                                        <List.Content>
+                                            <List.Header style={{ color: "#cb3538" }}>
+                                                Are Key people within the organization are able to help WBGS staff arrange the event and are authorized to make decisions?
+                                            </List.Header>
+                                            Check if yes - <Checkbox onChange={this.handleToggle} id="chk_people"/>
+                                        </List.Content>
+                                    </List.Item>
+                                </List>
+                            </Form>
+                        </Segment>
+                    </Grid.Column>
+                </Grid>
+                <Grid className="form-grid3">
+                    <Grid.Column>
+                        <Segment inverted style={{ textAlign: "justify", background:"#cb3538"}}>
+                        </Segment>
+                    </Grid.Column>
+                </Grid>
+                </div>
+               
             )
         }
     }
-
-
-
-const styles = {
-    button: { margin: 15 }
-}
-
