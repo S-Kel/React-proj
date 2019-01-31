@@ -3,16 +3,15 @@ import { Card, Button, Icon, Image, Dropdown, Input  } from 'semantic-ui-react'
 
 class AdminDashboard extends Component {
     state = { data:[
-        {id: 1, name: "test1", organisation: "company1", createdAt:"1/2/19", shortlisted: true},
+        {id: 1, name: "Mitchell Heiser", organisation: "company1", createdAt:"1/2/19", shortlisted: true},
         {id: 2, name: "test2", organisation: "company2", createdAt:"2/2/19", shortlisted: false}
     ] }
+
     
     render() { 
-        //  data = {this.state.dat
         const buildCards = this.state.data.map((Data) =>
         
         <React.Fragment>
-
         <Card.Group centered>
             <Card color="red" fluid > 
             <Card.Content color="red"  >
@@ -26,10 +25,9 @@ class AdminDashboard extends Component {
                         <Icon name='arrow right' />
                     </Button.Content>
                     </Button>
-                    
                     <div>
                     {Data.shortlisted ? (<Image floated='right' size='mini' src='/Assets/WBGS-logo.png' />):
-                    (<Image floated='right' size='mini' src='/Assets/pie-Chart.png' />)}
+                    (<Image floated='right' size='mini' src='/Assets/WBGS-logo dulled.png' />)}
                     </div>
                 </Card.Content>
             </Card>
@@ -38,9 +36,19 @@ class AdminDashboard extends Component {
 
         return (  
             <React.Fragment>
+            <div className="filter">
+                <Dropdown color="red" text='Filter By' icon='filter' floating labeled button className='icon'>
+                    <Dropdown.Menu >
+                    <Dropdown.Header icon='tags' content='Filter by tag'/>
+                    <Dropdown.Item>Shortlisted</Dropdown.Item>
+                    <Dropdown.Item>See All</Dropdown.Item>
+                    </Dropdown.Menu>
+                </Dropdown>
+             </div>
             <div className="cardContainer">
              {buildCards}
              </div>
+             
 
             </React.Fragment>
         );

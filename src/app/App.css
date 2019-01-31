@@ -347,3 +347,11 @@ iframe{
 .eoiCards{
   color:#cb3538;
 }
+
+.filter{
+  position:fixed;
+  right: 0;
+  margin-right: 20px;
+}
+
+
