@@ -7,11 +7,11 @@ import {
   Button,
 } from 'semantic-ui-react';
 import { FormSpy, Field } from "react-final-form";
-
+import { FieldArray } from "react-final-form-arrays";
 // import {showResults } from './EventForm';
 
 import FormStateToRedux from "../FormStateToRedux";
-import { InputText, EmailInputText } from '../eventFormfields/EventFormfields';
+import { InputText, RenderSocials } from '../eventFormfields/EventFormfields';
 
 const sleep = ms => new Promise(resolve => setTimeout(resolve, ms));
 export const showResults = async values => {
@@ -69,20 +69,15 @@ function HostDetailsForm(props) {
                 subscription={{ value: true, active: true, error: true, touched: true }}
               />
             </Form.Field>
-            <Form.Group >
-              <Form.Field width={12} >
-                <Field
-                  name='socials'
-                  type='text'
-                  placeholder='Your links to social media pages'
-                  component={InputText}
-                  subscription={{ value: true, active: true, error: true, touched: true }}
-                />
-              </Form.Field>
-              <Form.Field width={4}>
-                <Form.Button style={{ background: '#cb3538', color: '#fefefe' }} type="button" content='Add links' />
-              </Form.Field>
-            </Form.Group>
+            <Form.Field>
+              <FieldArray
+                name='socials'
+                type='text'
+                component={RenderSocials}
+                subscription={{ value: true, active: true, error: true, touched: true }}
+              />
+            </Form.Field>
+
             <FormSpy subscription={{ values: true }}>
               {({ values }) => (
                 !page && <Button type='button' label="Continue" color='red' disabled={(Object.keys(values).length < 4) ? true : false} onClick={nextStep} />

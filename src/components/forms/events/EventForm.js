@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import { Form as FinalForm } from "react-final-form";
+import arrayMutators from "final-form-arrays";
+
 import createDecorator from "final-form-focus";
 
 import RenderEventForm from '././renderEventForm';
@@ -84,6 +86,7 @@ class CreateEventForm extends Component {
       <div>
         <FinalForm
           onSubmit={this.handleFormSubmit}
+          mutators={{...arrayMutators}}
           decorators={[focusOnError]}
           validate={validate}
           initialValues={{}}

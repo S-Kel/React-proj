@@ -1,6 +1,8 @@
 import React from 'react'
 import { Form, Label, TextArea, Input, Checkbox, Popup } from "semantic-ui-react";
 import "../../../app/App.css";
+import { Segment, List, Button } from 'semantic-ui-react';
+import { Field } from "react-final-form";
 
 const style = {
   opacity: 0.87,
@@ -106,5 +108,49 @@ export const DatePicker = (props) => {
         </Form.Input>
       {error && touched && <span>{error}</span>}
     </div >
+  );
+}
+
+export const RenderSocials = ({fields}) => {
+  return (
+    <div>         
+    {/* <List> */}
+      <Form.Group>     
+        <Form.Field width={16}>   
+          <List>{fields.map((field, index)=>
+            <List.Item key={index}>
+              <Form.Group> 
+                <Form.Field width={13}>
+                  <Field 
+                    name={field} 
+                    type= 'text'
+                    component={InputText}
+                    placeholder='Add Your Social Media link'
+                  />
+                </Form.Field>
+                <Form.Field width={3}>
+                  <Form.Button
+                    type='button'
+                    content='Remove'
+                    onClick={() => fields.remove(index)}
+                  />
+                </Form.Field>                
+              </Form.Group>
+              {fields.error && <List.Item className='error' >{fields.error}</List.Item>}
+            </List.Item>
+            )}
+          </List>
+        </Form.Field>
+      </Form.Group>
+    {/* </List> */}
+      <Form.Group>
+        <Form.Field style={{ textAlign: 'right' }} width={13} >
+          <label>Your links to your social media pages.</label>
+        </Form.Field>
+        <Form.Field width={3}>
+          <Form.Button type="button"  negative content='Add Link' onClick={() => fields.push()} />
+        </Form.Field>
+      </Form.Group>   
+    </div>
   );
 }
