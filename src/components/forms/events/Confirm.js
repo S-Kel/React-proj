@@ -46,7 +46,7 @@ class Confirm extends Component {
  // }
 
  render() {
-  console.log('Hellow from Confirm Form', this.props);
+  console.log('Hello from Confirm Form', this.props);
 
   const { handleSubmit, prevStep} = this.props;
   const { values } = this.props.state;
