@@ -11,7 +11,7 @@ export default function RegistrationForm(props) {
             <Grid textAlign='center' style={{ height: '100%' }} verticalAlign='middle'>
                 <Grid.Column style={{ maxWidth: 450 }}>
                     <Header as='h2' color='teal' textAlign='center'>
-                        <Image src='/assets/gora.png' /> Sign up for for a free account
+                        <Image src='/Assets/WBGS-logo.png' /> Sign up for for a free account
                 </Header>
                     <Form onSubmit={submit} size='large'>
                         <Segment raised>
