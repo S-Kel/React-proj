@@ -33,7 +33,7 @@ class Nav extends Component {
         const { activeItem } = this.state;
         console.log('emailToken', emailToken)
         return (
-            <Menu icon='labeled' size='mini' style={{ paddingLeft: 20, paddingRight: 20 }}>
+            <Menu className="sticky" icon='labeled' size='mini' style={{ paddingLeft: 20, paddingRight: 20 }} >
                 <Menu.Item
                     as={NavLink} to='/'
                     name='home'
@@ -50,14 +50,15 @@ class Nav extends Component {
                     activeClassName="active teal" >
                     <Icon name='info' />About
                 </Menu.Item>
-                {/* <Menu.Item
-                    as={NavLink} to='/contact'
-                    name='contact'
+                <Menu.Item
+                    as={NavLink} to='/dashboard'
+                    name='dashboard'
                     active={activeItem === 'users'}
                     onClick={this.handleItemClick}
                     activeClassName="active teal" >
-                    <Icon name='users' />Contact
-                </Menu.Item> */}
+                    <Icon name='users' />Dashboard
+                </Menu.Item>
+
                 <Menu.Item
                     position='right'
                     as={NavLink} to='/create'
