@@ -50,14 +50,15 @@ class Nav extends Component {
                     activeClassName="active teal" >
                     <Icon name='info' />About
                 </Menu.Item>
-                {/* <Menu.Item
-                    as={NavLink} to='/contact'
-                    name='contact'
-                    active={activeItem === 'users'}<CreateEventForm/>
+                <Menu.Item
+                    as={NavLink} to='/dashboard'
+                    name='dashboard'
+                    active={activeItem === 'users'}
                     onClick={this.handleItemClick}
                     activeClassName="active teal" >
-                    <Icon name='users' />Contact
-                </Menu.Item> */}
+                    <Icon name='users' />Dashboard
+                </Menu.Item>
+
                 <Menu.Item
                     position='right'
                     as={NavLink} to='/create'

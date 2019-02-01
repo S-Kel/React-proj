@@ -18,6 +18,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import LandingPg from "../components/pages/LandingPage/LandingPg";
 import InfoPg from "../components/pages/LandingPage/InfoPg"
 import EOIDetails from "../components/dashboard/EOIDetail"
+import AdminDashboard from "../components/dashboard/AdminDashboard"
 
 class App extends Component {
   // simpleAction = event => {
@@ -36,6 +37,7 @@ class App extends Component {
               <Switch>
                 <Route exact path="/"component={LandingPg}/>
                 <Route path="/details" component={EOIDetails}/>
+                <Route path="/dashboard"component={AdminDashboard}/>
                 <Route path="/about" component={About} />
                 <Route path="/create" component={CreateEventForm} />
                 {/* <Route path="/users/register" component={Authentication} />
