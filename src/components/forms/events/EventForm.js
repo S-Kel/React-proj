@@ -32,23 +32,23 @@ class CreateEventForm extends Component {
       page: Math.max(state.page - 1, 0)
     }));
   }
-  changeNewSocial = event => {
-    this.setState({ newSocials: event.target.value })
+  // changeNewSocial = event => {
+  //   this.setState({ newSocials: event.target.value })
 
-  }
+  // }
 
-  createNewSocial = event => {
-    event.preventDefault()
-    if (validUrl.isWebUri(this.state.newSocials)) {
-      console.log('Looks like an URI');
-      const socials = [...this.state.socials, this.state.newSocials]
-      this.setState({ socials, newSocials: '' })
-    } else {
-      alert("Please enter a valid URL.");
-      console.log('Not a URI');
-    }
+  // createNewSocial = event => {
+  //   event.preventDefault()
+  //   if (validUrl.isWebUri(this.state.newSocials)) {
+  //     console.log('Looks like an URI');
+  //     const socials = [...this.state.socials, this.state.newSocials]
+  //     this.setState({ socials, newSocials: '' })
+  //   } else {
+  //     alert("Please enter a valid URL.");
+  //     console.log('Not a URI');
+  //   }
 
-  }
+  // }
 
   handleFormSubmit = async values => { 
     // const location = [values.suburb, values.zipCode, values.country];
@@ -56,7 +56,7 @@ class CreateEventForm extends Component {
       first_name: values.first_name,
       last_name: values.last_name,
       email: values.email,
-      socials: [...values.socials.split(',').map(s => s.trim())],
+      socials: values.socials.map(social => social.name),
       organisation: values.organisation,
       description: values.description,
       volunteers: values.volunteers,
@@ -64,7 +64,9 @@ class CreateEventForm extends Component {
       best_time: values.best_time,
       local_council_relationship: values.local_council_relationship,
       local_council_details: values.local_council_details,
-      key_influencers: [...values.key_influencers.split(',').map(s => s.trim())],
+      key_influencers: [
+        ...values.key_influencers.split(",").map(s => s.trim())
+      ],
       location: [values.suburb, values.zipCode, values.country]
     };
 
