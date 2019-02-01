@@ -1,5 +1,6 @@
 import React from 'react'
 import { FormSpy, Field } from "react-final-form";
+import { FieldArray } from "react-final-form-arrays";
 import {
   Grid,
   Segment,
@@ -9,7 +10,7 @@ import {
   Label
 } from 'semantic-ui-react';
 import { countryOptions } from '../optionsData/countryOptions';
-import { DatePicker, InputCheckBox, InputText, DropdownMenu } from '../eventFormfields/EventFormfields';
+import { DatePicker, InputCheckBox, InputText, RenderSocials , DropdownMenu } from '../eventFormfields/EventFormfields';
 
 
 function YourCommunityForm(props) {
@@ -82,13 +83,13 @@ function YourCommunityForm(props) {
             </Form.Field>
             <Form.Field >
               <Field
-                name='local_council_details'
+                name='local_council_detailS'
                 type='text'
                 placeholder='Please enter the Council name'
                 component={InputText}
                 subscription={{ value: true, active: true, error: true, touched: true }}
               />
-            </Form.Field>
+            </Form.Field>            
             <Form.Field >
               <Label style={{ background: '#fefafa', padding: 10 }}>
                 Lorem ipsum dolor sit amet consectetur adipisicing elit. Eos rerum non,
@@ -102,11 +103,15 @@ function YourCommunityForm(props) {
                 subscription={{ value: true, active: true, error: true, touched: true }}
               />
             </Form.Field>
-            {/* <FormSpy subscription={{ values: true }}>
-              {({ values }) => (
-                <Button type='button' label="Continue" color='red' disabled={(Object.keys(values).length < 1) ? true : false} onClick={nextStep} />
-              )}
-            </FormSpy> */}
+            {/* <Form.Field>
+              <FieldArray
+                name='local_council_detail'
+                placeholder='Please enter key people in your organization'
+                type='text'
+                component={RenderSocials}
+                subscription={{ value: true, active: true, error: true, touched: true }}
+            />
+            </Form.Field> */}
             <Button label="Continue" color='red' disabled={pristine} onClick={nextStep} />
             <Button label="Back" primary={false} disabled={pristine} onClick={prevStep} />
           </Form>

@@ -75,7 +75,7 @@ class Nav extends Component {
                     <Icon name='add circle' />CREATE EVENT
                 </Menu.Item>
 
-                {/* {
+                {
                     loggedIn
                         ? (<LoginMenu
                             username={this.capitalize(emailToken.split('@')[0])}
@@ -85,7 +85,7 @@ class Nav extends Component {
                             // onClick={this.handleItemClick}                            
                             onLogin={this.handleOnLoginClick}
                             onRegister={this.handleOnRegisterClick} />)
-                } */}
+                }
 
             </Menu>
         );
@@ -98,8 +98,8 @@ Nav.propTypes = {
 };
 
 const mapStateToProps = state => ({
-    // loggedIn: state.auth.loggedIn,
-    // emailToken: state.auth.authenticatedUserEmail
+    loggedIn: state.auth.loggedIn,
+    emailToken: state.auth.authenticatedUserEmail
 
 })
 
