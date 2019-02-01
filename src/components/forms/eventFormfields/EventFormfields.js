@@ -1,7 +1,7 @@
 import React from 'react'
 import { Form, Label, TextArea, Input, Checkbox, Popup } from "semantic-ui-react";
 import "../../../app/App.css";
-import { Message, List, Button } from "semantic-ui-react";
+import { List, Button } from 'semantic-ui-react';
 import { Field } from "react-final-form";
 
 const style = {
@@ -23,7 +23,7 @@ export const InputText = (props) => {
       style={style}
       // on='focus'
       //  open={!error ? false : null}      
-      />
+      />     
    </div>
  );
 }
@@ -111,66 +111,69 @@ export const DatePicker = (props) => {
   );
 }
 
-export const RenderSocials = ({fields, meta:{touched, error}}) => {
+export const RenderSocials = ({ fields, meta: { touched, pristine, error}}) => {
+  // 
   return (
-    <div>         
-    {/* <List> */}
-      <Form.Group>     
-        <Form.Field width={16}>   
-          <List>{fields.map((field, index)=>
-            <List.Item key={index}>
-              <Form.Group> 
-                <Form.Field width={15}>
-                  <Field 
-                    name={`${field}.name`} 
-                    type= 'text'
-                    component={InputText}
-                    placeholder='Add Your Social Media link'
-                  />
-                </Form.Field>
-                <Form.Field width={1}>
-                  <Form.Button
-                    icon='trash' circular
-                    type='button'
-                    onClick={() => fields.remove(index)}
-                  />
-                </Form.Field>                
-              </Form.Group>
-              
-              {/* {console.log('Fields Errors', field)}
-              {console.log('Fields Errors', !field.social) } */}
-            </List.Item>
-            )}
+    <div>
+      {/* <List> */}
+      <Form.Group>
+        <Form.Field width={16}>
+          <List>
+            {fields.map((field, index) => (
+              <List.Item key={index}>
+                <Form.Group>
+                  <Form.Field width={15}>
+                    <Field
+                      name={`${field}.name`}
+                      type="text"
+                      component={InputText}
+                      placeholder="Add Link of Your Social Media Page"
+                      // subscription={{
+                      //   value: true,
+                      //   active: true,
+                      //   error: true,
+                      //   touched: true
+                      // }}
+                    />
+                  </Form.Field>
+                  <Form.Field width={1}>
+                    <Form.Button
+                      icon="trash"
+                      circular
+                      type="button"
+                      onClick={() => fields.remove(index)}
+                    />
+                  </Form.Field>
+                </Form.Group>
+              </List.Item>
+            ))}
           </List>
-          {console.log('Fields Errors', fields)}
-          {console.log('Fields Errors', !fields.socials)}
-          {fields.error.length>0 && error && 
-            // <Message warning>
-            //   <p>{fields.error.map(e => e.name)}</p>
-            // </Message>
-          <span>
-            <Message warning>
-              <Message.Header>You must register before you can do that!</Message.Header>
-              <p>Visit our registration page, then try again.</p>
-            </Message>
-            {/* {fields.error.map(e=> e.name)} */}
-            {/* {fields.error} */}
-            {console.log('Fields Error', fields.error.map(e=> e.name))}
-          </span>
-        }
         </Form.Field>
       </Form.Group>
-    {/* </List> */}
-      <Form.Group>        
-        <Form.Field style={{ textAlign: 'right' }} width={13} >
-          <label>Your links to your social media pages.</label>         
+      {/* </List> */}
+      <Form.Group>
+        <Form.Field style={{ textAlign: "right" }} width={12}>
+          {error && error._error && (
+            <Label basic color="red" pointing="right" position="top center">
+              {error._error}
+            </Label>
+          )}
+          {error && !error._error && (
+            <Label basic color="red" pointing position="top center">
+              {"Must provide a valid url link i.e. http://facebook.com and not too many link"}
+            </Label>
+          )}
         </Form.Field>
-        <Form.Field width={3}>
-          <Form.Button type="button" icon='plus'  negative content='Add Link' onClick={() => fields.push()} />
-          {touched && error && <span>{fields.error.name}</span>}
-
+        <Form.Field width={4}>
+          <Form.Button
+            type="button"
+            icon="plus"
+            negative
+            content="Add Link"
+            onClick={() => fields.push({})}
+          />
         </Form.Field>
-      </Form.Group>   
+      </Form.Group>
     </div>
   );
 }

@@ -89,6 +89,7 @@ class CreateEventForm extends Component {
           mutators={{...arrayMutators}}
           decorators={[focusOnError]}
           validate={validate}
+          validateOnBlur={true}
           initialValues={{}}
           subscription={{ invalid: true, submitting: true, pristine: true, hasValidationErrors: true }}
           page={this.state.page}

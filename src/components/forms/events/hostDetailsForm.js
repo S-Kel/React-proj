@@ -77,11 +77,19 @@ function HostDetailsForm(props) {
                 subscription={{ value: true, active: true, error: true, touched: true }}
               />
             </Form.Field>
-
-            <FormSpy subscription={{ values: true }}>
-              {({ values }) => (
-                !page && <Button type='button' label="Continue" color='red' disabled={(Object.keys(values).length < 4) ? true : false} onClick={nextStep} />
+            <FormSpy subscription={{ values: true, errors: true }}>            
+              {({ values, errors }) => (
+                !page && <Button 
+                            type='button' 
+                            label="Continue" 
+                            color='red' 
+                            disabled={((Object.keys(values).length < 4)) || !values.socials }
+                            onClick={nextStep}
+                            />
+                // <pre>{JSON.stringify(!!errors.socials, undefined, 2)}</pre>
+                // <pre>{JSON.stringify((Object.keys(values).length < 4), undefined, 2)}</pre>
               )}
+              
             </FormSpy>          
           </Form>
         </Segment>
