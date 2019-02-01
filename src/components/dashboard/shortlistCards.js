@@ -8,10 +8,8 @@ class AdminDashboard extends Component {
     ] }
 
     
-
-    
     render() { 
-        const buildCards = this.state.data.map((Data) =>
+        const shortlistCards = this.state.data.map((Data) =>
         
         <React.Fragment>
         <Card.Group centered>
@@ -38,18 +36,6 @@ class AdminDashboard extends Component {
 
         return (  
             <React.Fragment>
-            <div className="filter">
-                <Dropdown color="red" text='Filter By' icon='filter' floating labeled button className='icon'>
-                    <Dropdown.Menu >
-                    <Dropdown.Header icon='tags' content='Filter by tag'/>
-                    <Dropdown.Item>Shortlisted</Dropdown.Item>
-                    <Dropdown.Item>See All</Dropdown.Item>
-                    </Dropdown.Menu>
-                </Dropdown>
-             </div>
-            <div className="cardContainer">
-             {buildCards}
-             </div>
              
 
             </React.Fragment>
@@ -57,4 +43,4 @@ class AdminDashboard extends Component {
     }
 }
  
-export default AdminDashboard;
+export default shortlistCards;

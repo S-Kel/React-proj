@@ -21,12 +21,12 @@ import EOIDetails from "../components/dashboard/EOIDetail"
 import AdminDashboard from "../components/dashboard/AdminDashboard"
 
 class App extends Component {
-  // simpleAction = event => {
-  //   this.props.simpleAction();
-  // };
+  simpleAction = event => {
+    this.props.simpleAction();
+  };
   render() {
-    // const user = this.props.user;
-    // console.log(user);
+    const user = this.props.user;
+    console.log(user);
     return (
       <div className="App">
         <Router>
@@ -40,9 +40,9 @@ class App extends Component {
                 <Route path="/dashboard"component={AdminDashboard}/>
                 <Route path="/about" component={About} />
                 <Route path="/create" component={CreateEventForm} />
-                {/* <Route path="/users/register" component={Authentication} />
+                <Route path="/users/register" component={Authentication} />
                 <Route path="/users/login" component={Authentication} />
-                <Route path="/users/logout" component={Authentication} /> */}
+                <Route path="/users/logout" component={Authentication} />
                 <Route component={NotFound} />
               </Switch>
             </Fragment>
@@ -57,8 +57,8 @@ class App extends Component {
   };
 }
 const mapPropsToTypes = state => ({
-  // simpleReducer: state.simpleReducer,
-  // user: state.user.loggedInUser
+   //simpleReducer: state.simpleReducer,
+   //user: state.user.loggedInUser
 });
 
 export default connect(
