@@ -29,6 +29,7 @@ class Nav extends Component {
     }
 
     render() {
+        const loggedInAsAdmin = true;   //TODO: MUST REPLACED THIS LINE
         const { loggedIn, emailToken } = this.props;
         const { activeItem } = this.state;
         console.log('emailToken', emailToken)
@@ -53,15 +54,17 @@ class Nav extends Component {
                     style={dodgerRed}
                 >
                     <Icon name='info' />ABOUT
-                </Menu.Item>
-                <Menu.Item
-                    as={NavLink} to='/dashboard'
-                    name='dashboard'
-                    active={activeItem === 'users'}
-                    onClick={this.handleItemClick}
-                    activeClassName="active teal" >
-                    <Icon name='users' />Dashboard
-                </Menu.Item>
+                </Menu.Item>  
+                {loggedIn && loggedInAsAdmin && (
+                    <Menu.Item
+                        as={NavLink} to='/dashboard'
+                        name='dashboard'
+                        active={activeItem === 'users'}
+                        onClick={this.handleItemClick}
+                        activeClassName="active red" >
+                        <Icon name='users' />DASHBOARD
+                    </Menu.Item>)
+                }
 
                 <Menu.Item
                     position='right'
@@ -74,11 +77,20 @@ class Nav extends Component {
                 >
                     <Icon name='add circle' />CREATE EVENT
                 </Menu.Item>
+                {/* {loggedIn && loggedInAsAdmin && (<Menu.Item
+                        as={NavLink} to='/dashboard'
+                        name='dashboard'
+                        active={activeItem === 'users'}
+                        onClick={this.handleItemClick}
+                        activeClassName="active teal" >
+                        <Icon name='users' />Dashboard
+                        </Menu.Item>)
+                } */}
 
                 {
                     loggedIn
                         ? (<LoginMenu
-                            username={this.capitalize(emailToken.split('@')[0])}
+                            username={(emailToken.split('@')[0]).toUpperCase()}
                             onLogout={this.handleOnSignoutClick} />)
                         : (<LogoutMenu
                             active={activeItem === 'sign in'}
