@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import {Grid, Cell} from 'react-mdl'
 import GarageSaleVid from './Youtube'
 import InfoPg from './InfoPg';
+import { Button } from 'semantic-ui-react'
 
 class LandingPg extends Component {
 
@@ -11,12 +12,10 @@ onClickMore() {
 
   render() {
     return (
-      <div style= {{width: '100%', margin: 'auto'}}>
+      <div>
         <Grid className="landing-grid">
-            <Cell col={12}>
             <div className="banner-text">
                 <img src="/Assets/WBGS-logo.png" className="logo"/>
-                {/* <h1>The World's Biggest Garage Sale</h1> */}
                 <hr/>  
                 <GarageSaleVid videoId='SkiTGS_ThA0'/>
                 <div className="social-links">
@@ -31,10 +30,10 @@ onClickMore() {
                     </a>
                 </div>      
             </div>
-            <div className="find-out-more">
-                <button onClick={this.onClickMore}> find out more</button>
+            <div>
+                <Button inverted color="white" size="massive" floated="right" onClick={this.onClickMore}> Find out more </Button>
             </div>
-            </Cell>
+           
         </Grid>
         <InfoPg/>
     </div>
