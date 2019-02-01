@@ -112,10 +112,8 @@ export const DatePicker = (props) => {
 }
 
 export const RenderSocials = ({ fields, meta: { touched, pristine, error}}) => {
-  // 
   return (
     <div>
-      {/* <List> */}
       <Form.Group>
         <Form.Field width={16}>
           <List>
@@ -128,12 +126,6 @@ export const RenderSocials = ({ fields, meta: { touched, pristine, error}}) => {
                       type="text"
                       component={InputText}
                       placeholder="Add Link of Your Social Media Page"
-                      // subscription={{
-                      //   value: true,
-                      //   active: true,
-                      //   error: true,
-                      //   touched: true
-                      // }}
                     />
                   </Form.Field>
                   <Form.Field width={1}>
@@ -150,7 +142,6 @@ export const RenderSocials = ({ fields, meta: { touched, pristine, error}}) => {
           </List>
         </Form.Field>
       </Form.Group>
-      {/* </List> */}
       <Form.Group>
         <Form.Field style={{ textAlign: "right" }} width={12}>
           {error && error._error && (
