@@ -70,7 +70,9 @@ class CreateEventForm extends Component {
       key_influencers,
       location: [values.suburb, values.zipCode, values.country]
     };
-
+    // console.log("error submitting form", error);
+    // showResults(eventData);
+    // return;
     try{
          console.log(JSON.stringify(eventData));
          const response = await api.post("/expression-of-interest", eventData);

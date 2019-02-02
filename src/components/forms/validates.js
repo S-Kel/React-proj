@@ -1,5 +1,7 @@
-import { ARRAY_ERROR} from "final-form";
+// import { ARRAY_ERROR} from "final-form";
+import isValidEmail from '../../../src/helperFunctions/emailsValidator';
 var validUrl = require("valid-url");
+
 export default values => {
  const errors = {}
  if (!values.first_name) {
@@ -8,8 +10,8 @@ export default values => {
  if (!values.last_name) {
    errors.last_name = 'First name must be a string of alphabetical characters, and is required';
  }
- if (!values.email) {
-   errors.email = 'Email must be a string in a valid email format, and is required';
+ if (!isValidEmail(values.email)){
+   errors.email = "Email must be a string in a valid email format, and is required";
  }
  if (!values.organisation) {
    errors.organisation = 'Organisation must be a string, and is required';
