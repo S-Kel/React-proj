@@ -19,7 +19,6 @@ function YourCommunityForm(props) {
     <Grid textAlign='center' >
       <Grid.Column width={10}>
         <Segment raised>
-          {/* <FormStateToRedux form="userForm" /> */}
           <Header sub color='teal' content='Your Community' style={{ marginBottom: 15 }} />
           <Form>
             <Form.Group widths='equal'>
@@ -32,7 +31,6 @@ function YourCommunityForm(props) {
                   component={InputText}
                   subscription={{ value: true, active: true, error: true, touched: true }}
                 />
-                {/* <Input fluid label='First name' placeholder='First name' />               */}
               </Form.Field>
               <Form.Field width={5} >
                 <Field
@@ -119,15 +117,6 @@ function YourCommunityForm(props) {
                 subscription={{ value: true, active: true, error: true, touched: true }}
               />
             </Form.Field>
-            {/* <Form.Field>
-              <FieldArray
-                name='local_council_detail'
-                placeholder='Please enter key people in your organization'
-                type='text'
-                component={RenderSocials}
-                subscription={{ value: true, active: true, error: true, touched: true }}
-            />
-            </Form.Field> */}
             <Button label="Continue" color='red' disabled={pristine} onClick={nextStep} />
             <Button label="Back" primary={false} disabled={pristine} onClick={prevStep} />
           </Form>
