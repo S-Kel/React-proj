@@ -23,7 +23,7 @@ class AdminDashboard extends Component {
     const events = fakeEvents; 
     if(!events.length || events.length===0) return null;
     console.log('Events.length', events.length)
-    const perPage = 10;
+    const perPage = 45;
     const activePage = 1;
     const pages = Math.ceil(events.length/perPage);
     const offset = 0;// (currentPage - 1) * perPage;
@@ -37,8 +37,8 @@ class AdminDashboard extends Component {
  
   handlePaginationChange = (evt,{ activePage }) =>{
     const {events, pages, perPage, startCount} = this.state; 
-    let currentPage = Number(activePage);
-    let offset = (currentPage - 1) * perPage;     
+    let currentPage = Number(activePage) || 1;
+    let offset = (currentPage - 1) * perPage || 0;     
     const currentEvents = events.slice(offset, (offset + perPage));
 
     this.setState({
@@ -124,6 +124,11 @@ class AdminDashboard extends Component {
             currentEvents={currentEvents}
             pages={pages}
             onPageChange={this.handlePaginationChange}
+            onClick={(evt)=> {
+              this.setState({ activePage: Number(evt.target.innerText)})
+              console.log('You have clicked Me!', evt.target.innerText)
+            }
+            }
           />
         )}
       </React.Fragment>

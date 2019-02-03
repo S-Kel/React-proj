@@ -7,7 +7,7 @@ import {Pagination, Icon} from 'semantic-ui-react';
 // }
 const Paginate = (props)=> {
  console.log('Pagination function loaded');
-  const { currentEvents, currentPage, pages, onPageChange} = props;
+  const { onClick, currentPage, pages, onPageChange } = props;
  // const { activePage } = this.state
  // const page = 1;
  // const perPage = 5;
@@ -71,6 +71,7 @@ const Paginate = (props)=> {
            nextItem={{ content: <Icon name='angle right' />, icon: true }}
            onPageChange={onPageChange}
            totalPages={pages}
+          onClick={onClick}
          />
       </div>
     );
