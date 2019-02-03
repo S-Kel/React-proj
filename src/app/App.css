@@ -423,7 +423,7 @@ iframe {
     flex-direction: column;
     margin: 0 auto;
     width: 600px;
-    height: 100vh;
+    min-height: 50vh;
 }
 
 .eoiCards {

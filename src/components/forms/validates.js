@@ -1,5 +1,5 @@
 // import { ARRAY_ERROR} from "final-form";
-import isValidEmail from '../../../src/helperFunctions/emailsValidator';
+import { isValidEmail, isValidateURL} from '../../helperFunctions/utils';
 var validUrl = require("valid-url");
 
 export default values => {
@@ -25,7 +25,7 @@ export default values => {
      if (!social || !social.name) {
        socialMediaErrors.name = "Required";
        socialsArrayErrors[idx] = socialMediaErrors;
-     } else if (values.socials.length && social.name && !validUrl.isWebUri(social.name)) {
+     } else if (values.socials.length && social.name && !isValidateURL(social.name)) {
        socialMediaErrors.name = "Please provide a valid url i.e. http://facebook.com";
        socialsArrayErrors[idx] = socialMediaErrors;
      } else if(values.socials.length > 5){       
@@ -41,8 +41,7 @@ export default values => {
  }
  
 if (!values.description) {
-  errors.description =
-    " Description must be a string of text with a maximum length of 5000 characters, and is required ";
+  errors.description ="Description must be a string of text with a maximum length of 5000 characters, and is required ";
  }
  if (!values.suburb) {
   errors.suburb = "Required";
@@ -51,38 +50,8 @@ if (!values.description) {
   errors.zipCode = "Required";
  }
  if (!values.local_council_details) {
-   errors.local_council_details = ' Local council details must be a string of text with a maximum length of 200 characters, and is optional';
+   errors.local_council_details = 'Local council details must be a string of text with a maximum length of 200 characters, and is optional';
  }
-  console.log("All Errors to See", errors);
-//  let socialsArrayErrors = [];
-//  if (!values.socials) {
-//    errors.socials = {_error: "At least one social media link must be entered"};
-//    console.log("Starting<<<<<<<<....>>>", errors.socials);
-//  }
-
-
-
- // else if (!values.socials.length){
- //  // errors.socials = 'At least one social media link must be entered'
- // }
-//  else if (values.socials.length > 0) {
-//    console.log("Starting....>>> !Socials.length", values.socials.length);
-//    console.log("Starting....>>> !Socials", !values.socials);
-//    const socialsArrayErrors = [];
-//    values.socials.forEach((social, idx) => {
-//      const socialMediaErrors = {};
-//      if (!social || !social.name) {
-//        socialMediaErrors.name = "Required";
-//        socialsArrayErrors[idx] = socialMediaErrors;
-//        console.log("ending Starting....>>>");
-//      } else if (values.socials.length && social.name && !validUrl.isWebUri(social.name)) {
-//        socialMediaErrors.name = "Not a valid url";
-//        socialsArrayErrors[idx] = socialMediaErrors;
-//      }
-//      return socialMediaErrors;
-//    });
-//    if (socialsArrayErrors.length) errors.socials = socialsArrayErrors;
-//  }
- 
+  console.log("All Errors to See", errors); 
  return errors
 }
