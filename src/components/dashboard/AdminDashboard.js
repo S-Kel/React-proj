@@ -23,7 +23,7 @@ class AdminDashboard extends Component {
     const events = fakeEvents; 
     if(!events.length || events.length===0) return null;
     console.log('Events.length', events.length)
-    const perPage = 45;
+    const perPage = 10;
     const activePage = 1;
     const pages = Math.ceil(events.length/perPage);
     const offset = 0;// (currentPage - 1) * perPage;
@@ -34,38 +34,19 @@ class AdminDashboard extends Component {
     // this.setState({ events });
       console.log('componentWillMount loaded pages', pages);
   }
-  // componentWillUpdate(nextProps, prevState){
-  //   console.log("this.props", this.props);
-  //   if (prevState.currentEvents !== this.props.currentEvents) {
-  //     console.log("Previous and next props", nextProps, prevState);
-  //     this.setState({ currentEvents: prevState.currentEvents });
-  //     // return { stateFoo: "valueBar" };
-  //   }
-  // }
-  
+ 
   handlePaginationChange = (evt,{ activePage }) =>{
     const {events, pages, perPage, startCount} = this.state; 
-      let currentPage = Number(activePage); 
-      let offset = (currentPage - 1) * perPage; ;
-       console.log('evt.target', evt.target)
-       console.log('evt.target.value', evt.target.innerText)
-      if (currentPage === 1) {
-          console.log("Active page is 1?", currentPage);
-        console.log("offset + perPage?", offset + perPage);
-        console.log("perPage?", perPage);
+    let currentPage = Number(activePage);
+    let offset = (currentPage - 1) * perPage;     
+    const currentEvents = events.slice(offset, (offset + perPage));
 
-        offset = 0;
-        currentPage = 1;
-        } 
-
-      const currentEvents = events.slice(offset, (offset + perPage));
-
-      this.setState({
-        activePage,
-        currentEvents,
-        pages,
-        offset: offset
-      });
+    this.setState({
+      activePage: currentPage,
+      currentEvents,
+      pages,
+      offset: offset
+    });
    
     // console.log("page Offset", activePage);
     console.log("evt,{activePage}", activePage);
@@ -74,10 +55,7 @@ class AdminDashboard extends Component {
   }
   render() { 
     console.log('Render function loaded');
-    // console.log('FakeEvents', this.state.events);
-    const {currentEvents, activePage,pages} = this.state;
-    // console.log('Render function loaded to this point?', currentEvents);
-    
+    const {currentEvents, activePage,pages} = this.state;    
 
     const buildCards = currentEvents.map((Data, index) =>
         <React.Fragment key={index} >
