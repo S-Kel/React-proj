@@ -11,21 +11,23 @@ import { authenticateUser, logoutUser } from "../../redux/actions/authenticateUs
 class Authentication extends Component {
 
     componentDidMount = () => {
-        if (this.props.authType === 'logout') {
-            this.props.logoutUser();
-            console.log('You have been logged out');
-        }
+        // if (this.props.authType === 'logout') {
+        //     this.props.logoutUser();
+        //     console.log('You have been logged out');
+        // }
     }
 
     componentDidUpdate = (prevProps, prevState) => {
-        const { loggedIn, user, error } = this.props
-        loggedIn && console.log('You have been logged in as', user);
-        error && console.log(error.message);
+        // const { loggedIn, user, error } = this.props
+        // loggedIn && console.log('You have been logged in as', user);
+        // error && console.log(error.message);
     }
 
     handleSubmit = (event) => {
         event.preventDefault();
-        const userRoute = this.props.authType === 'register' ? '/users/register' : '/users/login';
+        const userRoute = this.props.history.location.pathname;
+        console.log('User Route', userRoute);
+
         const postData = {
             email: event.target.email.value,
             password: event.target.password.value
@@ -35,9 +37,10 @@ class Authentication extends Component {
     };
 
     render() {
-        const { authType, loggedIn, lastLocation } = this.props
+        const { loggedIn, lastLocation } = this.props
         const from = lastLocation ? lastLocation.pathname : '/';
-
+        const authType = this.props.history.location.pathname.split('/')[2];
+        console.log('props here all the way', this.props.history)
         return (
             <Fragment>
                 {loggedIn && <Redirect to={from} />}
@@ -50,12 +53,11 @@ class Authentication extends Component {
 };
 
 Authentication.propTypes = {
-    authType: PropTypes.oneOf(['register', 'login', 'logout']).isRequired,
     authenticateUser: PropTypes.func.isRequired,
     logoutUser: PropTypes.func.isRequired,
     loggedIn: PropTypes.bool.isRequired,
-    user: PropTypes.object.isRequired,
-    error: PropTypes.object.isRequired
+    // user: PropTypes.object.isRequired,
+    // error: PropTypes.object.isRequired
 };
 
 const mapStateToProps = state => ({

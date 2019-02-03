@@ -1,5 +1,6 @@
 import React from 'react'
 import { FormSpy, Field } from "react-final-form";
+import { FieldArray } from "react-final-form-arrays";
 import {
   Grid,
   Segment,
@@ -9,11 +10,11 @@ import {
   Label
 } from 'semantic-ui-react';
 import { countryOptions } from '../optionsData/countryOptions';
-import { DatePicker, InputCheckBox, InputText, DropdownMenu } from '../eventFormfields/EventFormfields';
-
+import { DatePicker, InputCheckBox, InputText, RenderSocials , DropdownMenu } from '../eventFormfields/EventFormfields';
+import FormStateToRedux from "../FormStateToRedux";
 
 function YourCommunityForm(props) {
-  const { handleSubmit, hasValidationErrors, pristine, submitting, touch, invalid, prevStep, nextStep, page } = props;
+  const {  pristine, touch, invalid, prevStep, nextStep, page } = props;
   return (
     <Grid textAlign='center' >
       <Grid.Column width={10}>
@@ -30,7 +31,6 @@ function YourCommunityForm(props) {
                   component={InputText}
                   subscription={{ value: true, active: true, error: true, touched: true }}
                 />
-                {/* <Input fluid label='First name' placeholder='First name' />               */}
               </Form.Field>
               <Form.Field width={5} >
                 <Field
@@ -80,15 +80,30 @@ function YourCommunityForm(props) {
                 component={InputCheckBox}
                 subscription={{ value: true, active: true, error: true, touched: true }} />
             </Form.Field>
-            <Form.Field >
+            <FormSpy subscription={{ values: true, errors: true }}>
+              {({ values, errors }) => (
+                !values.local_council_relationship ? null :
+                <Form.Field >
+                  <Field
+                    name='local_council_details'
+                    type='text'
+                    placeholder='Please enter the Council name'
+                    component={InputText}
+                    subscription={{ value: true, active: true, error: true, touched: true }}
+                  />
+                </Form.Field>
+              )}
+            </FormSpy>
+
+            {/* <Form.Field >
               <Field
-                name='local_council_details'
+                name='local_council_detailS'
                 type='text'
                 placeholder='Please enter the Council name'
                 component={InputText}
                 subscription={{ value: true, active: true, error: true, touched: true }}
               />
-            </Form.Field>
+            </Form.Field>             */}
             <Form.Field >
               <Label style={{ background: '#fefafa', padding: 10 }}>
                 Lorem ipsum dolor sit amet consectetur adipisicing elit. Eos rerum non,
@@ -102,11 +117,6 @@ function YourCommunityForm(props) {
                 subscription={{ value: true, active: true, error: true, touched: true }}
               />
             </Form.Field>
-            {/* <FormSpy subscription={{ values: true }}>
-              {({ values }) => (
-                <Button type='button' label="Continue" color='red' disabled={(Object.keys(values).length < 1) ? true : false} onClick={nextStep} />
-              )}
-            </FormSpy> */}
             <Button label="Continue" color='red' disabled={pristine} onClick={nextStep} />
             <Button label="Back" primary={false} disabled={pristine} onClick={prevStep} />
           </Form>

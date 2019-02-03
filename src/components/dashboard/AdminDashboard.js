@@ -9,9 +9,9 @@ class AdminDashboard extends Component {
 
     
     render() { 
-        const buildCards = this.state.data.map((Data) =>
+        const buildCards = this.state.data.map((Data, index) =>
         
-        <React.Fragment>
+        <React.Fragment key={index}>
         <Card.Group centered>
             <Card color="red" fluid > 
             <Card.Content color="red"  >

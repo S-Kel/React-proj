@@ -83,7 +83,7 @@ function HostDetailsForm(props) {
                             type='button' 
                             label="Continue" 
                             color='red' 
-                            disabled={((Object.keys(values).length < 4)) || !values.socials }
+                            disabled={((Object.keys(values).length < 5)) || !values.socials }
                             onClick={nextStep}
                             />
                 // <pre>{JSON.stringify(!!errors.socials, undefined, 2)}</pre>

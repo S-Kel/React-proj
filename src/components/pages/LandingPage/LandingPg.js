@@ -31,7 +31,7 @@ onClickMore() {
                 </div>      
             </div>
             <div>
-                <Button inverted color="white" size="massive" floated="right" onClick={this.onClickMore}> Find out more </Button>
+                <Button inverted size="massive" floated="right" onClick={this.onClickMore}> Find out more </Button>
             </div>
            
         </Grid>
