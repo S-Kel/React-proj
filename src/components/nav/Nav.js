@@ -83,16 +83,6 @@ class Nav extends Component {
                         <Icon name='add circle' />CREATE EVENT               
                     </Menu.Item>
                 }
-                {/* {loggedIn && loggedInAsAdmin && (<Menu.Item
-                        as={NavLink} to='/dashboard'
-                        name='dashboard'
-                        active={activeItem === 'users'}
-                        onClick={this.handleItemClick}
-                        activeClassName="active teal" >
-                        <Icon name='users' />Dashboard
-                        </Menu.Item>)
-                } */}
-
                 {
                     loggedIn && emailToken
                         ? (<LoginMenu
