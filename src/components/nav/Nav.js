@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { NavLink } from 'react-router-dom';
+import { NavLink, withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import { Menu, Icon } from 'semantic-ui-react';
@@ -33,18 +33,20 @@ class Nav extends Component {
         const { activeItem } = this.state;
         console.log('emailToken | userRole', emailToken, userRole)
         return (
-            <Menu pointing className="sticky" icon='labeled' size='mini' style={{ padding: '0px 20px' }}  >
+            <Menu pointing secondary className="sticky" icon='labeled' size='mini' style={{ padding: '0px 20px' }}  >
                 <Menu.Item
+                    // as={Navi} to="/" name="home"
                     as={NavLink} to='/'
                     name='home'
                     active={activeItem === 'home'}
                     onClick={this.handleItemClick}
-                    exact activeClassName="active red"
                     style={dodgerRed}
+                    exact activeClassName="active red"
                 >
                     <Icon name='home' />HOME
                 </Menu.Item>
                 <Menu.Item
+                    // as={Navi} to="/about" name="about"
                     as={NavLink} to='/about'
                     name='about'
                     active={activeItem === 'info'}
@@ -56,19 +58,22 @@ class Nav extends Component {
                 </Menu.Item>
                 {loggedIn && userRole === 'admin' &&
                     <Menu.Item
+                        // as={Navi} to="/dashboard" name="dashboard"
                         as={NavLink} to='/dashboard'
                         name='dashboard'
                         active={activeItem === 'users'}
                         onClick={this.handleItemClick}
-                        exact activeClassName="active red"
                         style={dodgerRed}
+                        activeClassName="active red"
                     >
                         <Icon name='users' />DASHBOARD
                     </Menu.Item>
                 }
 
                 <Menu.Item
+                    // style={dodgerRed}
                     position='right'
+                    // as={Navi} to="/create" name="create"
                     as={NavLink} to='/create'
                     name='create'
                     active={activeItem === 'add'}
@@ -133,4 +138,20 @@ const dodgerRed = {
 // The first defines the data being pulled from store into the called component - mapStateToProps
 // The second defines the actions being sent from the called component to update the store - mapDispatchToProps
 // Both of these data are added to the component props
-export default connect(mapStateToProps, { logoutUser })(Nav);
+export default withRouter(connect(mapStateToProps, { logoutUser })(Nav));
+
+// const Navi = props => (
+//     <NavLink
+//         exact
+//         {...props}
+//         activeClassName="active"
+//     />
+// );
+
+// const Navigation = () => (
+//     <Menu secondary>
+//         <Menu.Item as={Navi} to="/homes" name="homes" />
+//         <Menu.Item as={Navi} to="/aboutu" name="messages" />
+//         <Menu.Item as={Navi} to="/sample" name="friends" />
+//     </Menu>
+// );
