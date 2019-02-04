@@ -13,8 +13,8 @@ class GarageSaleVid extends React.Component{
     
     render() {
         const opts = {
-            height: '390',
-            width: '640',
+            height: '1900',
+            width: '1080',
             playerVars: { 
               autoplay: 0
             }

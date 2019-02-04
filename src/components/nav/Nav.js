@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { NavLink } from 'react-router-dom';
+import { NavLink, withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import { Menu, Icon } from 'semantic-ui-react';
@@ -29,56 +29,81 @@ class Nav extends Component {
     }
 
     render() {
-        const { loggedIn, emailToken } = this.props;
+        const { loggedIn, userRole, emailToken } = this.props;
         const { activeItem } = this.state;
-        console.log('emailToken', emailToken)
+        console.log('emailToken | userRole', emailToken, userRole)
         return (
-            <Menu className="sticky" icon='labeled' size='mini' style={{ paddingLeft: 20, paddingRight: 20 }} >
+            <Menu pointing secondary className="sticky" icon='labeled' size='mini' style={{ padding: '0px 20px' }}  >
                 <Menu.Item
+                    // as={Navi} to="/" name="home"
                     as={NavLink} to='/'
                     name='home'
                     active={activeItem === 'home'}
                     onClick={this.handleItemClick}
-                    exact activeClassName="active teal" >
-                    <Icon name='home' />Home
+                    style={dodgerRed}
+                    exact activeClassName="active red"
+                >
+                    <Icon name='home' />HOME
                 </Menu.Item>
                 <Menu.Item
+                    // as={Navi} to="/about" name="about"
                     as={NavLink} to='/about'
                     name='about'
                     active={activeItem === 'info'}
                     onClick={this.handleItemClick}
-                    activeClassName="active teal" >
-                    <Icon name='info' />About
+                    activeClassName="active red"
+                    style={dodgerRed}
+                >
+                    <Icon name='info' />ABOUT
                 </Menu.Item>
-                {/* <Menu.Item
-                    as={NavLink} to='/contact'
-                    name='contact'
-                    active={activeItem === 'users'}<CreateEventForm/>
-                    onClick={this.handleItemClick}
-                    activeClassName="active teal" >
-                    <Icon name='users' />Contact
-                </Menu.Item> */}
+                {loggedIn && userRole === 'admin' &&
+                    <Menu.Item
+                        // as={Navi} to="/dashboard" name="dashboard"
+                        as={NavLink} to='/dashboard'
+                        name='dashboard'
+                        active={activeItem === 'users'}
+                        onClick={this.handleItemClick}
+                        style={dodgerRed}
+                        activeClassName="active red"
+                    >
+                        <Icon name='users' />DASHBOARD
+                    </Menu.Item>
+                }
+
                 <Menu.Item
+                    // style={dodgerRed}
                     position='right'
+                    // as={Navi} to="/create" name="create"
                     as={NavLink} to='/create'
                     name='create'
                     active={activeItem === 'add'}
                     onClick={this.handleItemClick}
-                    activeClassName="active teal" >
-                    <Icon name='add circle' />Create Event
+                    activeClassName="active red"
+                    style={dodgerRed}
+                >
+                    <Icon name='add circle' />CREATE EVENT
                 </Menu.Item>
+                {/* {loggedIn && loggedInAsAdmin && (<Menu.Item
+                        as={NavLink} to='/dashboard'
+                        name='dashboard'
+                        active={activeItem === 'users'}
+                        onClick={this.handleItemClick}
+                        activeClassName="active teal" >
+                        <Icon name='users' />Dashboard
+                        </Menu.Item>)
+                } */}
 
-                {/* {
-                    loggedIn
+                {
+                    loggedIn && emailToken
                         ? (<LoginMenu
-                            username={this.capitalize(emailToken.split('@')[0])}
+                            username={(emailToken.split('@')[0]).toUpperCase()}
                             onLogout={this.handleOnSignoutClick} />)
                         : (<LogoutMenu
+                            style={dodgerRed}
                             active={activeItem === 'sign in'}
-                            // onClick={this.handleItemClick}                            
                             onLogin={this.handleOnLoginClick}
                             onRegister={this.handleOnRegisterClick} />)
-                } */}
+                }
 
             </Menu>
         );
@@ -87,18 +112,46 @@ class Nav extends Component {
 };
 
 Nav.propTypes = {
-    logoutUser: PropTypes.func.isRequired
+    logoutUser: PropTypes.func.isRequired,
+    // emailToken: PropTypes.object.isRequired,
+    // userRole: PropTypes.object.isRequired,
+
 };
 
 const mapStateToProps = state => ({
-    // loggedIn: state.auth.loggedIn,
-    // emailToken: state.auth.authenticatedUserEmail
+    loggedIn: state.auth.loggedIn,
+    emailToken: state.auth.authenticatedUserEmail,
+    userRole: state.auth.authenticatedUserRole,
 
 })
 
+const dodgerRed = {
+    fontFamily: 'Raley, sans-serif',
+    fontSize: 12,
+    fontWeight: 600,
+    letterSpacing: 2,
+    color: '#9d9d9d',
+    // background: 'yellow'
 
+}
 // connect function takes two arguments; 
 // The first defines the data being pulled from store into the called component - mapStateToProps
 // The second defines the actions being sent from the called component to update the store - mapDispatchToProps
 // Both of these data are added to the component props
-export default connect(mapStateToProps, { logoutUser })(Nav);
+export default withRouter(connect(mapStateToProps, { logoutUser })(Nav));
+
+// const Navi = props => (
+//     <NavLink
+//         exact
+//         {...props}
+//         activeClassName="active"
+//     />
+// );
+
+// const Navigation = () => (
+//     <Menu secondary>
+//         <Menu.Item as={Navi} to="/homes" name="homes" />
+//         <Menu.Item as={Navi} to="/aboutu" name="messages" />
+//         <Menu.Item as={Navi} to="/sample" name="friends" />
+//     </Menu>
+// );
