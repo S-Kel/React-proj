@@ -25,14 +25,16 @@ class AdminDashboard extends Component {
         const { loadEventsList, history, eventLoadError } = this.props;
         if (eventLoadError) return;
         loadEventsList(page)
-        history.push(`${history.location.pathname}?page=${page.activePage}`)
+        history.push(`?page=${page.activePage}`)
+        // history.push(`${history.location.pathname}?page=${page.activePage}`)
+        // history.push({ pathname: history.location.pathname, search: `?page=${new URLSearchParams({ clientId: page.activePage }).toString()}`});
     }
     render() { 
         console.log('This.props', this.props)
         console.log('This.props.page', this.props.page)
         const {events} = this.props;
         // Pagination
-        const per_page = 9;
+        const per_page = 9; //FOR TESTING PURPOSES ONLY & IS TO BE REPLACED
         const pages = Math.ceil(events.length/per_page);
         const current_page = this.props.page;
         const start_offset = (current_page - 1) * per_page;

@@ -19,10 +19,13 @@ export default (state = initialState, action) => {
        eventsList: action.payload.eventsList,
        eventError: false
      };
+
+    // THIS CASE, BELOW IS FOR TESTING PURPOSES AND IS TO BE REMOVED
    case LOAD_EVENTS_ACTION:
    console.log('LOAD_EVENT_ACTION', state)
      return {
        ...state,
+      //  eventList:
        eventError: false
      };
   case EVENTS_FETCH_ERROR_ACTION:
@@ -32,5 +35,5 @@ export default (state = initialState, action) => {
      };
    default:
      return state;
- }
+  }
 };
