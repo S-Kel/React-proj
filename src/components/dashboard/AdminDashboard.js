@@ -1,5 +1,19 @@
 import React, { Component } from 'react';
-import { Card, Button, Icon, Image, Dropdown, Input  } from 'semantic-ui-react'
+import { connect } from "react-redux";
+import { withRouter } from "react-router-dom";
+// import { push } from 'react-router-redux';
+import {
+  Card,
+  Button,
+  Icon,
+  Image,
+  Dropdown,
+  Input,
+  Pagination
+} from "semantic-ui-react";
+
+// local Imports
+import { fetchEventsList, loadEventsList } from '../../redux/actions/eventsListAction';
 
 class AdminDashboard extends Component {
     state = { data:[
@@ -7,32 +21,69 @@ class AdminDashboard extends Component {
         {id: 2, name: "test2", organisation: "company2", createdAt:"2/2/19", shortlisted: false}
     ] }
 
-    
+    handlePaginationChange = (evt, page)=>{
+        evt.preventDefault();
+        const {history} = this.props;
+        console.log("handlePaginationChange evt", evt);
+        console.log("this.props.history.location.pathName", history.location.pathname);
+        console.log("this.props.history.pushpage={page})", (`/?page=${page}`));
+        console.log("this.props.history.pushpage={page})", (page));
+        // this.props.dispatch(this.props.history.push(`dashboard/?page=${page.activePage}`))
+        this.props.loadEventsList(history.push(`${history.location.pathname}?page=${page.activePage}`))
+    }
     render() { 
-        const buildCards = this.state.data.map((Data, index) =>
-        
-        <React.Fragment key={index}>
-        <Card.Group centered>
-            <Card color="red" fluid > 
-            <Card.Content color="red"  >
-                    <input  type="hidden" value={Data.id}></input>
-                    <Card.Header key={Data.name} >{Data.name}</Card.Header>
-                    <Card.Meta key={Data.createdAt}>{Data.createdAt}</Card.Meta>
-                    <Card.Description key={Data.organisation}>{Data.organisation}</Card.Description>
-                    <Button animated inverted color="red">
-                    <Button.Content visible>VIEW</Button.Content>
-                    <Button.Content hidden>
-                        <Icon name='arrow right' />
-                    </Button.Content>
-                    </Button>
-                    <div>
-                    {Data.shortlisted ? (<Image floated='right' size='mini' src='/Assets/WBGS-logo.png' />):
-                    (<Image floated='right' size='mini' src='/Assets/WBGS-logo dulled.png' />)}
-                    </div>
-                </Card.Content>
-            </Card>
-        </Card.Group>
-        </React.Fragment>);
+        console.log('This.props', this.props)
+        console.log('This.props.page', this.props.page)
+        const {events} = this.props;
+        // Pagination
+        const per_page = 45;
+        const pages = Math.ceil(events.length/per_page);
+        const current_page = this.props.page;
+        const start_offset = (current_page - 1) * per_page;
+        let start_count = 0;
+
+        // Render
+        const buildCards = events.map((Data, index) => {       
+            if(index >= start_offset && start_count < per_page){
+                start_count++;
+                return(
+                    <Card.Group key={index} centered>
+                        <Card color="red" fluid>
+                            <Card.Content color="red">
+                            <input type="hidden" value={Data.id} />
+                            <Card.Header key={index}>{Data['title']}</Card.Header>
+                            <Card.Meta key={Data.createdAt}>
+                                {Data.createdAt}
+                            </Card.Meta>
+                            <Card.Description >
+                                {Data['body']}
+                            </Card.Description>
+                            <Button animated inverted color="red">
+                                <Button.Content visible>VIEW</Button.Content>
+                                <Button.Content hidden>
+                                <Icon name="arrow right" />
+                                </Button.Content>
+                            </Button>
+                            <div>
+                                {Data.shortlisted ? (
+                                <Image
+                                    floated="right"
+                                    size="mini"
+                                    src="/Assets/WBGS-logo.png"
+                                />
+                                ) : (
+                                <Image
+                                    floated="right"
+                                    size="mini"
+                                    src="/Assets/WBGS-logo dulled.png"
+                                />
+                                )}
+                            </div>
+                            </Card.Content>
+                        </Card>
+                    </Card.Group>
+                    )}else return null
+                });
 
         return (  
             <React.Fragment>
@@ -45,14 +96,43 @@ class AdminDashboard extends Component {
                     </Dropdown.Menu>
                 </Dropdown>
              </div>
-            <div className="cardContainer">
-             {buildCards}
-             </div>
-             
-
+            <div className="cardContainer">{buildCards}</div>            
+            <Pagination
+                style={{ color: 'red', marginTop: 10 }}
+                pointing
+                activePage={current_page}
+                boundaryRange={1}
+                ellipsisItem={{ content: <Icon name='ellipsis horizontal' />, icon: true }}
+                firstItem={{ content: <Icon name='angle double left' />, icon: true }}
+                lastItem={{ content: <Icon name='angle double right' />, icon: true }}
+                prevItem={{ content: <Icon name='angle left' />, icon: true }}
+                nextItem={{ content: <Icon name='angle right' />, icon: true }}
+                onPageChange={this.handlePaginationChange}
+                totalPages={pages}
+            />
             </React.Fragment>
         );
     }
 }
- 
-export default AdminDashboard;
+
+// const mapStateToProps =(state, location) =>{
+//     console.log("state | Location", state, location);
+//     console.log("location.location.search.split('='[1]): ", location.location.search.split('=')[1]);
+//     const page = location.location.search.split('=')[1];
+//    return {
+//       events: state.events.eventsList, 
+//       page: Number(page) || 1,
+//     //   dispatch:
+//     };    
+// } 
+const mapStateToProps = (state, ownProps) => ({
+  events: state.events.eventsList,
+  page: Number(ownProps.location.search.split('=')[1]) || 1,
+});
+
+export default withRouter(
+  connect(
+    mapStateToProps,
+    { fetchEventsList, loadEventsList, }
+  )(AdminDashboard)
+);

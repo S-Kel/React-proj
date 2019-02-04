@@ -22,25 +22,23 @@ html {
     height: 70vh;
 }
 
-.call-to-act{
+.call-to-act {
     display: grid;
     grid-template-columns: 10% 50% 30% 10%;
     grid-template-rows: 30vh;
     background: #cb3538;
-
 }
 
-.call1{
+.call1 {
     font-family: 'Montserrat', sans-serif;
-    color:white;
+    color: white;
     grid-column-start: 2;
-    grid-column-end:  3;
+    grid-column-end: 3;
     grid-row-start: 1;
     grid-row-end: 1;
     font-size: 3em;
     text-align: justify;
 }
-
 
 .sticky {
     position: fixed;
@@ -444,7 +442,7 @@ iframe {
     flex-direction: column;
     margin: 0 auto;
     width: 600px;
-    height: 100vh;
+    /* height: 100vh; */
 }
 
 .eoiCards {
