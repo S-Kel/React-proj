@@ -30,9 +30,9 @@ class Nav extends Component {
 
     render() {
         const loggedInAsAdmin = true;   //TODO: MUST REPLACED THIS LINE
-        const { loggedIn, emailToken } = this.props;
+        const { loggedIn, userRole, emailToken } = this.props;
         const { activeItem } = this.state;
-        console.log('emailToken', emailToken)
+        console.log('emailToken | userRole', emailToken, userRole)
         return (
             <Menu className="sticky" icon='labeled' size='mini' style={{ paddingLeft: 20, paddingRight: 20 }} >
                 <Menu.Item
@@ -55,7 +55,7 @@ class Nav extends Component {
                 >
                     <Icon name='info' />ABOUT
                 </Menu.Item>
-                {loggedIn && loggedInAsAdmin && (
+                {loggedIn && userRole === 'admin' && (
                     <Menu.Item
                         as={NavLink} to='/dashboard'
                         name='dashboard'
@@ -88,7 +88,7 @@ class Nav extends Component {
                 } */}
 
                 {
-                    loggedIn
+                    loggedIn && emailToken
                         ? (<LoginMenu
                             username={(emailToken.split('@')[0]).toUpperCase()}
                             onLogout={this.handleOnSignoutClick} />)
@@ -106,12 +106,16 @@ class Nav extends Component {
 };
 
 Nav.propTypes = {
-    logoutUser: PropTypes.func.isRequired
+    logoutUser: PropTypes.func.isRequired,
+    // emailToken: PropTypes.object.isRequired,
+    // userRole: PropTypes.object.isRequired,
+
 };
 
 const mapStateToProps = state => ({
     loggedIn: state.auth.loggedIn,
-    emailToken: state.auth.authenticatedUserEmail
+    emailToken: state.auth.authenticatedUserEmail,
+    userRole: state.auth.authenticatedUserRole,
 
 })
 
