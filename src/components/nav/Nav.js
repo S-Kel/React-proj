@@ -69,20 +69,20 @@ class Nav extends Component {
                         <Icon name='users' />DASHBOARD
                     </Menu.Item>
                 }
-
-                <Menu.Item
-                    // style={dodgerRed}
-                    position='right'
-                    // as={Navi} to="/create" name="create"
-                    as={NavLink} to='/create'
-                    name='create'
-                    active={activeItem === 'add'}
-                    onClick={this.handleItemClick}
-                    activeClassName="active red"
-                    style={dodgerRed}
-                >
-                    <Icon name='add circle' />CREATE EVENT
-                </Menu.Item>
+                {userRole !== 'admin' &&
+                    <Menu.Item
+                        position='right'
+                        // as={Navi} to="/create" name="create"
+                        as={NavLink} to='/create'
+                        name='create'
+                        active={activeItem === 'add'}
+                        onClick={this.handleItemClick}
+                        activeClassName="active red"
+                        style={dodgerRed}
+                    >                
+                        <Icon name='add circle' />CREATE EVENT               
+                    </Menu.Item>
+                }
                 {/* {loggedIn && loggedInAsAdmin && (<Menu.Item
                         as={NavLink} to='/dashboard'
                         name='dashboard'

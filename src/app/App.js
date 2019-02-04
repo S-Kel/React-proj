@@ -42,7 +42,10 @@ class App extends Component {
                     <Route path="/dashboard" component={AdminDashboard} />
                   }
                   <Route path="/about" component={About} />
-                  <Route path="/create" component={CreateEventForm} />
+                  {
+                    userRole !== 'admin' && 
+                    <Route path="/create" component={CreateEventForm} />
+                  }
                   <Route path="/users/register" component={Authentication} />
                   <Route path="/users/login" component={Authentication} />
                   <Route path="/users/logout" component={Authentication} />
