@@ -54,7 +54,7 @@ class Nav extends Component {
                     style={dodgerRed}
                 >
                     <Icon name='info' />ABOUT
-                </Menu.Item>  
+                </Menu.Item>
                 {loggedIn && loggedInAsAdmin && (
                     <Menu.Item
                         as={NavLink} to='/dashboard'
