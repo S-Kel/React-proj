@@ -53,9 +53,7 @@ class AdminDashboard extends Component {
                     </Card.Content>
                 </Card>
             </Card.Group>
-            </React.Fragment>)}
-    
-    render() {
+            </React.Fragment>)
         
         return (  
             <React.Fragment>
@@ -71,8 +69,8 @@ class AdminDashboard extends Component {
             <div className="cardContainer">
                 {buildcards}
             </div>
-        </React.Fragment>
-               );
+        </React.Fragment>);
+               
     }
 }
  
