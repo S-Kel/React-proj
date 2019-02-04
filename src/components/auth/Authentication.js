@@ -25,7 +25,7 @@ class Authentication extends Component {
     };
 
     render() {
-        const { loggedIn, role, lastLocation } = this.props
+        const { loggedIn, role } = this.props
         // const from = lastLocation ? lastLocation.pathname : '/';
         const authType = this.props.history.location.pathname.split('/')[2];
         console.log('props here all the way', this.props.history)

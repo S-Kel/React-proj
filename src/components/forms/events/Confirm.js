@@ -2,24 +2,19 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import {
  Grid,
- List,
- Segment,
- Header,
  Form,
- Checkbox,
  Button,
- Dropdown,
- Label,
  Icon,
- Input
+ List,
+ Segment
 } from 'semantic-ui-react';
 
-import {showResults } from './EventForm';
+// import {showResults } from './EventForm';
 
-// import { Field, FormSpy } from "react-final-form";
+// import {FormSpy } from "react-final-form";
 
 import { getFormState } from "../../../redux/reducers/reduxFormReducer";
-import FormStateToRedux from "../FormStateToRedux";
+// import FormStateToRedux from "../FormStateToRedux";
 // import { InputTextArea, InputCheckBox, DropdownMenu } from '../eventFormfields/EventFormfields';
 
 
