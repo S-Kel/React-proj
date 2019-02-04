@@ -13,8 +13,8 @@ class AdminDashboard extends Component {
       this.setState({ data: response.data.data })
 
     })
-    }   
-    
+    } 
+
     handleSeeShortlist = event =>{
         event.preventDefault()
         api.get('/dashboard/shortlist?pageNum=x&limit=y').then((response) =>{
@@ -29,7 +29,31 @@ class AdminDashboard extends Component {
     })
     }
     
-
+    render() { 
+         const buildcards = this.state.data.map((Data) =>
+        
+            <React.Fragment>
+            <Card.Group centered>
+                <Card color="red" fluid > 
+                <Card.Content color="red"  >
+                        <input  type="hidden" value={Data._id}></input>
+                        <Card.Header key={Data.first_name} >{Data.host.first_name}</Card.Header>
+                        <Card.Meta key={Data.createdAt}>{Data.createdAt}</Card.Meta>
+                        <Card.Description key={Data.organisation}>{Data.host.organisation}</Card.Description>
+                        <Button animated inverted color="red">
+                        <Button.Content visible>VIEW</Button.Content>
+                        <Button.Content hidden>
+                            <Icon name='arrow right' />
+                        </Button.Content>
+                        </Button>
+                        <div>
+                        {Data.criteria.shortlisted ? (<Image floated='right' size='mini' src='/Assets/WBGS-logo.png' />):
+                        (<Image floated='right' size='mini' src='/Assets/WBGS-logo dulled.png' />)}
+                        </div>
+                    </Card.Content>
+                </Card>
+            </Card.Group>
+            </React.Fragment>)}
     
     render() {
         
@@ -45,33 +69,10 @@ class AdminDashboard extends Component {
                 </Dropdown>
              </div>
             <div className="cardContainer">
-             {this.state.data.map((Data) =>
-        
-                <React.Fragment>
-                <Card.Group centered>
-                    <Card color="red" fluid > 
-                    <Card.Content color="red"  >
-                            <input  type="hidden" value={Data._id}></input>
-                            <Card.Header key={Data.first_name} >{Data.host.first_name}</Card.Header>
-                            <Card.Meta key={Data.createdAt}>{Data.createdAt}</Card.Meta>
-                            <Card.Description key={Data.organisation}>{Data.host.organisation}</Card.Description>
-                            <Button animated inverted color="red">
-                            <Button.Content visible>VIEW</Button.Content>
-                            <Button.Content hidden>
-                                <Icon name='arrow right' />
-                            </Button.Content>
-                            </Button>
-                            <div>
-                            {Data.criteria.shortlisted ? (<Image floated='right' size='mini' src='/Assets/WBGS-logo.png' />):
-                            (<Image floated='right' size='mini' src='/Assets/WBGS-logo dulled.png' />)}
-                            </div>
-                        </Card.Content>
-                    </Card>
-                </Card.Group>
-                </React.Fragment>)}
-             </div>
-            </React.Fragment>
-        );
+                {buildcards}
+            </div>
+        </React.Fragment>
+               );
     }
 }
  

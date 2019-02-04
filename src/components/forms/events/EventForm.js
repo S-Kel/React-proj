@@ -52,6 +52,9 @@ class CreateEventForm extends Component {
 
   handleFormSubmit = async values => { 
     // const location = [values.suburb, values.zipCode, values.country];
+    const key_influencers = values.key_influencers ? 
+                             [...values.key_influencers.split(",").map(s => s.trim())] :
+                             [];
     const eventData = {
       first_name: values.first_name,
       last_name: values.last_name,
@@ -64,12 +67,12 @@ class CreateEventForm extends Component {
       best_time: values.best_time,
       local_council_relationship: values.local_council_relationship,
       local_council_details: values.local_council_details,
-      key_influencers: [
-        ...values.key_influencers.split(",").map(s => s.trim())
-      ],
+      key_influencers,
       location: [values.suburb, values.zipCode, values.country]
     };
-
+    // console.log("error submitting form", error);
+    // showResults(eventData);
+    // return;
     try{
          console.log(JSON.stringify(eventData));
          const response = await api.post("/expression-of-interest", eventData);

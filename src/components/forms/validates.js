@@ -1,18 +1,20 @@
-import { ARRAY_ERROR} from "final-form";
+// import { ARRAY_ERROR} from "final-form";
+import isValidEmail from '../../../src/helperFunctions/emailsValidator';
 var validUrl = require("valid-url");
+
 export default values => {
  const errors = {}
  if (!values.first_name) {
-  errors.first_name = 'Required'
+   errors.first_name = 'First name must be a string of alphabetical characters, and is required';
  }
  if (!values.last_name) {
-  errors.lastName = 'Required'
+   errors.last_name = 'First name must be a string of alphabetical characters, and is required';
  }
- if (!values.email) {
-  errors.email = 'Required'
+ if (!isValidEmail(values.email)){
+   errors.email = "Email must be a string in a valid email format, and is required";
  }
  if (!values.organisation) {
-  errors.organisation = "Required";
+   errors.organisation = 'Organisation must be a string, and is required';
  }
 
  // VALIDATING SOCIAL MEDIA URL
@@ -39,7 +41,8 @@ export default values => {
  }
  
 if (!values.description) {
-  errors.description = "Required";
+  errors.description =
+    " Description must be a string of text with a maximum length of 5000 characters, and is required ";
  }
  if (!values.suburb) {
   errors.suburb = "Required";
@@ -48,7 +51,7 @@ if (!values.description) {
   errors.zipCode = "Required";
  }
  if (!values.local_council_details) {
-  errors.local_council_details = "Required";
+   errors.local_council_details = ' Local council details must be a string of text with a maximum length of 200 characters, and is optional';
  }
   console.log("All Errors to See", errors);
 //  let socialsArrayErrors = [];

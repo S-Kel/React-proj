@@ -5,7 +5,7 @@ function LoginMenu(props) {
   const { onLogout,username } = props;
   return (
     <Menu.Item position="right">
-      <Image avatar spaced="right" src='/assets/user.png' />
+      <Image avatar spaced="right" src='/Assets/user.png' style={{marginBottom: 10}} />
       <Dropdown pointing="top right" text={username}>
         <Dropdown.Menu>
           <Dropdown.Item text="My Profile" icon="user" />
