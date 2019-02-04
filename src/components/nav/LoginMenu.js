@@ -5,7 +5,7 @@ import { Dropdown, Menu, Image } from 'semantic-ui-react';
 function LoginMenu(props) {
   const { onLogout, username } = props;
   return (
-    <Menu.Item position="right">
+    <Menu.Item position="right" >
       <Image avatar spaced="right" src='/Assets/user.png' style={{ marginBottom: 10 }} />
       <Dropdown pointing="top right" text={username}>
         <Dropdown.Menu>
@@ -17,5 +17,6 @@ function LoginMenu(props) {
     </Menu.Item>
   )
 }
+
 
 export default LoginMenu

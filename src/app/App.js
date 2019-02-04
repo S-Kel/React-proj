@@ -25,40 +25,43 @@ class App extends Component {
   //   this.props.simpleAction();
   // };
   render() {
-    // const user = this.props.user;
-    // console.log(user);
+    const { loggedIn, userRole } = this.props;
+    console.log('loggedIn, userRole', loggedIn, userRole);
     return (
       <div className="App">
         <Router>
           <div>
-          <LastLocationProvider>
-            <Fragment>
-              <Nav/>
-              <Switch>
-                <Route exact path="/"component={LandingPg}/>
-                <Route path="/details" component={EOIDetails}/>
-                <Route path="/dashboard"component={AdminDashboard}/>
-                <Route path="/about" component={About} />
-                <Route path="/create" component={CreateEventForm} />
-                <Route path="/users/register" component={Authentication} />
-                <Route path="/users/login" component={Authentication} />
-                <Route path="/users/logout" component={Authentication} />
-                <Route component={NotFound} />
-              </Switch>
-            </Fragment>
-            
-          </LastLocationProvider>
-        </div>
+            <LastLocationProvider>
+              <Fragment>
+                <Nav />
+                <Switch>
+                  <Route exact path="/" component={LandingPg} />
+                  <Route path="/details" component={EOIDetails} />
+                  {
+                    loggedIn && userRole === 'admin' &&
+                    <Route path="/dashboard" component={AdminDashboard} />
+                  }
+                  <Route path="/about" component={About} />
+                  <Route path="/create" component={CreateEventForm} />
+                  <Route path="/users/register" component={Authentication} />
+                  <Route path="/users/login" component={Authentication} />
+                  <Route path="/users/logout" component={Authentication} />
+                  <Route component={NotFound} />
+                </Switch>
+              </Fragment>
+
+            </LastLocationProvider>
+          </div>
         </Router>
       </div >
-      
-      
+
+
     );
   };
 }
 const mapPropsToTypes = state => ({
-  // simpleReducer: state.simpleReducer,
-  // user: state.user.loggedInUser
+  userRole: state.auth.authenticatedUserRole,
+  loggedIn: state.auth.loggedIn,
 });
 
 export default connect(
