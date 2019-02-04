@@ -14,7 +14,7 @@ import {
 
 // local Imports
 import { fetchEventsList, loadEventsList } from '../../redux/actions/eventsListAction';
-
+import PaginateEventsList from "./PaginateEventsList";
 class AdminDashboard extends Component {
     state = { data:[
         {id: 1, name: "Mitchell Heiser", organisation: "company1", createdAt:"1/2/19", shortlisted: true},
@@ -34,7 +34,7 @@ class AdminDashboard extends Component {
         console.log('This.props.page', this.props.page)
         const {events} = this.props;
         // Pagination
-        const per_page = 9; //FOR TESTING PURPOSES ONLY & IS TO BE REPLACED
+        const per_page = 5; //FOR TESTING PURPOSES ONLY & IS TO BE REPLACED
         const pages = Math.ceil(events.length/per_page);
         const current_page = this.props.page;
         const start_offset = (current_page - 1) * per_page;
@@ -54,9 +54,9 @@ class AdminDashboard extends Component {
                                 {Data.createdAt}
                             </Card.Meta>
                             <Card.Description >
-                                {Data['body']}
+                                {Data['body'].slice(0, 70) + '...'}
                             </Card.Description>
-                            <Button animated inverted color="red">
+                            <Button style={{marginTop: '15px'}} animated inverted color="red">
                                 <Button.Content visible>VIEW</Button.Content>
                                 <Button.Content hidden>
                                 <Icon name="arrow right" />
@@ -94,20 +94,10 @@ class AdminDashboard extends Component {
                     </Dropdown.Menu>
                 </Dropdown>
              </div>
+
+            <div><PaginateEventsList activePage={current_page} onPageChange={this.handlePaginationChange} totalPages={pages} /></div>
             <div className="cardContainer">{buildCards}</div>            
-            <Pagination
-                style={{ color: 'red', marginTop: 10 }}
-                pointing
-                activePage={current_page}
-                boundaryRange={1}
-                ellipsisItem={{ content: <Icon name='ellipsis horizontal' />, icon: true }}
-                firstItem={{ content: <Icon name='angle double left' />, icon: true }}
-                lastItem={{ content: <Icon name='angle double right' />, icon: true }}
-                prevItem={{ content: <Icon name='angle left' />, icon: true }}
-                nextItem={{ content: <Icon name='angle right' />, icon: true }}
-                onPageChange={this.handlePaginationChange}
-                totalPages={pages}
-            />
+            <div><PaginateEventsList activePage={current_page} onPageChange={this.handlePaginationChange} totalPages={pages} /></div>
             </React.Fragment>
         );
     }
