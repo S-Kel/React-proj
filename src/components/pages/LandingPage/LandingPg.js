@@ -17,8 +17,20 @@ onClickMore() {
             <div className="banner-text">
                 <img src="/Assets/WBGS-logo.png" className="logo"/>
                 <hr/>  
-                <GarageSaleVid videoId='SkiTGS_ThA0'/>
-                <div className="social-links">
+                <GarageSaleVid videoId='SkiTGS_ThA0'/>   
+            </div>
+            <div className="call-to-act">
+            <div className="call1">
+                <p>WE BELIEVE WE CAN MAKE A POSITIVE IMPACT ON PEOPLE’S LIVES AND 
+                THE FUTURE OF THE PLANET THROUGH THE EVENTS AND EXPERIENCES WE CREATE.</p>
+            </div>
+        </div>
+        </Grid>
+        <div>
+            <Button inverted size="massive" floated="right" onClick={this.onClickMore}> Find out more </Button>
+        </div>          
+        <InfoPg/>
+        <div className="social-links">
                     <a href="http://google.com" rel="noopener noreferrer" target="_blank">
                         <i className="fa fa-linkedin-square" aria-hidden="true" />
                     </a>
@@ -28,14 +40,7 @@ onClickMore() {
                     <a href="http://google.com" rel="noopener noreferrer" target="_blank">
                         <i className="fa fa-youtube-square" aria-hidden="true" />
                     </a>
-                </div>      
-            </div>
-            <div>
-                <Button inverted size="massive" floated="right" onClick={this.onClickMore}> Find out more </Button>
-            </div>
-           
-        </Grid>
-        <InfoPg/>
+        </div>   
     </div>
     )
   }

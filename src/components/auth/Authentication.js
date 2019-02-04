@@ -5,23 +5,11 @@ import RegistrationForm from './RegistrationForm';
 import LoginForm from './LoginForm';
 import PropTypes from 'prop-types';
 import { withLastLocation } from 'react-router-last-location';
-
+import {LandingPg} from '../pages/LandingPage/LandingPg'
 import { authenticateUser, logoutUser } from "../../redux/actions/authenticateUserAction";
 
 class Authentication extends Component {
 
-    componentDidMount = () => {
-        // if (this.props.authType === 'logout') {
-        //     this.props.logoutUser();
-        //     console.log('You have been logged out');
-        // }
-    }
-
-    componentDidUpdate = (prevProps, prevState) => {
-        // const { loggedIn, user, error } = this.props
-        // loggedIn && console.log('You have been logged in as', user);
-        // error && console.log(error.message);
-    }
 
     handleSubmit = (event) => {
         event.preventDefault();
@@ -43,8 +31,8 @@ class Authentication extends Component {
         console.log('props here all the way', this.props.history)
         return (
             <Fragment>
-                {loggedIn && <Redirect to={from} />}
-                {authType === 'logout' && <Redirect to={from} />}
+                {loggedIn ? <Redirect to="/dashboard" /> : <Redirect to="/users/login"/>}
+                {authType === 'logout' && <Redirect to="/" />}
                 {authType === 'register' && <RegistrationForm submit={this.handleSubmit} />}
                 {authType === 'login' && <LoginForm submit={this.handleSubmit} />}
             </Fragment>
