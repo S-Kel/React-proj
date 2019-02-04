@@ -32,7 +32,7 @@ class Authentication extends Component {
         return (
             <Fragment>
                 {loggedIn && role === 'admin' && <Redirect to='/dashboard' />}
-                {loggedIn && role !== 'admin' && <Redirect to='/' />}
+                {loggedIn && role === 'user' && <Redirect to='/' />}
                 {authType === 'logout' && <Redirect to='/' />}
                 {authType === 'register' && <RegistrationForm submit={this.handleSubmit} />}
                 {authType === 'login' && <LoginForm submit={this.handleSubmit} />}
