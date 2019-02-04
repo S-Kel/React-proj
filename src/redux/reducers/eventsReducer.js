@@ -8,7 +8,7 @@ import initialFakeUsers from "../../components/dashboard/fakeDatat";
 
 const initialState = {
  eventsList: initialFakeUsers,
- eventError: null
+ eventError: false
 };
 
 

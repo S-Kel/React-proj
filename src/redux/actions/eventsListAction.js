@@ -21,10 +21,14 @@ export const fetchEventsList = (userRoute) => async dispatch => {
  }
 };
 
-export const loadEventsList = () => async dispatch => {
+export const loadEventsList = (url) => async dispatch => {
+  // Fetch data from api with axios.get
   console.log("loadEventsList Page");
-    dispatch({
-      type: LOAD_EVENTS_ACTION,
-      // payload: page
-    });
+
+  //Dispatch the data to store
+  dispatch({
+    type: LOAD_EVENTS_ACTION,
+    // payload: page
+  });
+    //Return load error in case of error
   };

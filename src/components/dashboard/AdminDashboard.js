@@ -22,21 +22,17 @@ class AdminDashboard extends Component {
     ] }
 
     handlePaginationChange = (evt, page)=>{
-        evt.preventDefault();
-        const {history} = this.props;
-        console.log("handlePaginationChange evt", evt);
-        console.log("this.props.history.location.pathName", history.location.pathname);
-        console.log("this.props.history.pushpage={page})", (`/?page=${page}`));
-        console.log("this.props.history.pushpage={page})", (page));
-        // this.props.dispatch(this.props.history.push(`dashboard/?page=${page.activePage}`))
-        this.props.loadEventsList(history.push(`${history.location.pathname}?page=${page.activePage}`))
+        const { loadEventsList, history, eventLoadError } = this.props;
+        if (eventLoadError) return;
+        loadEventsList(page)
+        history.push(`${history.location.pathname}?page=${page.activePage}`)
     }
     render() { 
         console.log('This.props', this.props)
         console.log('This.props.page', this.props.page)
         const {events} = this.props;
         // Pagination
-        const per_page = 45;
+        const per_page = 9;
         const pages = Math.ceil(events.length/per_page);
         const current_page = this.props.page;
         const start_offset = (current_page - 1) * per_page;
@@ -128,6 +124,7 @@ class AdminDashboard extends Component {
 const mapStateToProps = (state, ownProps) => ({
   events: state.events.eventsList,
   page: Number(ownProps.location.search.split('=')[1]) || 1,
+  eventLoadError: state.events.eventError,
 });
 
 export default withRouter(
