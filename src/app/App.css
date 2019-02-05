@@ -426,6 +426,7 @@ iframe {
     display: inline-flex;
     width: 100%;
     margin: 0 auto;
+    height: 300px;
   }
   
   .Icon{

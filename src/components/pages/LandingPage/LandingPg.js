@@ -32,6 +32,7 @@ onClickMore() {
         </div>
                  
         <InfoPg/> 
+        <Footer />
     </div>
     
     )
