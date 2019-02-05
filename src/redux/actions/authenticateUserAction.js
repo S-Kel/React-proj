@@ -5,11 +5,9 @@ const authenticateUser = (userRoute, postData) => async dispatch => {
   try {
     const response = await api.post(userRoute, postData);
 
-    const userEmail = response.data;
-
     dispatch({
       type: AUTH_ACTION,
-      payload: userEmail
+      payload: response.data
     });
   } catch (error) {
     dispatch({

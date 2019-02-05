@@ -5,7 +5,7 @@ import RegistrationForm from './RegistrationForm';
 import LoginForm from './LoginForm';
 import PropTypes from 'prop-types';
 import { withLastLocation } from 'react-router-last-location';
-import {LandingPg} from '../pages/LandingPage/LandingPg'
+import { LandingPg } from '../pages/LandingPage/LandingPg'
 import { authenticateUser, logoutUser } from "../../redux/actions/authenticateUserAction";
 
 class Authentication extends Component {
@@ -25,14 +25,15 @@ class Authentication extends Component {
     };
 
     render() {
-        const { loggedIn, lastLocation } = this.props
-        const from = lastLocation ? lastLocation.pathname : '/';
+        const { loggedIn, role } = this.props
+        // const from = lastLocation ? lastLocation.pathname : '/';
         const authType = this.props.history.location.pathname.split('/')[2];
         console.log('props here all the way', this.props.history)
         return (
             <Fragment>
-                {loggedIn ? <Redirect to="/dashboard" /> : <Redirect to="/users/login"/>}
-                {authType === 'logout' && <Redirect to="/" />}
+                {loggedIn && role === 'admin' && <Redirect to='/dashboard' />}
+                {loggedIn && role === 'user' && <Redirect to='/' />}
+                {authType === 'logout' && <Redirect to='/' />}
                 {authType === 'register' && <RegistrationForm submit={this.handleSubmit} />}
                 {authType === 'login' && <LoginForm submit={this.handleSubmit} />}
             </Fragment>
@@ -51,6 +52,7 @@ Authentication.propTypes = {
 const mapStateToProps = state => ({
     loggedIn: state.auth.loggedIn,
     user: state.auth.authenticatedUserEmail,
+    role: state.auth.authenticatedUserRole,
     error: state.auth.authError
 })
 
