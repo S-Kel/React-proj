@@ -19,15 +19,17 @@ import { fetchEventsList, loadEventsList } from '../../redux/actions/eventsListA
 import PaginateEventsList from "./PaginateEventsList";
 class AdminDashboard extends Component {
     constructor(props) {
-        super(props);
-    
-    this.state = { data: [] };
+        super(props);    
+        this.state = { data: [] };
     }
-    componentDidMount(){
-    api.get('/dashboard?pageNum=x&limit=y').then((response) => {
-      this.setState({ data: response.data.data })
 
-// <<<<<<< event-pagination
+    componentDidMount(){
+        api.get('/dashboard?pageNum=x&limit=y')
+            .then((response) => this.setState({ data: response.data.data }))
+            
+    }
+
+
     handlePaginationChange = (evt, page)=>{
         const { loadEventsList, history, eventLoadError } = this.props;
         if (eventLoadError) return;
@@ -36,6 +38,7 @@ class AdminDashboard extends Component {
         // history.push(`${history.location.pathname}?page=${page.activePage}`)
         // history.push({ pathname: history.location.pathname, search: `?page=${new URLSearchParams({ clientId: page.activePage }).toString()}`});
     }
+
     render() { 
         console.log('This.props', this.props)
         console.log('This.props.page', this.props.page)
@@ -89,54 +92,8 @@ class AdminDashboard extends Component {
                     </Card.Group>
                     )}else return null
                 });
-
-// =======
-//     })
-//     } 
-
-//     handleSeeShortlist = event =>{
-//         event.preventDefault()
-//         api.get('/dashboard/shortlist?pageNum=x&limit=y').then((response) =>{
-//             this.setState({data: response.data.data})
-//         })
-//     }
-
-//     handleSeeAll = event => {
-//         event.preventDefault()
-//         api.get('/dashboard?pageNum=x&limit=y').then((response) => {
-//             this.setState({ data: response.data.data })
-//     })
-//     }
-    
-//     render() { 
-//          const buildcards = this.state.data.map((Data) =>
-        
-//             <React.Fragment>
-//             <Card.Group centered>
-//                 <Card color="red" fluid > 
-//                 <Card.Content color="red"  >
-//                         <input  type="hidden" value={Data._id}></input>
-//                         <Card.Header key={Data.first_name} >{Data.host.first_name}</Card.Header>
-//                         <Card.Meta key={Data.createdAt}>{Data.createdAt}</Card.Meta>
-//                         <Card.Description key={Data.organisation}>{Data.host.organisation}</Card.Description>
-//                         <Button animated inverted color="red">
-//                         <Button.Content visible>VIEW</Button.Content>
-//                         <Button.Content hidden>
-//                             <Icon name='arrow right' />
-//                         </Button.Content>
-//                         </Button>
-//                         <div>
-//                         {Data.criteria.shortlisted ? (<Image floated='right' size='mini' src='/Assets/WBGS-logo.png' />):
-//                         (<Image floated='right' size='mini' src='/Assets/WBGS-logo dulled.png' />)}
-//                         </div>
-//                     </Card.Content>
-//                 </Card>
-//             </Card.Group>
-//             </React.Fragment>)
-        
-// >>>>>>> master
         return (  
-            <React.Fragment>
+         <React.Fragment>
             <div className="filter">
                 <Dropdown color="red" text='Filter By' icon='filter' floating labeled button className='icon'>
                     <Dropdown.Menu >
@@ -146,38 +103,17 @@ class AdminDashboard extends Component {
                     </Dropdown.Menu>
                 </Dropdown>
              </div>
-// <<<<<<< event-pagination
-            <div>
-                <FlashMessage 
-                color='teal' 
-                message={'You have successfully logged in...   '} 
-                />
-            </div>
+            <div> <FlashMessage color='teal' message={'You have successfully logged in...   '}  /> </div>
             <div><PaginateEventsList activePage={current_page} onPageChange={this.handlePaginationChange} totalPages={pages} /></div>
             <div className="cardContainer">{buildCards}</div>            
             <div><PaginateEventsList activePage={current_page} onPageChange={this.handlePaginationChange} totalPages={pages} /></div>
-            </React.Fragment>
+         </React.Fragment>
         );
-// =======
-//             <div className="cardContainer">
-//                 {buildcards}
-//             </div>
-//         </React.Fragment>);
-               
-// >>>>>>> master
     }
+
 }
 
-// const mapStateToProps =(state, location) =>{
-//     console.log("state | Location", state, location);
-//     console.log("location.location.search.split('='[1]): ", location.location.search.split('=')[1]);
-//     const page = location.location.search.split('=')[1];
-//    return {
-//       events: state.events.eventsList, 
-//       page: Number(page) || 1,
-//     //   dispatch:
-//     };    
-// } 
+
 const mapStateToProps = (state, ownProps) => ({
   events: state.events.eventsList,
   page: Number(ownProps.location.search.split('=')[1]) || 1,
