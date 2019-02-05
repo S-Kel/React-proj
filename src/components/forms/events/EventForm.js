@@ -3,7 +3,7 @@ import { Form as FinalForm } from "react-final-form";
 import arrayMutators from "final-form-arrays";
 
 import createDecorator from "final-form-focus";
-
+import Footer from '../../pages/Footer'
 import RenderEventForm from '././renderEventForm';
 import isUri from 'valid-url';
 import validate from '../validates';
@@ -104,6 +104,7 @@ class CreateEventForm extends Component {
           render={RenderEventForm}
           />
         <FormStateFromRedux form="userForm" />
+        <Footer/>
       </div>
     )
   }

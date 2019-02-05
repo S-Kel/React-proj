@@ -3,6 +3,7 @@ import {Grid, Cell} from 'react-mdl'
 import GarageSaleVid from './Youtube'
 import InfoPg from './InfoPg';
 import { Button } from 'semantic-ui-react'
+import Footer from '../Footer'
 
 class LandingPg extends Component {
 
@@ -40,8 +41,10 @@ onClickMore() {
                     <a href="http://google.com" rel="noopener noreferrer" target="_blank">
                         <i className="fa fa-youtube-square" aria-hidden="true" />
                     </a>
-        </div>   
+        </div>
+        <Footer/>   
     </div>
+    
     )
   }
 }
