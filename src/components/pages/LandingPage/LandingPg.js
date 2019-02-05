@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from "react-redux";
 import { Button } from 'semantic-ui-react';
-import { Button } from 'semantic-ui-react';
 import {Grid, Cell} from 'react-mdl';
 
 import GarageSaleVid from './Youtube'
