@@ -3,7 +3,7 @@ import { Form as FinalForm } from "react-final-form";
 import arrayMutators from "final-form-arrays";
 
 import createDecorator from "final-form-focus";
-
+import Footer from '../../pages/Footer'
 import RenderEventForm from '././renderEventForm';
 import isUri from 'valid-url';
 import validate from '../validates';
@@ -12,6 +12,7 @@ import FormStateFromRedux from "../FormStateFromRedux";
 
 
 var validUrl = require('valid-url');
+
 
 
 const sleep = ms => new Promise(resolve => setTimeout(resolve, ms));
@@ -81,7 +82,7 @@ class CreateEventForm extends Component {
 
          showResults(eventConfirmation);
        }catch(error){
-      console.log('error submitting form', error)
+      console.error('error submitting form', error)
     }
     
   }
@@ -103,6 +104,7 @@ class CreateEventForm extends Component {
           render={RenderEventForm}
           />
         <FormStateFromRedux form="userForm" />
+        <Footer/>
       </div>
     )
   }
