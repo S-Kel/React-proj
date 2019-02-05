@@ -3,9 +3,10 @@ import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import { Button, Form, Grid, Header, Image, Message, Segment } from 'semantic-ui-react'
 
+import IsLoadingInfoMessage from "../forms/Messages/loadingInfoMessage";
 
 export default function LoginForm(props) {
-  const { submit } = props
+  const { submit, loading } = props
   return (
     <div className='login-form'>
       <Grid textAlign='center' style={{ height: '100%' }} verticalAlign='middle'>
@@ -26,6 +27,7 @@ export default function LoginForm(props) {
                 type='password'
               />
               <Button color='teal' fluid size='large'>Login</Button>
+              {loading && <IsLoadingInfoMessage info='Just one moment' />}
             </Segment>
           </Form>
           <Message>

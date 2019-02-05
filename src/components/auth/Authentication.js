@@ -25,17 +25,17 @@ class Authentication extends Component {
     };
 
     render() {
-        const { loggedIn, role } = this.props
+        const { isLoggingIn, loggedIn, role } = this.props
         // const from = lastLocation ? lastLocation.pathname : '/';
         const authType = this.props.history.location.pathname.split('/')[2];
-        console.log('props here all the way', this.props.history)
+        console.log('props here all the way | isLoggingIn', this.props.history, isLoggingIn)
         return (
             <Fragment>
                 {loggedIn && role === 'admin' && <Redirect to='/dashboard' />}
                 {loggedIn && role === 'user' && <Redirect to='/' />}
                 {authType === 'logout' && <Redirect to='/' />}
-                {authType === 'register' && <RegistrationForm submit={this.handleSubmit} />}
-                {authType === 'login' && <LoginForm submit={this.handleSubmit} />}
+                {authType === 'register' && <RegistrationForm loading={isLoggingIn} submit={this.handleSubmit} />}
+                {authType === 'login' && <LoginForm loading={isLoggingIn} submit={this.handleSubmit} />}
             </Fragment>
         );
     };
@@ -51,6 +51,7 @@ Authentication.propTypes = {
 
 const mapStateToProps = state => ({
     loggedIn: state.auth.loggedIn,
+    isLoggingIn: state.auth.logging,
     user: state.auth.authenticatedUserEmail,
     role: state.auth.authenticatedUserRole,
     error: state.auth.authError
