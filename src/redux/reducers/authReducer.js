@@ -10,6 +10,7 @@ import {
 const initialState = {
   loggedIn: false,
   logging: false,
+  loggingFromSession: false,
   authenticatedUserEmail: null,
   authenticatedUserRole: null,
   authError: null
@@ -29,6 +30,7 @@ export default (state = initialState, action) => {
         loggedIn: true,
         logging: false,
         logout: false,
+        loggingFromSession: false,
         authenticatedUserEmail: action.payload.email,
         authenticatedUserRole: action.payload.role,
         authError: null
@@ -40,6 +42,7 @@ export default (state = initialState, action) => {
         loggedIn: true,
         logging: false,
         logout: false,
+        loggingFromSession: true,
         authenticatedUserEmail: action.payload.email,
         authenticatedUserRole: action.payload.role,
         authError: null
@@ -50,6 +53,7 @@ export default (state = initialState, action) => {
         loggedIn: false,
         logging: false,
         logout: false,
+        loggingFromSession: false,
         authError: null
       };
     case LOGOUT_ACTION:
@@ -57,6 +61,7 @@ export default (state = initialState, action) => {
         ...state,
         loggedIn: false,
         logout: true,
+        loggingFromSession: false,
         authenticatedUserEmail: null,
         authenticatedUserRole: null
       };

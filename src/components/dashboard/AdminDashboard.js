@@ -166,8 +166,8 @@ class AdminDashboard extends Component {
             totalPages={pages}
           />
         </div>
-        <div className="cardContainer">{buildcards2}</div>
-        {/* <div className="cardContainer">{buildCards}</div> */}
+        {/* <div className="cardContainer">{buildcards2}</div> */}
+        <div className="cardContainer">{buildCards}</div>
         <div>
           <PaginateEventsList
             activePage={current_page}
