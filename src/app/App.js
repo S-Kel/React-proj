@@ -18,8 +18,12 @@ import LandingPg from "../components/pages/LandingPage/LandingPg";
 import InfoPg from "../components/pages/LandingPage/InfoPg"
 import EOIDetails from "../components/dashboard/EOIDetail"
 import AdminDashboard from "../components/dashboard/AdminDashboard"
+import { getSessionAuthToken} from "../redux/actions/authenticateUserAction";
 
 class App extends Component {
+  componentDidMount() {
+    this.props.getSessionAuthToken("AuthToken");
+  }
 render() {
     const { loggedIn, userRole } = this.props;
     console.log('loggedIn, userRole', loggedIn, userRole);
@@ -63,5 +67,5 @@ const mapPropsToTypes = state => ({
 
 export default connect(
   mapPropsToTypes,
-  {}
+  { getSessionAuthToken}
 )(App);
