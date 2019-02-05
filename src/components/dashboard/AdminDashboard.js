@@ -8,11 +8,10 @@ import {
   Icon,
   Image,
   Dropdown,
-  Input,
-  Pagination
 } from "semantic-ui-react";
 
 // local Imports
+import FlashMessage from "../forms/Messages/FlashMessage";
 import { fetchEventsList, loadEventsList } from '../../redux/actions/eventsListAction';
 import PaginateEventsList from "./PaginateEventsList";
 class AdminDashboard extends Component {
@@ -94,7 +93,12 @@ class AdminDashboard extends Component {
                     </Dropdown.Menu>
                 </Dropdown>
              </div>
-
+            <div>
+                <FlashMessage 
+                color='teal' 
+                message={'You have successfully logged in...   '} 
+                />
+            </div>
             <div><PaginateEventsList activePage={current_page} onPageChange={this.handlePaginationChange} totalPages={pages} /></div>
             <div className="cardContainer">{buildCards}</div>            
             <div><PaginateEventsList activePage={current_page} onPageChange={this.handlePaginationChange} totalPages={pages} /></div>

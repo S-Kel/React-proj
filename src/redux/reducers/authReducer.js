@@ -19,12 +19,14 @@ export default (state = initialState, action) => {
     return{
       ...state,
       logging: true,
+      logout: false,
     }
     case AUTH_ACTION:
       return {
         ...state,
         loggedIn: true,
         logging: false,
+        logout: false,
         authenticatedUserEmail: action.payload.email,
         authenticatedUserRole: action.payload.role,
         authError: null
@@ -33,12 +35,14 @@ export default (state = initialState, action) => {
       return {
         ...state,
         loggedIn: false,
+        logout: true,
         authenticatedUserEmail: null,
         authenticatedUserRole: null
       };
     case AUTH_ERROR_ACTION:
       return {
         ...state,
+        logging: false,
         authError: action.payload
       };
     default:

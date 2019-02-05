@@ -1,8 +1,10 @@
 import React, { Component } from 'react'
+import { connect } from "react-redux";
 import {Grid, Cell} from 'react-mdl'
 import GarageSaleVid from './Youtube'
 import InfoPg from './InfoPg';
-import { Button } from 'semantic-ui-react'
+import { Button } from 'semantic-ui-react';
+import FlashMessage from "../../forms/Messages/FlashMessage";
 
 class LandingPg extends Component {
 
@@ -11,9 +13,26 @@ onClickMore() {
 }
 
   render() {
+      const {loggedIn, loggedOut, role} = this.props;
+      console.log('This.props.loggedIn | role from landing page', this.props.loggedIn)
     return (
       <div>
         <Grid className="landing-grid">
+        {
+          loggedIn && role === 'user' &&
+            <FlashMessage 
+            color='teal' 
+            message={'You have signed in successfully...   '} 
+            />
+        }
+        {
+          loggedOut && 
+            <FlashMessage
+                color='teal'
+                message={'You have signed out successfully...   ' }
+                />
+
+        }
             <div className="banner-text">
                 <img src="/Assets/WBGS-logo.png" className="logo"/>
                 <hr/>  
@@ -46,4 +65,10 @@ onClickMore() {
   }
 }
 
-export default LandingPg
+const mapStateToProps = state => ({
+  loggedIn: state.auth.loggedIn,
+  loggedOut: state.auth.logout,
+  role: state.auth.authenticatedUserRole,
+});
+
+export default connect(mapStateToProps, { })(LandingPg);
