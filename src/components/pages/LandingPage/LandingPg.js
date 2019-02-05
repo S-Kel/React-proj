@@ -19,13 +19,13 @@ onClickMore() {
                 <hr/>  
                 <GarageSaleVid videoId='SkiTGS_ThA0'/>   
             </div>
-            <div className="call-to-act">
+        </Grid>
+        <div className="call-to-act">
             <div className="call1">
                 <p>WE BELIEVE WE CAN MAKE A POSITIVE IMPACT ON PEOPLE’S LIVES AND 
                 THE FUTURE OF THE PLANET THROUGH THE EVENTS AND EXPERIENCES WE CREATE.</p>
             </div>
         </div>
-        </Grid>
         <div>
             <Button inverted size="massive" floated="right" onClick={this.onClickMore}> Find out more </Button>
         </div>          

@@ -21,10 +21,7 @@ import EOIDetails from "../components/dashboard/EOIDetail"
 import AdminDashboard from "../components/dashboard/AdminDashboard"
 
 class App extends Component {
-  simpleAction = event => {
-    this.props.simpleAction();
-  };
-
+render(){
     const { loggedIn, userRole } = this.props;
     console.log('loggedIn, userRole', loggedIn, userRole);
 
