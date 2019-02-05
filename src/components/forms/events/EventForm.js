@@ -82,7 +82,7 @@ class CreateEventForm extends Component {
 
          showResults(eventConfirmation);
        }catch(error){
-      console.log('error submitting form', error)
+      console.error('error submitting form', error)
     }
     
   }
