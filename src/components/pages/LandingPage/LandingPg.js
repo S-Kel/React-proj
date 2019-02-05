@@ -3,6 +3,7 @@ import {Grid, Cell} from 'react-mdl'
 import GarageSaleVid from './Youtube'
 import InfoPg from './InfoPg';
 import { Button } from 'semantic-ui-react'
+import Footer from '../Footer'
 
 class LandingPg extends Component {
 
@@ -31,7 +32,9 @@ onClickMore() {
         </div>
                  
         <InfoPg/> 
+        <Footer />
     </div>
+    
     )
   }
 }
