@@ -24,7 +24,7 @@ export default function LoginForm(props) {
                 placeholder='Password'
                 name='password'
                 type='password'
-              />
+               />
               <Button color='teal' fluid size='large'>Login</Button>
             </Segment>
           </Form>
