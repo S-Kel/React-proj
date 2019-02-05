@@ -14,19 +14,16 @@ import Contact from "../components/pages/Contact";
 import Authentication from "../components/auth/Authentication";
 import { library } from '@fortawesome/fontawesome-svg-core';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-// import Footer from "../components/pages/Footer";
 import LandingPg from "../components/pages/LandingPage/LandingPg";
 import InfoPg from "../components/pages/LandingPage/InfoPg"
 import EOIDetails from "../components/dashboard/EOIDetail"
 import AdminDashboard from "../components/dashboard/AdminDashboard"
 
 class App extends Component {
-  // simpleAction = event => {
-  //   this.props.simpleAction();
-  // };
-  render() {
+render() {
     const { loggedIn, userRole } = this.props;
     console.log('loggedIn, userRole', loggedIn, userRole);
+
     return (
       <div className="App">
         <Router>
@@ -59,6 +56,7 @@ class App extends Component {
   };
 }
 const mapPropsToTypes = state => ({
+
   userRole: state.auth.authenticatedUserRole,
   loggedIn: state.auth.loggedIn,
 });

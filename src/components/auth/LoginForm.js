@@ -46,7 +46,7 @@ export default function LoginForm(props) {
             </Message>
           </Grid.Column>
         </Grid>
-      </div>
+      </div>   
     </div>
   );
 };
