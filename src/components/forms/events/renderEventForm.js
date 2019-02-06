@@ -8,7 +8,7 @@ import CommunityDetailsForm from "./yourCommunityForm";
 import ConfirmDetailsForm from "./Confirm";
 
 const CollectUserDetailsForm = (props) => {
-  const { onSubmit, handleSubmit, mutators: { push, pop }, values, pristine, submitting, invalid,form, hasSubmitErrors, submitErrors, nextStep, prevStep, page, ...rest } = props;
+  const { onSubmit, handleSubmit, values, pristine, submitting, invalid,form, hasSubmitErrors, submitErrors, nextStep, prevStep, page, ...rest } = props;
   console.log("hasValidationErrors", props);
   //  console.log("hasValidationErrors", invalid, pristine, submitting);
   return (

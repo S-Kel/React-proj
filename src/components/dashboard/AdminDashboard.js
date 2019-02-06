@@ -20,26 +20,26 @@ import PaginateEventsList from "./PaginateEventsList";
 class AdminDashboard extends Component {
   constructor(props) {
     super(props);
-    this.state = { data: [] };
+    this.state = { data: [], };
   }
 
   componentDidMount() {
     console.log('ComponentDidMount')    
-    //   api.get("/dashboard?pageNum=1&limit=10")
-    //   .then(response => {
-    //       console.log('data: response.data.data', response.data.data)
-    //       this.setState({ data: response.data.data })
-    // });
+      api.get("/dashboard?pageNum=1&limit=10")
+      .then(response => {
+          console.log('data: response.data.data', response.data.data)
+          this.setState({ data: response.data.data })
+    });
   }
   handleSeeShortlist = event =>{
     event.preventDefault()
-      api.get('/dashboard/shortlist?pageNum=1&limit=10', { headers: 'Bearer ' + 'foo' })
+      api.get('/dashboard/shortlist?pageNum=1&limit=10')
         .then((response) =>
         this.setState({data: response.data.data}))
   }
   handleSeeAll = event => {
         event.preventDefault()
-      api.get('/dashboard?pageNum=1&limit=10', { headers: 'Bearer ' + 'foo' })
+      api.get('/dashboard?pageNum=1&limit=10')
             .then((response) => this.setState({ data: response.data.data }))
   }
 
@@ -53,7 +53,8 @@ class AdminDashboard extends Component {
   render() {
     console.log("This.props", this.props);
     console.log("This.props.page", this.props.page);
-    const { events } = this.props;
+    // let flashCount = 1;
+    const { events, loggedIn, sessionLogIn, role } = this.props;
     // Pagination
     const per_page = 5; //FOR TESTING PURPOSES ONLY & IS TO BE REPLACED
     const pages = Math.ceil(events.length / per_page);
@@ -149,32 +150,40 @@ class AdminDashboard extends Component {
               <Dropdown.Item onClick={this.handleSeeShortlist}>
                 Shortlisted
               </Dropdown.Item>
-              <Dropdown.Item onClick={this.handleSeeAll}>See All</Dropdown.Item>
+              <Dropdown.Item onClick={this.handleSeeAll}>
+                See All
+              </Dropdown.Item>
             </Dropdown.Menu>
           </Dropdown>
         </div>
-        <div>
-          <FlashMessage
-            color="teal"
-            message={"You have successfully logged in...   "}
-          />
-        </div>
-        <div>
-          <PaginateEventsList
-            activePage={current_page}
-            onPageChange={this.handlePaginationChange}
-            totalPages={pages}
-          />
-        </div>
+        {!sessionLogIn && loggedIn && role === "admin" && (
+          <div>
+            <FlashMessage
+              color="teal"
+              message={"You have successfully logged in...   "}
+            />
+          </div>
+        )}
+        {pages > 1 && (
+          <div>
+            <PaginateEventsList
+              activePage={current_page}
+              onPageChange={this.handlePaginationChange}
+              totalPages={pages}
+            />
+          </div>
+        )}
         {/* <div className="cardContainer">{buildcards2}</div> */}
         <div className="cardContainer">{buildCards}</div>
-        <div>
-          <PaginateEventsList
-            activePage={current_page}
-            onPageChange={this.handlePaginationChange}
-            totalPages={pages}
-          />
-        </div>
+        {pages > 1 && (
+          <div>
+            <PaginateEventsList
+              activePage={current_page}
+              onPageChange={this.handlePaginationChange}
+              totalPages={pages}
+            />
+          </div>
+        )}
       </React.Fragment>
     );
   }
@@ -182,9 +191,12 @@ class AdminDashboard extends Component {
 
 
 const mapStateToProps = (state, ownProps) => ({
+  loggedIn: state.auth.loggedIn,
+  sessionLogIn: state.auth.loggingFromSession,
+  role: state.auth.authenticatedUserRole,
   events: state.events.eventsList,
   eventLoadError: state.events.eventError,
-  page: Number(ownProps.location.search.split('=')[1]) || 1,
+  page: Number(ownProps.location.search.split("=")[1]) || 1
 });
 
 export default withRouter(

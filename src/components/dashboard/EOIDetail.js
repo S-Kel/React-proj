@@ -1,18 +1,14 @@
 import React, { Component } from 'react'
-import { connect } from "react-redux";
+// import { connect } from "react-redux";
 import {
     Grid,
     List,
     Segment,
-    Header,
     Form,
     Checkbox,
     Button,
-    Dropdown,
-    Label,
-    Input
 } from 'semantic-ui-react';
-import { Field, FormSpy } from "react-final-form";
+// import { Field, FormSpy } from "react-final-form";
 
 export default class EOIDetails extends Component {
 
