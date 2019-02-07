@@ -48,7 +48,7 @@ class App extends Component {
                   <Route path="/create" component={CreateEventForm} />
                   <Route
                     path="/users/register"
-                    component={uthentication}
+                    component={Authentication}
                   />
                   <Route path="/users/login" component={Authentication} />
                   <Route path="/users/logout" component={Authentication} />
