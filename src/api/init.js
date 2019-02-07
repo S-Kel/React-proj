@@ -4,8 +4,11 @@ const AUTH_TOKEN = "27-ShBiueSPGlqvS7zMzS9nvAB6Pv0";
 const api = axios.create({
   baseURL:
     process.env.NODE_ENV === "production"
-      ? "https://protected-scrubland-68099.herokuapp.com"
-      : "https://wbgs-server.herokuapp.com",
+      ? "https://wbgs-server.herokuapp.com"
+      : "http://localhost:3000",
+  headers: { "Content-Type": "application/json" },
+  proxy: false,
+  withCredentials: true
 });
 
 api.defaults.headers.common["Authorization"] = 'Bearer '+  AUTH_TOKEN;
