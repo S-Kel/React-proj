@@ -5,8 +5,9 @@ const api = axios.create({
     process.env.NODE_ENV === "production"
       ? "https://wbgs-server.herokuapp.com"
       : "http://localhost:3000",
-  // :"http://localhost:3000"
-  headers: { "Content-Type": "application/json" }
+  headers: { "Content-Type": "application/json" },
+  proxy: false,
+  withCredentials: true
 });
 
 export { api };
