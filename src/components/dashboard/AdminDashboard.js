@@ -24,8 +24,11 @@ class AdminDashboard extends Component {
   }
 
   componentDidMount() {
+    // if(!window.sessionStorage.getItem("AuthToken")) return;
+    const AUTH_TOKEN = JSON.parse(window.sessionStorage.getItem("AuthToken")).user.token || ''
     console.log('ComponentDidMount')    
-      api.get("/dashboard?pageNum=1&limit=10")
+    api.get("/dashboard?pageNum=1&limit=10", {headers: {  Authorization: `Bearer ${AUTH_TOKEN}`}
+    })
       .then(response => {
           console.log('data: response.data.data', response.data.data)
           this.setState({ data: response.data.data })
