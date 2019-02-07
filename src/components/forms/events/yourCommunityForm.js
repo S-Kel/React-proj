@@ -94,16 +94,6 @@ function YourCommunityForm(props) {
                 </Form.Field>
               )}
             </FormSpy>
-
-            {/* <Form.Field >
-              <Field
-                name='local_council_detailS'
-                type='text'
-                placeholder='Please enter the Council name'
-                component={InputText}
-                subscription={{ value: true, active: true, error: true, touched: true }}
-              />
-            </Form.Field>             */}
             <Form.Field >
               <Label style={{ background: '#fefafa', padding: 10 }}>
                 Lorem ipsum dolor sit amet consectetur adipisicing elit. Eos rerum non,

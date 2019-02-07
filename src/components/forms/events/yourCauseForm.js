@@ -62,7 +62,6 @@ function YourCauseForm(props) {
                  <Button type='button' label="Continue" color='red' disabled={(Object.keys(values).length < 5) ? true : false} onClick={nextStep} />
               )}
             </FormSpy>
-            {/* <Button type='button' label="Continue" color='red' disabled={submitting || pristine} onClick={nextStep} /> */}
             <Button label="Back" primary={false} disabled={invalid || hasValidationErrors || pristine} onClick={prevStep} />
           </Form>
         </Segment>
