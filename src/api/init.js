@@ -5,10 +5,11 @@ const api = axios.create({
   baseURL:
     process.env.NODE_ENV === "production"
       ? "https://wbgs-server.herokuapp.com"
-      : "http://localhost:3000",
+      : "https://wbgs-server.herokuapp.com",
+      // : "http://localhost:3000"
   headers: { "Content-Type": "application/json" },
   proxy: false,
-  withCredentials: true
+  // withCredentials: true
 });
 
 // api.defaults.headers.common["Authorization"] = 'Bearer '+  AUTH_TOKEN;
