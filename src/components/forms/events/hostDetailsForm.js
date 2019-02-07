@@ -86,8 +86,7 @@ function HostDetailsForm(props) {
                             disabled={((Object.keys(values).length < 4)) || !values.socials }
                             onClick={nextStep}
                             />
-                // <pre>{JSON.stringify(!!errors.socials, undefined, 2)}</pre>
-                // <pre>{JSON.stringify((Object.keys(values).length < 4), undefined, 2)}</pre>
+
               )}
               
             </FormSpy>          
